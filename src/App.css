@@ -2,3 +2,11 @@
   padding:0px;
   margin:0px;
 }
+
+.container {
+  width: 1200px;
+}
+
+.container-fluid {
+  width: 100vw;
+}
