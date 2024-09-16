@@ -1,12 +1,29 @@
 import './HomePage.css';
+import Agenda from '../../Components/Agenda/Agenda';
 
 const HomePage = () => {
     return (
-        <div>
-            <h2>Welcome to GeoProfs!</h2>
-            <p>GeoProfs is a website that helps you learn about the world's countries.</p>
-            <p>Click on a country's name to learn more about it.</p>
-        </div>
+        <main>
+            <div className="homepage-container-1">
+                <button>
+                    Ziekmelden
+                </button>
+                <button>
+                    Vakantiedagen opnemen
+                </button>
+                <button>
+                    Verlof aanvragen
+                </button>
+            </div>
+            <div className='homepage-container-2'>
+                <h1 className='welkom-title'>
+                    Welkom, 
+                </h1>
+            </div>
+            <div className='homepage-container-3'>
+                <Agenda/>
+            </div>
+        </main>
     );
 };
 
