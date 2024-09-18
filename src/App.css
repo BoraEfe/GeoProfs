@@ -3,6 +3,9 @@
   margin:0px;
 }
 
+body {
+  overflow-x: hidden;
+}
 .container {
   width: 1200px;
 }
