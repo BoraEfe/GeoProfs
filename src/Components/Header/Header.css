@@ -9,6 +9,14 @@ header {
     padding: 0 15px;
     overflow-x: hidden;
 
+    h1 {
+        cursor: pointer;
+
+        strong {
+            font-weight: 550;
+        }
+    }
+
     .header-container {
         display: flex;
         width: 100%;
@@ -24,10 +32,17 @@ header {
                 display: flex;
                 list-style: none;
                 width: calc(100% - 100px);
-
+                position: relative;
+                
                 li a {
                     color: white;
                     margin: 0 10px;
+                }
+                
+                .logout-button {
+                    cursor: pointer;
+                    position: absolute;
+                    right: 35px;
                 }
             }
         }
