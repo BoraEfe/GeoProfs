@@ -3,7 +3,7 @@ import './Footer.css';
 const Footer = () => {
     return (
         <footer>
-        <p>© 2021 GeoProfs</p>
+        <p>© 2024 GeoProfs</p>
         </footer>
     );
 };

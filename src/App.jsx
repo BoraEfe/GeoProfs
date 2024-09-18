@@ -4,6 +4,7 @@ import Footer from './Components/Footer/Footer'
 import HomePage from './Pages/HomePage/HomePage'
 import './App.css'
 import { Routes, Route} from 'react-router-dom'
+import Ziekmelden from './Pages/Ziekmelden/Ziekmelden'
 
 const App = () => {
 
@@ -11,7 +12,8 @@ const App = () => {
     <body>
       <Header />
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<HomePage />}/>
+          <Route path="/Ziekmelden" element={<Ziekmelden />}/>
         </Routes>
       <Footer />
     </body>
