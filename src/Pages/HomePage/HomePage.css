@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+main{
+    font-family: "jost", sans-serif;
+    background-color: #678AFF;
+    width: 100%;
+    height:100vh;
+    display: flex;
+    flex-direction: row;
+
+    .homepage-container-1, .homepage-container-2, .homepage-container-3{
+        width: 33.33%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top:50px;
+
+        button{
+            width: 250px;
+            height: 50px;
+            background-color: #4B75FF;
+            border: none;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            color:white;
+            transition: 0.3s;
+        }
+        button:hover{
+            background-color: #5679ef;
+            transform: scale(1.05);
+            transition: 0.3s;
+        }
+
+        .welkom-title{
+            color:white;
+            font-weight: 600;
+        }   
+    }
+}
