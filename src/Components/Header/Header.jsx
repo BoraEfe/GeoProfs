@@ -11,13 +11,13 @@ const Header = () => {
               <a href="/">Home</a>
             </li>
             <li>
-              <a href="/about">About</a>
+              <a href="/ziekmelden">Ziekmelden</a>
             </li>
           </ul>
         </nav>
         <div className="account-container">
           <strong>Logged in as</strong>
-          <span>naam</span>
+          <span>{localStorage.getItem('username')}</span>
         </div>
       </div>
     </header>

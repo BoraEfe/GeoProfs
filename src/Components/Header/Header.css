@@ -39,6 +39,7 @@ header {
             align-items: start;
             justify-content: center;
             min-width: 100px;
+            margin-right: 15px;
         }
     }
 }

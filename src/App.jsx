@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Header from './Components/Header/Header'
 import HomePage from './Pages/HomePage/HomePage'
+import Login from './Pages/Login/Login'
 import './App.css'
 import { Routes, Route} from 'react-router-dom'
 
@@ -8,9 +9,10 @@ const App = () => {
   return (
     <body>
       <Header />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-      </Routes>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/Login" element={<Login />} />
+        </Routes>
     </body>
   )
 }
