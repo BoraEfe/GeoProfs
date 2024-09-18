@@ -1,11 +1,45 @@
-*{
-    margin: 0;  
-    padding: 0;
-}
-header{
-    width:100%;
-    height:15vh;
-    background-color: #333;
+header {
+    width: 100vw;
+    height: 80px;
+    background-color: rgb(188, 1, 213);
     display: flex;
     flex-direction: row;
+    align-items: center;
+    color: white;
+    padding: 0 15px;
+    overflow-x: hidden;
+
+    .header-container {
+        display: flex;
+        width: 100%;
+        height: inherit;
+        
+        nav {
+            width: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: end;
+            
+            ul {
+                display: flex;
+                list-style: none;
+                width: calc(100% - 100px);
+
+                li a {
+                    color: white;
+                    margin: 0 10px;
+                }
+            }
+        }
+
+        .account-container {
+            padding-right: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            justify-content: center;
+            min-width: 100px;
+            margin-right: 15px;
+        }
+    }
 }

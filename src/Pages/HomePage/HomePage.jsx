@@ -22,13 +22,13 @@
         return (
             <main>
                 <div className="homepage-container-1">
-                    <button>
+                    <button onClick={(e) => {navigate('/ziekmelden')}}>
                         Ziekmelden
                     </button>
-                    <button>
+                    <button onClick={(e) => {navigate('/vakantie-dagen')}}>
                         Vakantiedagen opnemen
                     </button>
-                    <button>
+                    <button onClick={(e) => {navigate('/verlof')}}>
                         Verlof aanvragen
                     </button>
                 </div>
