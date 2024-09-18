@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Header from './Components/Header/Header'
 import Footer from './Components/Footer/Footer'
 import HomePage from './Pages/HomePage/HomePage'
+import Login from './Pages/Login/Login'
 import './App.css'
 import { Routes, Route} from 'react-router-dom'
 import Ziekmelden from './Pages/Ziekmelden/Ziekmelden'
@@ -12,10 +13,9 @@ const App = () => {
     <body>
       <Header />
         <Routes>
-          <Route path="/" element={<HomePage />}/>
-          <Route path="/Ziekmelden" element={<Ziekmelden />}/>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/Login" element={<Login />} />
         </Routes>
-      <Footer />
     </body>
   )
 }
