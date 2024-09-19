@@ -7,7 +7,6 @@ let username2
 
 const Login = () => {
     const [email, setEmail] = useState('');
-    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState();
     const navigate = useNavigate();
@@ -32,6 +31,8 @@ const Login = () => {
                         
                         localStorage.setItem('isLoggedIn', true);
                         localStorage.setItem('username', user.username);
+                        localStorage.setItem('firstname', user.firstname);
+                        localStorage.setItem('vakantiedagen', user.vakantiedagen)
                         localStorage.setItem('role', user.role);
                         navigate('/');
                     }else {
