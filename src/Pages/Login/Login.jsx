@@ -1,29 +1,52 @@
 import './Login.css';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { db } from '../../firebase';
+import { collection, getDocs, query, where } from 'firebase/firestore';
 let username2
 
 const Login = () => {
+    const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState();
     const navigate = useNavigate();
     var login = false;
 
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
-        console.log(username, password);
-        if (username === 'admin' && password === 'admin'){
-            console.log('Login success');
-            login = true;
-            localStorage.setItem('isLoggedIn', true);
-            localStorage.setItem('username', username);
-            navigate('/');
-        } 
-        else {
-            console.log('Login failed');
-            login = false;
-        }
+        console.log(email, password);
 
+        try{
+            const usersRef = collection(db, 'users');
+            const q = query(usersRef, where('email', '==', email));
+            const querySnapshot = await getDocs(q);
+
+            if (!querySnapshot.empty){
+                querySnapshot.forEach((doc) => {
+                    const user = doc.data();
+
+                    if (user.password === password){
+                        console.log('login success');
+                        login = true;
+                        
+                        localStorage.setItem('isLoggedIn', true);
+                        localStorage.setItem('username', user.username);
+                        localStorage.setItem('role', user.role);
+                        navigate('/');
+                    }else {
+                        console.log('Login is mislukt');
+                        login = false;
+                    }
+                })
+            }else{
+                setError('Gebruiker niet gevonden');
+                login = false;
+            }
+        }catch(error){
+            console.log('Error getting documents:', error);
+            setError('Er is iets misgegaan');
+        }
     }
     return(
         <div className='login-container'>
@@ -32,11 +55,11 @@ const Login = () => {
                     Login
                 </h1>
                 <form onSubmit={handleLogin}>
-                    <p>Gebruikersnaam</p>
+                    <p>Email</p>
                     <input
                     type='text'
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     />
                     <p>Wachtwoord</p>
                     <input
