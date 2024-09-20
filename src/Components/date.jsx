@@ -1,13 +1,24 @@
-import { React } from 'react';
-import { useState } from 'react';
+import React from 'react';
 
-const Date = () => {
-    const [date, setDate] = useState(new Date());
+const CurrentDate = () => {
+    const today = new Date();
+    const day = today.getDate();
+    const month = today.getMonth() + 1;
+    const year = today.getFullYear();
+    const minute = today.getMinutes();
+    const hour = today.getHours();
+    let currentDate;
+    if (month < 10) {
+        currentDate = day + "/0" + month + "/" + year + " " + hour + ":" + minute;
+    } else {
+        currentDate = day + "/" + month + "/" + year + " " + hour + ":" + minute;   
+    }
+    
     return(
-        <>
-        <h1>Datum: </h1>
-        <p> {date.toLocaleString()}</p>
-        </>
-    )
+        <li>
+            <a>{currentDate}</a>
+        </li>
+    );
 }
-export default Date;
+
+export default CurrentDate;
