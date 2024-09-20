@@ -4,6 +4,7 @@ import HomePage from './Pages/HomePage/HomePage'
 import Login from './Pages/Login/Login'
 import './App.css'
 import { Routes, Route} from 'react-router-dom'
+import Ziekmelden from './Pages/Ziekmelden/Ziekmelden'
 
 const App = () => {
   return (
