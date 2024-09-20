@@ -6,6 +6,7 @@ import './App.css'
 import { Routes, Route} from 'react-router-dom'
 import Ziekmelden from './Pages/Ziekmelden/Ziekmelden'
 
+
 const App = () => {
   return (
     <body>
@@ -13,6 +14,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/Login" element={<Login />} />
+          <Route path="/ziekmelden" element={<Ziekmelden />} />
         </Routes>
     </body>
   )

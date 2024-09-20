@@ -1,25 +1,16 @@
 import './HomePage.css';
 import Agenda from '../../Components/Agenda/Agenda';
-import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { collection, getDocs, where, query } from 'firebase/firestore';
 import { db } from '../../firebase';
+import cancelPageSwitchWhenNotLoggedIn from '../../Components/cancelPageSwitchWhenNotLoggedIn';
 
     const HomePage = () => {
-        const navigate = useNavigate();
+        cancelPageSwitchWhenNotLoggedIn();
+
         const [vakantieDagen, setVakantieDagen] = useState();
         const email = localStorage.getItem('email');
 
-        useEffect (() => {
-            const loggedIn = localStorage.getItem('isLoggedIn');
-            if (!loggedIn){
-                navigate('/Login')
-            }
-            else{
-                navigate('/')
-                console.log('Login success')
-            }
-        }, [navigate])
         useEffect(() => {
             const fetchVakantieDagen = async () => {
                 try {
@@ -64,7 +55,7 @@ import { db } from '../../firebase';
                 </div>
                 <div className='homepage-container-2'>
                     <h1 className='welkom-title'>
-                        Welkom, {localStorage.getItem('firstname')}
+                        Welkom, {localStorage.getItem('firstname')} {localStorage.getItem('lastname')}
                     </h1>
                 </div>
                 <div className='homepage-container-3'>

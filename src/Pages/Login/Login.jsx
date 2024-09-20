@@ -1,9 +1,8 @@
 import './Login.css';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { db } from '../../firebase';
 import { collection, getDocs, query, where } from 'firebase/firestore';
-let username2
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -32,6 +31,7 @@ const Login = () => {
                         localStorage.setItem('isLoggedIn', true);
                         localStorage.setItem('username', user.username);
                         localStorage.setItem('firstname', user.firstname);
+                        localStorage.setItem('lastname', user.lastname);
                         localStorage.setItem('vakantiedagen', user.vakantiedagen)
                         localStorage.setItem('role', user.role);
                         navigate('/');

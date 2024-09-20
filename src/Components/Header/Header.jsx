@@ -31,7 +31,7 @@ const Header = () => {
         </nav>
         <div className="account-container">
           <strong>Logged in as</strong>
-          <span>{localStorage.getItem('username')}</span>
+          <span>{localStorage.getItem('firstname')} {localStorage.getItem('lastname')}</span>
         </div>
       </div>
     </header>
