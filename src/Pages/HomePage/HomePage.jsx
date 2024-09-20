@@ -46,7 +46,7 @@ import cancelPageSwitchWhenNotLoggedIn from '../../Components/cancelPageSwitchWh
                     </button>
                     <div className='vakantiedagen'>
                         {vakantieDagen !== null ? (
-                             `Aantal vakantiedagen: ${vakantieDagen}`  
+                             `Aantal vakantiedagen: ${vakantieDagen}`
                         ) : (
                             'Vakantiedagen laden...'
                         )}
@@ -66,3 +66,4 @@ import cancelPageSwitchWhenNotLoggedIn from '../../Components/cancelPageSwitchWh
     };
 
     export default HomePage;
+    
