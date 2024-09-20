@@ -4,7 +4,7 @@
 }
 main{
     font-family: "jost", sans-serif;
-    background-color: #678AFF;
+    background-color:#A63446;
     width: 100%;
     height:100vh;
     display: flex;
@@ -21,7 +21,7 @@ main{
         button{
             width: 250px;
             height: 50px;
-            background-color: #4B75FF;
+            background-color: #910C0C;
             border: none;
             border-radius: 10px;
             margin-top: 20px;
@@ -31,8 +31,9 @@ main{
             color:white;
             transition: 0.3s;
         }
+        
         button:hover{
-            background-color: #5679ef;
+            background-color: #9c0e0e;
             transform: scale(1.05);
             transition: 0.3s;
         }
@@ -44,7 +45,7 @@ main{
         .vakantiedagen{
             width: 250px;
             height: 50px;
-            background-color: #4B75FF;
+            background-color: #910C0C;
             border: none;
             border-radius: 10px;
             font-size: 20px;

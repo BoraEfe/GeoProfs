@@ -2,6 +2,7 @@ import './Header.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
+import date from '../../Components/date';  
 
 const Header = () => {
 
@@ -24,6 +25,7 @@ const Header = () => {
             <li>
               <a href="/ziekmelden">Ziekmelden</a>
             </li>
+            <Date/>
             <li className="logout-button" onClick={() => {handleLogout()}}>
               <a><FontAwesomeIcon icon={faArrowRightFromBracket} /> Uitloggen</a>
             </li>
