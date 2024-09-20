@@ -55,7 +55,7 @@ import { db } from '../../firebase';
                     </button>
                     <div className='vakantiedagen'>
                         {vakantieDagen !== null ? (
-                             `Aantal vakantiedagen: ${vakantieDagen}`  
+                             `Aantal vakantiedagen: ${vakantieDagen}`
                         ) : (
                             'Vakantiedagen laden...'
                         )}
@@ -75,3 +75,4 @@ import { db } from '../../firebase';
     };
 
     export default HomePage;
+    
