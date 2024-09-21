@@ -7,12 +7,11 @@ const CurrentDate = () => {
     const year = today.getFullYear();
     const minute = today.getMinutes();
     const hour = today.getHours();
-    let currentDate;
-    if (month < 10) {
-        currentDate = day + "/0" + month + "/" + year + " " + hour + ":" + minute;
-    } else {
-        currentDate = day + "/" + month + "/" + year + " " + hour + ":" + minute;   
-    }
+
+    const formattedMonth = month < 10 ? `0${month}` : month;
+    const formattedMinute = minute < 10 ? `0${minute}` : minute;
+
+    const currentDate = `${day}/${formattedMonth}/${year} ${hour}:${formattedMinute}`;
     
     return(
         <li>
