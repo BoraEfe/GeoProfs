@@ -24,15 +24,19 @@ const Header = () => {
             <li>
               <a href="/ziekmelden">Ziekmelden</a>
             </li>
-            <li className="logout-button" onClick={() => {handleLogout()}}>
-              <a><FontAwesomeIcon icon={faArrowRightFromBracket} /> Uitloggen</a>
-            </li>
+            { localStorage.getItem('isLoggedIn') ? (
+              <li className="logout-button" onClick={() => {handleLogout()}}>
+                <a><FontAwesomeIcon icon={faArrowRightFromBracket} /> Uitloggen</a>
+              </li>
+            ) : (<div></div>)}
           </ul>
         </nav>
-        <div className="account-container">
-          <strong>Logged in as</strong>
-          <span>{localStorage.getItem('firstname')} {localStorage.getItem('lastname')}</span>
-        </div>
+        { localStorage.getItem('isLoggedIn') ? (
+          <div className="account-container">
+            <strong>Logged in as</strong>
+            <span>{localStorage.getItem('firstname')} {localStorage.getItem('lastname')}</span>
+          </div>
+        ) : (<div></div>)}
       </div>
     </header>
   );
