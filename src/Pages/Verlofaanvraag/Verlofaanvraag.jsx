@@ -29,7 +29,7 @@ const Verlofaanvraag = () => {
                 <textarea
                 placeholder='Reden van verlof'
                 style={{ height: '15vh' }}
-                maxLength={500}
+                maxLength={500} 
                 >
                 </textarea>
                 <button 
