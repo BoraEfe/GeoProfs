@@ -11,7 +11,6 @@ const Header = () => {
     localStorage.removeItem('username');
     window.location.href = '/login';
   }
-  const navigate = useNavigate();
 
   return (
     <header>
