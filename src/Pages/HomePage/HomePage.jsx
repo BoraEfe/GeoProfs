@@ -4,8 +4,10 @@ import { useEffect, useState } from 'react';
 import { collection, getDocs, where, query } from 'firebase/firestore';
 import { db } from '../../firebase';
 import cancelPageSwitchWhenNotLoggedIn from '../../Components/cancelPageSwitchWhenNotLoggedIn';
+import { useNavigate } from 'react-router-dom';
 
     const HomePage = () => {
+        const navigate = useNavigate();
         cancelPageSwitchWhenNotLoggedIn();
 
         const [vakantieDagen, setVakantieDagen] = useState();
@@ -38,15 +40,15 @@ import cancelPageSwitchWhenNotLoggedIn from '../../Components/cancelPageSwitchWh
                     <button onClick={() => {navigate('/ziekmelden')}}>
                         Ziekmelden
                     </button>
-                    <button onClick={() => {navigate('/vakantie-dagen')}}>
+                    <button onClick={() => {navigate('/vakantiedagen')}}>
                         Vakantiedagen opnemen
                     </button>
-                    <button onClick={() => {navigate('/verlof')}}>
+                    <button onClick={() => {navigate('/verlofaanvraag')}}>
                         Verlof aanvragen
                     </button>
                     <div className='vakantiedagen'>
                         {vakantieDagen !== null ? (
-                             `Aantal vakantiedagen: ${vakantieDagen}`  
+                             `Aantal vakantiedagen: ${vakantieDagen}`
                         ) : (
                             'Vakantiedagen laden...'
                         )}
@@ -66,3 +68,4 @@ import cancelPageSwitchWhenNotLoggedIn from '../../Components/cancelPageSwitchWh
     };
 
     export default HomePage;
+    
