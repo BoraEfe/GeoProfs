@@ -1,4 +1,14 @@
-import '../HomePage/HomePage.css'
+import './Vakantiedagen.css';
+import { useEffect, useState } from 'react';
+
+const Vakantiedagen = () => {
+    return(
+        <>
+        
+        </>    
+    )
+}
+export default Vakantiedagen;import '../HomePage/HomePage.css'
 import Agenda from '../../Components/Agenda/Agenda';
 import { useEffect, useState } from 'react';
 import { collection, getDocs, where, query } from 'firebase/firestore';

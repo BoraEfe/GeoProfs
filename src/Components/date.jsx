@@ -19,7 +19,7 @@ const CurrentDate = () => {
     }
     useEffect(() =>
     {
-        const interval = setInterval(updateDate, 1000)
+        const interval = setInterval(updateDate, 40000)
         return () => clearInterval(interval)
     }, [])
 
