@@ -27,7 +27,6 @@ const Login = () => {
                     if (user.password === password){
                         console.log('login success');
                         login = true;
-                        
                         localStorage.setItem('isLoggedIn', true);
                         localStorage.setItem('username', user.username);
                         localStorage.setItem('firstname', user.firstname);

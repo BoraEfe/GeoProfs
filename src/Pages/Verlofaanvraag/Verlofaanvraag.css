@@ -5,6 +5,7 @@
 }
 .verlofaanvraag-container{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 88vh;
@@ -14,6 +15,7 @@
         width: 50%;
         height: auto;
         padding: 20px;
+        margin: 20px;
         background-color: #F6D5D5;
         border-radius: 5px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -55,5 +57,76 @@
         form:focus{
             outline: none;
         }
+    }
+    .pending-container{
+        background-color: #F6D5D5;
+        width: 50%;
+        height: auto;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        box-sizing: border-box;
+        .pending-header{
+            display: flex;
+            width: 100%;
+            height: 25px;
+            .check-name{
+                width: 20%;
+                height: 100%;
+            }
+            .van-name{
+                width: 20%;
+                height: 100%;
+                font-size: 20px;
+                font-weight: bolder;
+            }
+            .tot-name{
+                width: 20%;
+                height: 100%;
+                font-size: 20px;
+                font-weight: bolder;
+            }
+            .opmerking-name{
+                width: 40%;
+                height: 100%;
+               
+                font-size: 20px;
+                font-weight: bolder;
+            }
+        }
+        .line-header{
+            background-color: black;
+            width: 100%;
+            height: 2px;
+        }
+        .pending-main{
+            display: flex;
+            width: 100%;
+            height: auto;
+           
+            .check{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 20%;
+                height: auto;
+               
+            }
+            .van{
+                width: 20%;
+                height: auto;
+                font-weight: bold;
+            }
+            .tot{width: 20%;
+                height: auto;
+                font-weight: bold;
+            }
+            .opmerking{
+                width: 40%;
+                height: auto;
+                font-weight: bold;
+            }
+        }
+        
     }
 }
