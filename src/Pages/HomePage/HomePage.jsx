@@ -6,12 +6,15 @@ import { db } from '../../firebase';
 import cancelPageSwitchWhenNotLoggedIn from '../../Components/cancelPageSwitchWhenNotLoggedIn';
 import { useNavigate } from 'react-router-dom';
 
-    const HomePage = () => {
+    const HomePage = () => {    
         const navigate = useNavigate();
-        cancelPageSwitchWhenNotLoggedIn();
-
+        
         const [vakantieDagen, setVakantieDagen] = useState();
         const email = localStorage.getItem('email');
+
+        useEffect(() =>{
+            cancelPageSwitchWhenNotLoggedIn();
+        }, []);
 
         useEffect(() => {
             const fetchVakantieDagen = async () => {

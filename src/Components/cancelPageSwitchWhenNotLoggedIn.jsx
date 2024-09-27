@@ -1,8 +1,11 @@
 const cancelPageSwitchWhenNotLoggedIn = () => {
-  const loggedIn = localStorage.getItem('isLoggedIn');
-  if (!loggedIn){
+  const isloggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
+  console.log("loggedIn: " + isloggedIn);
+
+  if (!isloggedIn){
       window.location.href= '/Login'
+      console.log('You are not logged in')
   }
-}
+} 
 
 export default cancelPageSwitchWhenNotLoggedIn;

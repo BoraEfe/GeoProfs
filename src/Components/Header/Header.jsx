@@ -2,7 +2,7 @@ import './Header.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
-import Date from '../../Components/date';  
+import Date from '../date';  
 
 const Header = () => {
 
