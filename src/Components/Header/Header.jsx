@@ -2,7 +2,7 @@ import './Header.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
-import Date from '../../Components/date';  
+import Date from '../date';  
 
 const Header = () => {
 
@@ -24,16 +24,20 @@ const Header = () => {
             <li>
               <a href="/ziekmelden">Ziekmelden</a>
             </li>
-            <Date/>
-            <li className="logout-button" onClick={() => {handleLogout()}}>
-              <a><FontAwesomeIcon icon={faArrowRightFromBracket} /> Uitloggen</a>
-            </li>
+            <Date />
+            { localStorage.getItem('isLoggedIn') ? (
+              <li className="logout-button" onClick={() => {handleLogout()}}>
+                <a><FontAwesomeIcon icon={faArrowRightFromBracket} /> Uitloggen</a>
+              </li>
+            ) : (<div></div>)}
           </ul>
         </nav>
-        <div className="account-container">
-          <strong>Logged in as</strong>
-          <span>{localStorage.getItem('firstname')} {localStorage.getItem('lastname')}</span>
-        </div>
+        { localStorage.getItem('isLoggedIn') ? (
+          <div className="account-container">
+            <strong>Logged in as</strong>
+            <span>{localStorage.getItem('firstname')} {localStorage.getItem('lastname')}</span>
+          </div>
+        ) : (<div></div>)}
       </div>
     </header>
   );

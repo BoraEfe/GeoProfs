@@ -3,13 +3,15 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { db } from '../../firebase';
 import { collection, getDocs, query, where } from 'firebase/firestore';
-
+import { useUser } from '../../context/user';
+    
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState();
     const navigate = useNavigate();
-    var login = false;
+    const {setUser} = useUser();
+    var isLoggedIn;
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -25,23 +27,27 @@ const Login = () => {
                     const user = doc.data();
 
                     if (user.password === password){
-                        console.log('login success');
-                        login = true;
-                        localStorage.setItem('isLoggedIn', true);
-                        localStorage.setItem('username', user.username);
-                        localStorage.setItem('firstname', user.firstname);
-                        localStorage.setItem('lastname', user.lastname);
-                        localStorage.setItem('vakantiedagen', user.vakantiedagen)
-                        localStorage.setItem('role', user.role);
+                        isLoggedIn = true;
+                        console.log('login success');  
+                        
+                        setUser({
+                            username: user.username,
+                            firstname: user.firstname,
+                            lastname: user.lastname,
+                            vakantiedagen: user.vakantiedagen,
+                            email: user.email,
+                            role: user.role,
+                            isLoggedIn: true,
+                        })
+                        sessionStorage.setItem('isLoggedIn', true);
+                        console.log(isLoggedIn);
                         navigate('/');
                     }else {
                         console.log('Login is mislukt');
-                        login = false;
                     }
                 })
             }else{
                 setError('Gebruiker niet gevonden');
-                login = false;
             }
         }catch(error){
             console.log('Error getting documents:', error);
