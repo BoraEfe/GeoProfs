@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
         
         const [vakantieDagen, setVakantieDagen] = useState();
         const email = localStorage.getItem('email');
-
+        
         useEffect(() =>{
             cancelPageSwitchWhenNotLoggedIn();
         }, []);

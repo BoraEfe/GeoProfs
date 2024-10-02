@@ -1,12 +1,14 @@
 import './Verlofaanvraag.css';
 import React, { useState } from 'react';
 const Verlofaanvraag = () => {
-    const [verlofBeginData, setVerlofBeginData] = useState ('');
-    const [verlofEindData, setVerlofEindData] = useState ('');
+  const [verlofBeginData, setVerlofBeginData] = useState ('');
+  const [verlofEindData, setVerlofEindData] = useState ('');
 
-    const test = (e) => {
-        e.preventDefault();
-        console.log('test');
+  const today = new Date().toISOString().split('T')[0];
+
+  const test = (e) => {
+     e.preventDefault();
+     console.log('test');
     }
   return (
     <> 
@@ -17,12 +19,17 @@ const Verlofaanvraag = () => {
                 <input 
                     type='date' 
                     value={verlofBeginData}
+                    onChange={(e) => setVerlofBeginData(e.target.value)}
+                    min={today}
                     required>                        
                 </input>
+                <p>{today}</p>
                 <p>Tot datum</p>
                 <input 
                     type='date' 
                     value={verlofEindData}
+                    onChange={(e) => setVerlofEindData(e.target.value)}
+                    min={verlofBeginData}
                     required>
                 </input>
                 <p>Reden</p>
