@@ -16,13 +16,27 @@ const Ziekmelden = () => {
         return `${year}-${month}-${day}`;
     };
 
+    const getMaxEindDatum = (beginDatum) => {
+        const beginDateObj = new Date(beginDatum);
+        beginDateObj.setDate(beginDateObj.getDate() + 14);
+        const year = beginDateObj.getFullYear();
+        const month = String(beginDateObj.getMonth() + 1).padStart(2, '0');
+        const day = String(beginDateObj.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    };
+
+    const getCurrentTime = () => {
+        const now = new Date();
+        return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    };
+
     const handleZiekmelding = async (e) => {
         e.preventDefault();
 
         try {
             await addDoc(collection(db, 'ziekmeldingen'), {
                 medewerker: localStorage.getItem('firstname') + ' ' + localStorage.getItem('lastname'),
-                aanvraagDatum: getTodayDate(),
+                aanvraagDatum: getTodayDate() + ' Tijdstip: ' + getCurrentTime(),
                 beginDatum: ziekmeldenBeginData,
                 eindDatum: ziekmeldenEindData,
             });
@@ -31,7 +45,7 @@ const Ziekmelden = () => {
             setZiekmeldenEindData('');
             setTimeout(() => {
                 setConfirmation(null);
-            }, 5000);
+            }, 10000);
         } catch (error) {
             setConfirmation(`Er ging iets mis: ${error.message}`);
         }
@@ -40,6 +54,7 @@ const Ziekmelden = () => {
     return (
         <>
             <div className='ziekmelden-container'>
+                {confirmation && <p className="confirmation-message">{confirmation}</p>}
                 <h1>Ziekmelden</h1>
                 <div className='ziekmelden-form'>
                     <form onSubmit={handleZiekmelding}>
@@ -58,6 +73,7 @@ const Ziekmelden = () => {
                                 type='date' 
                                 value={ziekmeldenEindData}
                                 min={ziekmeldenBeginData || getTodayDate()}
+                                max={ziekmeldenBeginData ? getMaxEindDatum(ziekmeldenBeginData) : ''}
                                 onChange={(e) => setZiekmeldenEindData(e.target.value)}
                                 required>
                             </input>
@@ -69,7 +85,6 @@ const Ziekmelden = () => {
                         </button>
                     </form>
                 </div>
-                    {confirmation && <p className="confirmation-message">{confirmation}</p>}
             </div>
         </>
     );
