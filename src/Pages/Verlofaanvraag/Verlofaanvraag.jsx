@@ -2,7 +2,7 @@ import './Verlofaanvraag.css';
 import React, { useState, useEffect } from 'react';
 import { collection, addDoc, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../../firebase';
-import { useUser } from '../../context/user';
+import { useUser } from '../../context/User';
 
 const Verlofaanvraag = () => {
     const [verlofBeginData, setVerlofBeginData] = useState('');
