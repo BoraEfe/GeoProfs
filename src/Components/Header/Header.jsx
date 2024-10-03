@@ -33,7 +33,7 @@ const Header = () => {
         { sessionStorage.getItem('isLoggedIn') ? (
           <div className="account-container">
             <strong>Logged in as</strong>
-            <span>{localStorage.getItem('firstname')} {localStorage.getItem('lastname')}</span>
+            <span>{sessionStorage.getItem('firstname')} {sessionStorage.getItem('lastname')}</span>
           </div>
         ) : (<div></div>)}
       </div>
