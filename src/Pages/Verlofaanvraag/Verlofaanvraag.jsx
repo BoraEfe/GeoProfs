@@ -4,15 +4,17 @@ import { collection, addDoc, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../../firebase';
 import { getAuth } from 'firebase/auth';
 
+
 const Verlofaanvraag = () => {
     const [verlofBeginData, setVerlofBeginData] = useState('');
     const [verlofEindData, setVerlofEindData] = useState('');
     const [reden, setReden] = useState('');
     const [isSubmitted, setIsSubmitted] = useState(false);
-    const [verlofaanvragen, setVerlofaanvragen] = useState([]); // Voor het opslaan van opgehaalde data
+    const [verlofaanvragen, setVerlofaanvragen] = useState([]); 
 
     const auth = getAuth();
-    const user = auth.currentUser; // Haal de huidige ingelogde gebruiker op
+    const user = auth.currentUser; 
+    console.log(user + " user");
     const today = new Date().toISOString().split('T')[0];
 
     useEffect(() => {
@@ -20,9 +22,8 @@ const Verlofaanvraag = () => {
             // Haal verlofaanvragen op voor de huidige gebruiker
             const fetchData = async () => {
                 try {
-                    const q = query(
-                        collection(db, 'users'),
-                        where('uuid', '==', user.uid) // Filter op de huidige gebruiker
+                  const usersRef = collection(db, 'users');
+                    const q = query(usersRef, where('uuid', '==', user.uuid) 
                     );
                     const querySnapshot = await getDocs(q);
                     const aanvragen = querySnapshot.docs.map((doc) => ({
@@ -42,11 +43,11 @@ const Verlofaanvraag = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (user) {
+        if (sessionStorage.getItem('isLoggedIn') === 'true') {
             try {
                 // Voeg een document toe aan de Firestore-collectie "verlofaanvragen" met de uid van de gebruiker
                 await addDoc(collection(db, 'verlofaanvragen'), {
-                    uid: user.uid, // Voeg de uid van de ingelogde gebruiker toe
+                    uuid: user.uuid, // Voeg de uid van de ingelogde gebruiker toe
                     beginDatum: verlofBeginData,
                     eindDatum: verlofEindData,
                     reden: reden,

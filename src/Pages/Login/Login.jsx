@@ -37,6 +37,7 @@ const Login = () => {
                             vakantiedagen: user.vakantiedagen,
                             email: user.email,
                             role: user.role,
+                            uuid: user.uuid,
                             isLoggedIn: true,
                         })
                         sessionStorage.setItem('isLoggedIn', true);
