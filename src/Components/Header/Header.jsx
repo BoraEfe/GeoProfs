@@ -7,8 +7,8 @@ import Date from '../date';
 const Header = () => {
 
   const handleLogout = () => {
-    localStorage.removeItem('isLoggedIn');
-    localStorage.removeItem('username');
+    sessionStorage.removeItem('isLoggedIn');
+    sessionStorage.removeItem('username');
     window.location.href = '/login';
   }
 
@@ -33,7 +33,7 @@ const Header = () => {
         { localStorage.getItem('isLoggedIn') ? (
           <div className="account-container">
             <strong>Logged in as</strong>
-            <span>{localStorage.getItem('firstname')} {localStorage.getItem('lastname')}</span>
+            <span>{sessionStorage.getItem('firstname')} {sessionStorage.getItem('lastname')}</span>
           </div>
         ) : (<div></div>)}
       </div>

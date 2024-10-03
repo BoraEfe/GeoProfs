@@ -12,7 +12,7 @@ export const useUser = () =>useContext(UserContext)
             email: '',
             vakantiedagen: '0',
             role:'',
-            isLoggedIn:'false', 
+            isLoggedIn:'false',
         });
         return(
             <UserContext.Provider value={{user, setUser}}>
@@ -20,4 +20,3 @@ export const useUser = () =>useContext(UserContext)
             </UserContext.Provider>
      );
 };
-
