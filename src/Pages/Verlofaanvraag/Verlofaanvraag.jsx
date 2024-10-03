@@ -2,72 +2,68 @@ import './Verlofaanvraag.css';
 import React, { useState, useEffect } from 'react';
 import { collection, addDoc, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../../firebase';
-import { getAuth } from 'firebase/auth';
-
+import { useUser } from '../../context/user';
 
 const Verlofaanvraag = () => {
     const [verlofBeginData, setVerlofBeginData] = useState('');
     const [verlofEindData, setVerlofEindData] = useState('');
     const [reden, setReden] = useState('');
     const [isSubmitted, setIsSubmitted] = useState(false);
-    const [verlofaanvragen, setVerlofaanvragen] = useState([]); 
+    const [verlofaanvragen, setVerlofaanvragen] = useState([]);
 
-    const auth = getAuth();
-    const user = auth.currentUser; 
-    console.log(user + " user");
+    const { user } = useUser();
     const today = new Date().toISOString().split('T')[0];
 
     useEffect(() => {
         if (user) {
-            // Haal verlofaanvragen op voor de huidige gebruiker
+            // Fetch leave requests for the current user
             const fetchData = async () => {
                 try {
-                  const usersRef = collection(db, 'users');
-                    const q = query(usersRef, where('uuid', '==', user.uuid) 
-                    );
+                    const usersRef = collection(db, 'verlofaanvragen');
+                    const q = query(usersRef, where('uuid', '==', user.uuid));
                     const querySnapshot = await getDocs(q);
                     const aanvragen = querySnapshot.docs.map((doc) => ({
                         id: doc.id,
-                        ...doc.data()
+                        ...doc.data()  // This includes all fields such as beginDatum, eindDatum, reden, and isApproved
                     }));
-                    setVerlofaanvragen(aanvragen); // Zet de opgehaalde data in de state
+                    setVerlofaanvragen(aanvragen);
                 } catch (error) {
-                    console.error('Fout bij het ophalen van verlofaanvragen: ', error);
+                    console.error('Error fetching leave requests: ', error);
                 }
             };
 
-            fetchData(); // Roep de functie aan wanneer de component wordt geladen
+            fetchData();
         }
-    }, [user, isSubmitted]); // Voeg `isSubmitted` toe om opnieuw te laden na het indienen
+    }, [user, isSubmitted]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (sessionStorage.getItem('isLoggedIn') === 'true') {
+        if (user) {
             try {
-                // Voeg een document toe aan de Firestore-collectie "verlofaanvragen" met de uid van de gebruiker
+                // Add a new document to the Firestore collection "verlofaanvragen"
                 await addDoc(collection(db, 'verlofaanvragen'), {
-                    uuid: user.uuid, // Voeg de uid van de ingelogde gebruiker toe
+                    uuid: user.uuid, // The current user's UUID
                     beginDatum: verlofBeginData,
                     eindDatum: verlofEindData,
                     reden: reden,
-                    timestamp: new Date() // Voeg een timestamp toe voor sorteren of administratieve doeleinden
+                    isApproved: false, // New requests are not approved by default
+                    timestamp: new Date()
                 });
-                console.log('Verlofaanvraag succesvol opgeslagen!');
+                console.log('Leave request successfully submitted!');
                 setVerlofBeginData('');
                 setVerlofEindData('');
                 setReden('');
                 setIsSubmitted(true);
 
                 setTimeout(() => {
-                    setIsSubmitted(false); // Verberg de bevestiging na een paar seconden
+                    setIsSubmitted(false);
                 }, 3000);
             } catch (error) {
-                console.error('Error met het toevoegen van de verlofaanvraag: ', error);
+                console.error('Error submitting leave request: ', error);
             }
         } else {
-            console.log("Geen gebruiker ingelogd");
-            console.log(user);
+            console.log("No user is logged in");
         }
     };
 
@@ -80,16 +76,16 @@ const Verlofaanvraag = () => {
                         <input 
                             type='date' 
                             value={verlofBeginData}
-                            onChange={(e) => setVerlofBeginData(e.target.value)} // Update de begin datum
-                            min={today} // Zorgt ervoor dat de gebruiker geen datum in het verleden kan kiezen
-                            required>                        
+                            onChange={(e) => setVerlofBeginData(e.target.value)}
+                            min={today}
+                            required>
                         </input>
                         <p>Tot datum</p>
                         <input 
                             type='date' 
                             value={verlofEindData}
-                            onChange={(e) => setVerlofEindData(e.target.value)} // Update de eind datum
-                            min={verlofBeginData || today} // Einddatum mag niet voor de begin datum liggen
+                            onChange={(e) => setVerlofEindData(e.target.value)}
+                            min={verlofBeginData || today}
                             required>
                         </input>
                         <p>Reden</p>
@@ -98,7 +94,7 @@ const Verlofaanvraag = () => {
                             style={{ height: '15vh' }}
                             maxLength={500}
                             value={reden}
-                            onChange={(e) => setReden(e.target.value)} // Update de reden van verlof
+                            onChange={(e) => setReden(e.target.value)}
                         >
                         </textarea>
                         <button 
@@ -114,24 +110,25 @@ const Verlofaanvraag = () => {
                     )}
                 </div>
 
-                <div className='pending-container'> 
+                <div className='pending-container'>
                     <div className="pending-header">
-                        <div className="check-name"></div>
                         <div className="van-name">Van</div>
                         <div className="tot-name">Tot</div>
                         <div className="opmerking-name">Opmerking</div>
+                        <div className="status-name">Status</div> {/* Add a status column */}
                     </div>
                     <div className="line-header"></div>
 
-                    {/* Weergeven van opgehaalde verlofaanvragen */}
                     <div className="pending-main">
                         {verlofaanvragen.length > 0 ? (
                             verlofaanvragen.map((aanvraag) => (
                                 <div key={aanvraag.id} className="aanvraag-item">
-                                    <div className="check"></div>
                                     <div className="van">{aanvraag.beginDatum}</div>
                                     <div className="tot">{aanvraag.eindDatum}</div>
                                     <div className="opmerking">{aanvraag.reden}</div>
+                                    <div className="status">
+                                        {aanvraag.isApproved ? 'Approved' : 'Pending'}
+                                    </div>
                                 </div>
                             ))
                         ) : (
