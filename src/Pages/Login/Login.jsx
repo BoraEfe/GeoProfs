@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { db } from '../../firebase';
 import { collection, getDocs, query, where } from 'firebase/firestore';
-import { useUser } from '../../context/user';
+import { useUser } from '../../context/User';
     
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -37,6 +37,7 @@ const Login = () => {
                             vakantiedagen: user.vakantiedagen,
                             email: user.email,
                             role: user.role,
+                            uuid: user.uuid,
                             isLoggedIn: true,
                         })
                         sessionStorage.setItem('isLoggedIn', true);

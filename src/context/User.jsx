@@ -13,6 +13,7 @@ export const useUser = () =>useContext(UserContext)
             vakantiedagen: '0',
             role:'',
             isLoggedIn:'false', 
+            uuid:'',
         });
         return(
             <UserContext.Provider value={{user, setUser}}>
