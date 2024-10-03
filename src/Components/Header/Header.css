@@ -53,7 +53,7 @@ header {
             flex-direction: column;
             align-items: start;
             justify-content: center;
-            min-width: 100px;
+            min-width: 120px;
             margin-right: 15px;
         }
     }

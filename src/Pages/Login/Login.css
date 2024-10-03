@@ -4,7 +4,7 @@
 }
 .login-container{
     width:100%;
-    height:92vh;
+    height:calc(100vh - 80px);
     background-color: #A63446;
     display: flex;
     justify-content: center;
@@ -12,12 +12,11 @@
 
     .login-form{
         background-color: #F6D5D5;
-        width:50vw;
-        height:58vh;
+        width: 55%;
+        height: 55%;
         border-radius: 5px;
         display: flex;
         flex-direction: column;
-
 
         h1{
             width:100%;
@@ -28,12 +27,10 @@
             font-size: 25px;
         }
         form{
-            width:80%;
+            width:100%;
             height:auto;
             display: flex;
             flex-direction: column;
-            margin-left: 28%;
-            
 
             p{
                 color: #7E1946;
@@ -58,8 +55,6 @@
             background-color: #7E1946;
             border: none;
             border-radius: 5px;
-            margin-left: 12%;
-            margin-top: 30px;
             color:white;
             font-weight: bold;
             cursor: pointer;
