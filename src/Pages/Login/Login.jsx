@@ -39,6 +39,7 @@ const Login = () => {
                             role: user.role,
                             isLoggedIn: true,
                         })
+                        console.log(user);
                         sessionStorage.setItem('isLoggedIn', true);
                         console.log(isLoggedIn);
                         navigate('/');
