@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { db } from '../../firebase';
 import { collection, getDocs, query, where } from 'firebase/firestore';
-import { useUser } from '../../context/User';
+import { useUser } from '../../context/user';
     
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -28,8 +28,16 @@ const Login = () => {
 
                     if (user.password === password){
                         isLoggedIn = true;
-                        console.log('login success');  
+                        console.log('login success'); 
                         
+                        sessionStorage.setItem('firstname', user.firstname)
+                        sessionStorage.setItem('lastname', user.lastname)
+                        sessionStorage.setItem('username', user.username)
+                        sessionStorage.setItem('email', user.email)
+                        sessionStorage.setItem('vakantiedagen', user.email)
+                        sessionStorage.setItem('role', user.role)
+                        sessionStorage.setItem('uuid', user.uuid)
+
                         setUser({
                             username: user.username,
                             firstname: user.firstname,

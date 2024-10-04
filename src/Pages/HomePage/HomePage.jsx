@@ -18,6 +18,7 @@ import { useUser } from '../../context/user';
 
         useEffect(() => {
             console.log(user)
+            console.log(sessionStorage)
         }, [user]);
 
         return (
@@ -33,12 +34,11 @@ import { useUser } from '../../context/user';
                         Verlof aanvragen
                     </button>
                     <div className='vakantiedagen'>
-                        
                     </div>
                 </div>
                 <div className='homepage-container-2'>
                     <h1 className='welkom-title'>
-                        Welkom, {user.firstname} {user.lastname}
+                        Welkom, {sessionStorage.getItem('firstname')} {  sessionStorage.getItem('lastname')}
                     </h1>
                 </div>
                 <div className='homepage-container-3'>
