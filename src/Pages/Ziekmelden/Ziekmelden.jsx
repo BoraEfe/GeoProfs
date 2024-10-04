@@ -35,7 +35,8 @@ const Ziekmelden = () => {
 
         try {
             await addDoc(collection(db, 'ziekmeldingen'), {
-                medewerker: localStorage.getItem('firstname') + ' ' + localStorage.getItem('lastname'),
+                medewerker: sessionStorage.getItem('firstname') + ' ' + sessionStorage.getItem('lastname'),
+                uuid: sessionStorage.getItem('uuid'),
                 aanvraagDatum: getTodayDate() + ' Tijdstip: ' + getCurrentTime(),
                 beginDatum: ziekmeldenBeginData,
                 eindDatum: ziekmeldenEindData,
