@@ -5,10 +5,16 @@ import { collection, getDocs, where, query } from 'firebase/firestore';
 import { db } from '../../firebase';
 import cancelPageSwitchWhenNotLoggedIn from '../../Components/cancelPageSwitchWhenNotLoggedIn';
 import { useNavigate } from 'react-router-dom';
-import { useUser } from '../../context/user';
+import { useUser } from '../../context/User';
 
     const HomePage = () => {    
-        const {user} = useUser();
+        const { user } = useUser();
+        if(!user.uuid){
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('username');
+            window.location.href = '/login';
+        }
+        else{
         const navigate = useNavigate();
 
         useEffect(() =>{    
@@ -47,6 +53,6 @@ import { useUser } from '../../context/user';
             </main>
         );
     };
-
+    }
     export default HomePage;
     
