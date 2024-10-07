@@ -5,8 +5,16 @@ import { collection, getDocs, where, query } from 'firebase/firestore';
 import { db } from '../../firebase';
 import cancelPageSwitchWhenNotLoggedIn from '../../Components/cancelPageSwitchWhenNotLoggedIn';
 import { useNavigate } from 'react-router-dom';
+import { useUser } from '../../context/User';
 
     const HomePage = () => {    
+        const { user } = useUser();
+        if(!user.uuid){
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('username');
+            window.location.href = '/login';
+        }
+        else{
         const navigate = useNavigate();
         
         const [vakantieDagen, setVakantieDagen] = useState();
@@ -69,6 +77,6 @@ import { useNavigate } from 'react-router-dom';
             </main>
         );
     };
-
+    }
     export default HomePage;
     
