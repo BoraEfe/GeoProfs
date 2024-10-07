@@ -1,8 +1,9 @@
 import './Ziekmelden.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
 import { useUser } from '../../context/User';
+import cancelPageSwitchWhenNotLoggedIn from '../../Components/cancelPageSwitchWhenNotLoggedIn';
 
 const Ziekmelden = () => {
     const { user } = useUser();
@@ -15,6 +16,10 @@ const Ziekmelden = () => {
     const [ziekmeldenBeginData, setZiekmeldenBeginData] = useState('');
     const [ziekmeldenEindData, setZiekmeldenEindData] = useState('');
     const [confirmation, setConfirmation] = useState(null);
+
+    useEffect(() =>{
+        cancelPageSwitchWhenNotLoggedIn();
+    }, []);
 
     const getTodayDate = () => {
         const today = new Date();
@@ -43,7 +48,8 @@ const Ziekmelden = () => {
 
         try {
             await addDoc(collection(db, 'ziekmeldingen'), {
-                medewerker: localStorage.getItem('firstname') + ' ' + localStorage.getItem('lastname'),
+                medewerker: sessionStorage.getItem('firstname') + ' ' + sessionStorage.getItem('lastname'),
+                uuid: sessionStorage.getItem('uuid'),
                 aanvraagDatum: getTodayDate() + ' Tijdstip: ' + getCurrentTime(),
                 beginDatum: ziekmeldenBeginData,
                 eindDatum: ziekmeldenEindData,

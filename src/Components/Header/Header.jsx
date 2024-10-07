@@ -8,8 +8,8 @@ const Header = () => {
 const {user} = useUser();
 console.log("isLoggedIn");
   const handleLogout = () => {
-    localStorage.removeItem('isLoggedIn');
-    localStorage.removeItem('username');
+    sessionStorage.removeItem('isLoggedIn');
+    sessionStorage.removeItem('username');
     window.location.href = '/login';
   }
 
@@ -33,10 +33,9 @@ console.log("isLoggedIn");
             </li>
           </ul>
         </nav>
-      
           <div className="account-container">
             <strong>Logged in as</strong>
-            <span>{localStorage.getItem('firstname')} {localStorage.getItem('lastname')}</span>
+            <span>{sessionStorage.getItem('firstname')} {sessionStorage.getItem('lastname')}</span>
           </div>
           </>
         ) : (<div></div>)}

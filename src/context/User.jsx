@@ -21,4 +21,3 @@ export const useUser = () =>useContext(UserContext)
             </UserContext.Provider>
      );
 };
-
