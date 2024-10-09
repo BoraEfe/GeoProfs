@@ -29,7 +29,7 @@ const Login = () => {
                     if (user.password === password){
                         isLoggedIn = true;
                         console.log('login success'); 
-                        
+
                         sessionStorage.setItem('firstname', user.firstname)
                         sessionStorage.setItem('lastname', user.lastname)
                         sessionStorage.setItem('username', user.username)
