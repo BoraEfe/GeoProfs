@@ -6,7 +6,7 @@ import Date from '../date';
 import { useUser } from '../../context/User';
 const Header = () => {
 const {user} = useUser();
-console.log("isLoggedIn");
+const navigate = useNavigate(); 
   const handleLogout = () => {
     sessionStorage.removeItem('isLoggedIn');
     sessionStorage.removeItem('username');
@@ -22,10 +22,10 @@ console.log("isLoggedIn");
         <nav>
           <ul>
             <li>
-              <a href="/">Home</a>
+              <a onClick={() => {navigate('/')}}>home</a>
             </li>
             <li>
-              <a href="/ziekmelden">Ziekmelden</a>
+             <a onClick={() => {navigate('/ziekmelden')}}>ziekmelden</a>
             </li>
             <Date/>
            <li className="logout-button" onClick={() => {handleLogout()}}>
