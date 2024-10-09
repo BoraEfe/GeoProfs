@@ -9,12 +9,12 @@ import { useUser } from '../../context/User';
 
     const HomePage = () => {    
         const { user } = useUser();
-        if(!user.uuid){
-            localStorage.removeItem('isLoggedIn');
-            localStorage.removeItem('username');
-            window.location.href = '/login';
-        }
-        else{
+        // if(!user.uuid){
+        //     localStorage.removeItem('isLoggedIn');
+        //     localStorage.removeItem('username');
+        //     window.location.href = '/login';
+        // }
+        // else{
         const navigate = useNavigate();
 
         useEffect(() =>{    
@@ -53,6 +53,6 @@ import { useUser } from '../../context/User';
             </main>
         );
     };
-    }
+    // }
     export default HomePage;
     

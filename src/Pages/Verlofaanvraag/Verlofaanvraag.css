@@ -45,7 +45,7 @@
                 }
             }
             textarea{
-                width:350px;
+                width: 350px;
                 height: 140px;
                 padding: 10px;
                 max-height: 180px;
@@ -61,7 +61,7 @@
             }
             .submit-button{
                 width: 100%;
-                height:30px;
+                height: 30px;
                 margin-top: 10px;
                 background-color: #790924;
                 color:white;
@@ -130,12 +130,12 @@
             height: auto;
             flex-wrap: wrap;
             margin-bottom: 5px;
-           .aanvraag-item{
+           .aanvraag-item {
             display: flex;
             width: 100%;
             height: auto;
            }
-            .status{
+            .status {
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -143,16 +143,17 @@
                 height: auto;
                 font-weight: bold;
             }
-            .van{
+            .van {
                 width: 20%;
                 height: auto;
                 font-weight: bold;
             }
-            .tot{width: 20%;
+            .tot {
+                width: 20%;
                 height: auto;
                 font-weight: bold;
             }
-            .opmerking{
+            .opmerking {
                 width: 40%;
                 height: auto;
                 font-weight: bold;
