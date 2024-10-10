@@ -73,7 +73,6 @@ const Ziekmelden = () => {
                                 onChange={(e) => setZiekmeldenBeginData(e.target.value)}
                                 required>
                             </input>
-
                             <p>Verwachte einddatum</p>
                             <input 
                                 type='date' 
