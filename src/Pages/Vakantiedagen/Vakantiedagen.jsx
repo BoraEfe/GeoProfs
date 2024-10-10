@@ -4,13 +4,9 @@ import React, { useState } from 'react';
 const Vakantiedagen = () => {
     const [vakantieBeginData, setvakantieBeginData] = useState ('');
     const [vakantieEindData, setvakantieEindData] = useState ('');
-
-    const test = (e) => {
-        e.preventDefault();
-        console.log('test');
-    }
+    
     return(
-        <> 
+    <> 
         <div className='vakantieaanvraag-container'>
           <div className='vakantieaanvraag-form'>
               <form onSubmit={test}>
@@ -41,7 +37,7 @@ const Vakantiedagen = () => {
               </form>
           </div>
         </div>
-      </>  
+    </>  
     )
 }
 export default Vakantiedagen;
