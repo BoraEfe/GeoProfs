@@ -3,14 +3,14 @@
     padding: 0;
     box-sizing: border-box;
 }
-.verkantieaanvraag-container{
+.vakantieaanvraag-container{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 88vh;
+    height: calc(100vh - 80px);
     background-color: #A63446;
 
-    .verkantieaanvraag-form{
+    .vakantieaanvraag-form{
         width: 50%;
         height: auto;
         padding: 20px;
@@ -42,7 +42,6 @@
             .submit-button{
                 width:50%;
                 height:5vh;
-                margin-left:23%;
                 background-color: #790924;
                 color:white;
                 border:none;

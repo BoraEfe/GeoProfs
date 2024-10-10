@@ -2,33 +2,29 @@ import './Vakantiedagen.css';
 import React, { useState } from 'react';
 
 const Vakantiedagen = () => {
-    const [verkantieBeginData, setVerkantieBeginData] = useState ('');
-    const [verkantieEindData, setVerkantieEindData] = useState ('');
-
-    const test = (e) => {
-        e.preventDefault();
-        console.log('test');
-    }
+    const [vakantieBeginData, setvakantieBeginData] = useState ('');
+    const [vakantieEindData, setvakantieEindData] = useState ('');
+    
     return(
-        <> 
-        <div className='verkantieaanvraag-container'>
-          <div className='verkantieaanvraag-form'>
+    <> 
+        <div className='vakantieaanvraag-container'>
+          <div className='vakantieaanvraag-form'>
               <form onSubmit={test}>
                   <p>Van datum</p>
                   <input 
                       type='date' 
-                      value={verkantieBeginData}
+                      value={vakantieBeginData}
                       required>                        
                   </input>
                   <p>Tot datum</p>
                   <input 
                       type='date' 
-                      value={verkantieEindData}
+                      value={vakantieEindData}
                       required>
                   </input>
                   <p>Reden</p>
                   <textarea
-                  placeholder='Reden van verkantie'
+                  placeholder='Reden van vakantie'
                   style={{ height: '15vh' }}
                   maxLength={500}
                   >
@@ -41,7 +37,7 @@ const Vakantiedagen = () => {
               </form>
           </div>
         </div>
-      </>  
+    </>  
     )
 }
 export default Vakantiedagen;

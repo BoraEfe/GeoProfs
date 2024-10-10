@@ -6,7 +6,7 @@ import { Routes, Route} from 'react-router-dom'
 import Ziekmelden from './Pages/Ziekmelden/Ziekmelden'
 import Verlofaanvraag from './Pages/Verlofaanvraag/Verlofaanvraag'
 import VakantieDagen from './Pages/VakantieDagen/VakantieDagen'
-import { UserProvider } from './context/user'
+import { UserProvider } from './context/User'
 import AddUser from './pages/AddUser/AddUser'
 
 
