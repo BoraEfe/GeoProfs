@@ -5,13 +5,19 @@ import { db } from '../../firebase';
 import { useUser } from '../../context/user';
 
 const Verlofaanvraag = () => {
+    const { user } = useUser();
+    if(!user.uuid){
+        localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('username');
+        window.location.href = '/login';
+    }
+    else{
     const [verlofBeginData, setVerlofBeginData] = useState('');
     const [verlofEindData, setVerlofEindData] = useState('');
     const [reden, setReden] = useState('');
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [verlofaanvragen, setVerlofaanvragen] = useState([]);
 
-    const { user } = useUser();
     const today = new Date().toISOString().split('T')[0];
 
     useEffect(() => {
@@ -39,11 +45,12 @@ const Verlofaanvraag = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (user) {
+        if (user.uuid) {
             try {
                 // Add a new document to the Firestore collection "verlofaanvragen"
                 await addDoc(collection(db, 'verlofaanvragen'), {
                     uuid: user.uuid, // The current user's UUID
+                    medewerker: localStorage.getItem('firstname') + ' ' + localStorage.getItem('lastname'),
                     beginDatum: verlofBeginData,
                     eindDatum: verlofEindData,
                     reden: reden,
@@ -140,5 +147,5 @@ const Verlofaanvraag = () => {
         </>
     );
 }
-
+}
 export default Verlofaanvraag;

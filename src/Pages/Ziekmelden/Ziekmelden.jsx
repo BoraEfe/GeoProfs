@@ -2,9 +2,17 @@ import './Ziekmelden.css';
 import React, { useState, useEffect } from 'react';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
+import { useUser } from '../../context/User';
 import cancelPageSwitchWhenNotLoggedIn from '../../Components/cancelPageSwitchWhenNotLoggedIn';
 
 const Ziekmelden = () => {
+    const { user } = useUser();
+    if(!user.uuid){
+        localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('username');
+        window.location.href = '/login';
+    }
+    else{
     const [ziekmeldenBeginData, setZiekmeldenBeginData] = useState('');
     const [ziekmeldenEindData, setZiekmeldenEindData] = useState('');
     const [confirmation, setConfirmation] = useState(null);
@@ -94,5 +102,5 @@ const Ziekmelden = () => {
         </>
     );
 }
-
+}
 export default Ziekmelden;
