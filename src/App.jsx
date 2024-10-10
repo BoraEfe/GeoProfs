@@ -7,6 +7,7 @@ import Ziekmelden from './Pages/Ziekmelden/Ziekmelden'
 import Verlofaanvraag from './Pages/Verlofaanvraag/Verlofaanvraag'
 import VakantieDagen from './Pages/VakantieDagen/VakantieDagen'
 import { UserProvider } from './context/user'
+import AddUser from './pages/AddUser/AddUser'
 
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
           <Route path="/ziekmelden" element={<Ziekmelden />} />
           <Route path="/verlofaanvraag" element={<Verlofaanvraag />} />
           <Route path="/vakantiedagen" element={<VakantieDagen />} />
+          <Route path="AddUser" element={<AddUser/>}/>
         </Routes>
       </UserProvider>
     </body>

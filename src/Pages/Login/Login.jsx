@@ -26,17 +26,17 @@ const Login = () => {
                 querySnapshot.forEach((doc) => {
                     const user = doc.data();
 
-                    if (user.password === password){
+                    if (user.tijdelijkwachtwoord === password){
                         isLoggedIn = true;
                         console.log('login success'); 
                         
-                        sessionStorage.setItem('firstname', user.firstname)
-                        sessionStorage.setItem('lastname', user.lastname)
-                        sessionStorage.setItem('username', user.username)
+                        sessionStorage.setItem('firstname', user.voornaam)
+                        sessionStorage.setItem('lastname', user.achternaam)
                         sessionStorage.setItem('email', user.email)
-                        sessionStorage.setItem('vakantiedagen', user.email)
                         sessionStorage.setItem('role', user.role)
-                        sessionStorage.setItem('uuid', user.uuid)
+                        sessionStorage.setItem('function', user.functie)
+                        sessionStorage.setItem('department', user.departement)
+                        sessionStorage.setItem('userid', user.userId)
 
                         setUser({
                             username: user.username,
