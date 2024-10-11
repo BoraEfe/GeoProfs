@@ -78,10 +78,11 @@ const Vakantiedagen = () => {
                       onChange={(e) => setVerkantieBeginData(e.target.value)}
                       min={verkantieBeginData || today}
                       required>                      
+
                   </input>
                   <p>Tot datum</p>
                   <input 
-                      type='date' 
+                      type='date'
                       value={verkantieEindData}
                       onChange={(e) => setVerkantieEindData(e.target.value)}
                       min={verkantieBeginData || today}
@@ -109,7 +110,7 @@ const Vakantiedagen = () => {
                     )}
           </div>
         </div>
-      </>  
+    </>  
     )
 }
 
