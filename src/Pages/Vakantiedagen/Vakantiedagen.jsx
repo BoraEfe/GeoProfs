@@ -9,7 +9,7 @@ const Vakantiedagen = () => {
     <> 
         <div className='vakantieaanvraag-container'>
           <div className='vakantieaanvraag-form'>
-              <form onSubmit={test}>
+              <form>
                   <p>Van datum</p>
                   <input 
                       type='date' 

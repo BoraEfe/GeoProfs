@@ -4,20 +4,24 @@ import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import Date from '../date';  
 import { useUser } from '../../context/User';
+
 const Header = () => {
 const {user} = useUser();
 const navigate = useNavigate(); 
   const handleLogout = () => {
     sessionStorage.removeItem('isLoggedIn');
     sessionStorage.removeItem('username');
+    sessionStorage.removeItem('userId');
     window.location.href = '/login';
   }
+
+  console.log(user.uuid);
 
   return (
     <header>
       <h1 onClick={() => {navigate('/')}}><strong>Geo</strong>Profs</h1>
       <div className="header-container">
-      {user.uuid ? (
+      {sessionStorage.getItem('uuid') ? (
         <>
         <nav>
           <ul>

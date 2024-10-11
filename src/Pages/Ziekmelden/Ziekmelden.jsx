@@ -7,12 +7,6 @@ import cancelPageSwitchWhenNotLoggedIn from '../../Components/cancelPageSwitchWh
 
 const Ziekmelden = () => {
     const { user } = useUser();
-    if(!user.uuid){
-        localStorage.removeItem('isLoggedIn');
-        localStorage.removeItem('username');
-        window.location.href = '/login';
-    }
-    else{
     const [ziekmeldenBeginData, setZiekmeldenBeginData] = useState('');
     const [ziekmeldenEindData, setZiekmeldenEindData] = useState('');
     const [confirmation, setConfirmation] = useState(null);
@@ -101,6 +95,5 @@ const Ziekmelden = () => {
             </div>
         </>
     );
-}
 }
 export default Ziekmelden;
