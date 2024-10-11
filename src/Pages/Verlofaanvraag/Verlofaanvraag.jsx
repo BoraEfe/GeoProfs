@@ -6,11 +6,6 @@ import { useUser } from '../../context/User';
 
 const Verlofaanvraag = () => {
     const { user } = useUser();
-    if(!user.userId){
-        localStorage.removeItem('isLoggedIn');
-        window.location.href = '/login';
-    }
-    else{
     const [verlofBeginData, setVerlofBeginData] = useState('');
     const [verlofEindData, setVerlofEindData] = useState('');
     const [reden, setReden] = useState('');
@@ -145,6 +140,5 @@ const Verlofaanvraag = () => {
             </div>
         </>
     );
-}
 }
 export default Verlofaanvraag;
