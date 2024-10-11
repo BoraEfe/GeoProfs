@@ -41,8 +41,10 @@
             }
             .submit-button{
                 width:50%;
-                height:5vh;
-                margin-left:23%;
+                height:30px;
+             display: block;
+             text-align: center;
+             line-height: 5px;
                 background-color: #790924;
                 color:white;
                 border:none;
