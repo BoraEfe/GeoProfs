@@ -20,7 +20,7 @@ const Verlofaanvraag = () => {
             const fetchData = async () => {
                 try {
                     const usersRef = collection(db, 'verlofaanvragen');
-                    const q = query(usersRef, where('uuid', '==', user.uuid));
+                    const q = query(usersRef, where('uuid', '==', sessionStorage.getItem('uuid')));
                     const querySnapshot = await getDocs(q);
                     const aanvragen = querySnapshot.docs.map((doc) => ({
                         id: doc.id,
@@ -39,11 +39,11 @@ const Verlofaanvraag = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (user.uuid) {
+        if (sessionStorage.getItem('uuid')) {
             try {
                 // Add a new document to the Firestore collection "verlofaanvragen"
                 await addDoc(collection(db, 'verlofaanvragen'), {
-                    uuid: user.uuid, // The current user's UUID
+                    uuid: sessionStorage.getItem('uuid'), // The current user's UUID
                     medewerker: localStorage.getItem('firstname') + ' ' + localStorage.getItem('lastname'),
                     beginDatum: verlofBeginData,
                     eindDatum: verlofEindData,

@@ -6,9 +6,9 @@ import { useUser } from '../../context/User';
 const Vakantiedagen = () => {
     const { user } = useUser();
   
-    const [verkantieBeginData, setVerkantieBeginData] = useState ('');
-    const [verkantieEindData, setVerkantieEindData] = useState ('');
-    const [verkantieOpmerking, setVerkantieopmerking] = useState ('');
+    const [VakantieBeginData, setVakantieBeginData] = useState ('');
+    const [VakantieEindData, setVakantieEindData] = useState ('');
+    const [VakantieOpmerking, setVakantieopmerking] = useState ('');
     const [isSubmitted, setIsSubmitted] = useState(false);
     const today = new Date().toISOString().split('T')[0];
    
@@ -17,14 +17,14 @@ const Vakantiedagen = () => {
             // Fetch leave requests for the current user
             const fetchData = async () => {
                 try {
-                    const usersRef = collection(db, 'verkantieaanvragen');
-                    const q = query(usersRef, where('uuid', '==', user.uuid));
+                    const usersRef = collection(db, 'vakantieaanvragen');
+                    const q = query(usersRef, where('uuid', '==', sessionStorage.getItem('uuid')));
                     const querySnapshot = await getDocs(q);
                     const aanvragen = querySnapshot.docs.map((doc) => ({
                         id: doc.id,
                         ...doc.data()  // This includes all fields such as beginDatum, eindDatum, reden, and isApproved
                     }));
-                    setVerkantieaanvragen(aanvragen);
+                    setVakantieaanvragen(aanvragen);
                 } catch (error) {
                     console.error('Error fetching leave requests: ', error);
                 }
@@ -37,22 +37,22 @@ const Vakantiedagen = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (user.uuid) {
+        if (sessionStorage.getItem('uuid')) {
             try {
-                // Add a new document to the Firestore collection "verkantieaanvragen"
-                await addDoc(collection(db, 'verkantieaanvragen'), {
-                    uuid: user.uuid, // The current user's UUID
-                    medewerker: localStorage.getItem('firstname') + ' ' + localStorage.getItem('lastname'),
-                    beginDatum: verkantieBeginData,
-                    eindDatum: verkantieEindData,
-                    opmerking: verkantieOpmerking,
+                // Add a new document to the Firestore collection "Vakantieaanvragen"
+                await addDoc(collection(db, 'Vakantieaanvragen'), {
+                    uuid: sessionStorage.getItem('uuid'), // The current user's UUID
+                    medewerker: sessionStorage.getItem('firstname') + ' ' + sessionStorage.getItem('lastname'),
+                    beginDatum: VakantieBeginData,
+                    eindDatum: VakantieEindData,
+                    opmerking: VakantieOpmerking,
                     isApproved: false, // New requests are not approved by default
                     timestamp: today
                 });
                 console.log('Leave request successfully submitted!');
-                setVerkantieBeginData('');
-                setVerkantieEindData('');
-                setVerkantieopmerking('');
+                setVakantieBeginData('');
+                setVakantieEindData('');
+                setVakantieopmerking('');
                 setIsSubmitted(true);
 
                 setTimeout(() => {
@@ -68,24 +68,24 @@ const Vakantiedagen = () => {
 
     return(
         <> 
-        <div className='verkantieaanvraag-container'>
-          <div className='verkantieaanvraag-form'>
+        <div className='vakantieaanvraag-container'>
+          <div className='vakantieaanvraag-form'>
               <form onSubmit={handleSubmit}>
                   <p>Van datum</p>
                   <input 
                       type='date' 
-                      value={verkantieBeginData}
-                      onChange={(e) => setVerkantieBeginData(e.target.value)}
-                      min={verkantieBeginData || today}
+                      value={VakantieBeginData}
+                      onChange={(e) => setVakantieBeginData(e.target.value)}
+                      min={VakantieBeginData || today}
                       required>                      
 
                   </input>
                   <p>Tot datum</p>
                   <input 
                       type='date'
-                      value={verkantieEindData}
-                      onChange={(e) => setVerkantieEindData(e.target.value)}
-                      min={verkantieBeginData || today}
+                      value={VakantieEindData}
+                      onChange={(e) => setVakantieEindData(e.target.value)}
+                      min={VakantieBeginData || today}
                       required>
                   </input>
                   <p>Reden</p>
@@ -93,8 +93,8 @@ const Vakantiedagen = () => {
                   placeholder='opmerkingen'
                   style={{ height: '15vh' }}
                   maxLength={500}
-                  onChange={(e) => setVerkantieopmerking(e.target.value)}
-                  value={verkantieOpmerking}
+                  onChange={(e) => setVakantieopmerking(e.target.value)}
+                  value={VakantieOpmerking}
                   >
                   </textarea>
                   <button 
@@ -105,7 +105,7 @@ const Vakantiedagen = () => {
               </form>
               {isSubmitted && (
                         <p style={{ color: 'green', marginTop: '20px' }}>
-                            Verkantieaanvraag succesvol ingediend!
+                            Vakantieaanvraag succesvol ingediend!
                         </p>
                     )}
           </div>
