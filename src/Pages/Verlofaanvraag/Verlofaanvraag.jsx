@@ -6,9 +6,8 @@ import { useUser } from '../../context/User';
 
 const Verlofaanvraag = () => {
     const { user } = useUser();
-    if(!user.uuid){
+    if(!user.userId){
         localStorage.removeItem('isLoggedIn');
-        localStorage.removeItem('username');
         window.location.href = '/login';
     }
     else{
