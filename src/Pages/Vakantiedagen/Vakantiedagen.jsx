@@ -37,11 +37,11 @@ const Vakantiedagen = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (user.userid) {
+        if (user.uuid) {
             try {
                 // Add a new document to the Firestore collection "verkantieaanvragen"
                 await addDoc(collection(db, 'verkantieaanvragen'), {
-                    uuid: user.userid, // The current user's UUID
+                    uuid: user.uuid, // The current user's UUID
                     medewerker: localStorage.getItem('firstname') + ' ' + localStorage.getItem('lastname'),
                     beginDatum: verkantieBeginData,
                     eindDatum: verkantieEindData,

@@ -43,7 +43,7 @@ const Ziekmelden = () => {
         try {
             await addDoc(collection(db, 'ziekmeldingen'), {
                 medewerker: sessionStorage.getItem('firstname') + ' ' + sessionStorage.getItem('lastname'),
-                uuid: sessionStorage.getItem('userid'),
+                uuid: sessionStorage.getItem('uuid'),
                 aanvraagDatum: getTodayDate() + ' Tijdstip: ' + getCurrentTime(),
                 beginDatum: ziekmeldenBeginData,
                 eindDatum: ziekmeldenEindData,
