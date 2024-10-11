@@ -10,7 +10,7 @@ const {user} = useUser();
 const navigate = useNavigate(); 
   const handleLogout = () => {
     sessionStorage.removeItem('isLoggedIn');
-    sessionStorage.removeItem('userId');
+    sessionStorage.removeItem('uuid');
     window.location.href = '/login';
   }
 
@@ -20,7 +20,7 @@ const navigate = useNavigate();
     <header>
       <h1 onClick={() => {navigate('/')}}><strong>Geo</strong>Profs</h1>
       <div className="header-container">
-      {sessionStorage.getItem('userid') ? (
+      {sessionStorage.getItem('uuid') ? (
         <>
         <nav>
           <ul>

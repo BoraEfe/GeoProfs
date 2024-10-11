@@ -36,7 +36,7 @@ const Login = () => {
                         sessionStorage.setItem('role', user.role)
                         sessionStorage.setItem('function', user.functie)
                         sessionStorage.setItem('department', user.departement)
-                        sessionStorage.setItem('userid', user.userId)
+                        sessionStorage.setItem('uuid', user.uuid)
 
                         setUser({
                             username: user.username,

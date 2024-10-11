@@ -44,11 +44,11 @@ const AddUser = () => {
                 });
                 console.log('gelukt!');
                 
-                const userId = docRef.id;
-                console.log(userId)
+                const uuid = docRef.id;
+                console.log(uuid)
 
-                await updateDoc(doc(db, 'users', userId), {
-                    userId: userId
+                await updateDoc(doc(db, 'users', uuid), {
+                    uuid: uuid
                 });
                 console.log('User aangemaakt met ID: ', userId)
             }
