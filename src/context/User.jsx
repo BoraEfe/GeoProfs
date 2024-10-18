@@ -10,7 +10,7 @@ export const useUser = () =>useContext(UserContext)
             firstname:'',
             lastname: '',
             email: '',
-            vakantiedagen: '0',
+            vakantiedagen: '30',
             role:'',
             isLoggedIn:'false', 
             uuid:'',
