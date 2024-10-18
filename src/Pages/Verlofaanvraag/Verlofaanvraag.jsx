@@ -13,7 +13,7 @@ const Verlofaanvraag = () => {
     const [verlofaanvragen, setVerlofaanvragen] = useState([]);
 
     const today = new Date().toISOString().split('T')[0];
-
+    console.log( verlofaanvragen.length);
     useEffect(() => {
         if (user) {
             // Fetch leave requests for the current user
@@ -141,4 +141,5 @@ const Verlofaanvraag = () => {
         </>
     );
 }
+
 export default Verlofaanvraag;
