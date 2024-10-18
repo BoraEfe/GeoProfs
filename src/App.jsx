@@ -5,10 +5,9 @@ import './App.css'
 import { Routes, Route} from 'react-router-dom'
 import Ziekmelden from './Pages/Ziekmelden/Ziekmelden'
 import Verlofaanvraag from './Pages/Verlofaanvraag/Verlofaanvraag'
-import VakantieDagen from './Pages/VakantieDagen/VakantieDagen'
+import VakantieDagen from './Pages/Vakantiedagen/Vakantiedagen'
 import { UserProvider } from './context/User'
 import AddUser from './pages/AddUser/AddUser'
-
 
 const App = () => {
   return (
