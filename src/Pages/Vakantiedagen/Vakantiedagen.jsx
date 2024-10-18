@@ -10,11 +10,11 @@ const Vakantiedagen = () => {
     const [VakantieEindData, setVakantieEindData] = useState ('');
     const [VakantieOpmerking, setVakantieopmerking] = useState ('');
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [vakantieaanvragen, setVakantieaanvragen] = useState([]);
     const today = new Date().toISOString().split('T')[0];
-   
+    console.log( vakantieaanvragen.length);
     useEffect(() => {
         if (user) {
-            // Fetch leave requests for the current user
             const fetchData = async () => {
                 try {
                     const usersRef = collection(db, 'vakantieaanvragen');
@@ -22,9 +22,10 @@ const Vakantiedagen = () => {
                     const querySnapshot = await getDocs(q);
                     const aanvragen = querySnapshot.docs.map((doc) => ({
                         id: doc.id,
-                        ...doc.data()  // This includes all fields such as beginDatum, eindDatum, reden, and isApproved
+                        ...doc.data()  
                     }));
                     setVakantieaanvragen(aanvragen);
+                 
                 } catch (error) {
                     console.error('Error fetching leave requests: ', error);
                 }
@@ -39,14 +40,13 @@ const Vakantiedagen = () => {
 
         if (sessionStorage.getItem('uuid')) {
             try {
-                // Add a new document to the Firestore collection "Vakantieaanvragen"
-                await addDoc(collection(db, 'Vakantieaanvragen'), {
-                    uuid: sessionStorage.getItem('uuid'), // The current user's UUID
+                await addDoc(collection(db, 'vakantieaanvragen'), {
+                    uuid: sessionStorage.getItem('uuid'), 
                     medewerker: sessionStorage.getItem('firstname') + ' ' + sessionStorage.getItem('lastname'),
                     beginDatum: VakantieBeginData,
                     eindDatum: VakantieEindData,
                     opmerking: VakantieOpmerking,
-                    isApproved: false, // New requests are not approved by default
+                    isApproved: false, 
                     timestamp: today
                 });
                 console.log('Leave request successfully submitted!');
@@ -108,7 +108,35 @@ const Vakantiedagen = () => {
                             Vakantieaanvraag succesvol ingediend!
                         </p>
                     )}
+                    
           </div>
+          <div className='pending-container'>
+                    <div className="pending-header">
+                        <div className="van-name">Van</div>
+                        <div className="tot-name">Tot</div>
+                        <div className="opmerking-name">Opmerking</div>
+                        <div className="status-name">Status</div> 
+                    </div>
+                    <div className="line-header"></div>
+
+                    <div className="pending-main">
+                        {vakantieaanvragen.length > 0 ? (
+                            vakantieaanvragen.map((aanvraag) => (
+                                <div key={aanvraag.id} className="aanvraag-item">
+                                    <div className="van">{aanvraag.beginDatum}</div>
+                                    <div className="tot">{aanvraag.eindDatum}</div>
+                                    <div className="opmerking">{aanvraag.opmerking}</div>
+                                    <div className="status">
+                                        {aanvraag.isApproved ? 'Approved' : 'Pending'}
+                                    </div>
+                                </div>
+                            ))
+                        ) : (
+                            
+                            <p>Geen vakantie aanvragen gevonden.</p>
+                        )}
+                    </div>
+                </div>
         </div>
     </>  
     )
