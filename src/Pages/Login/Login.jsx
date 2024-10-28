@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { db } from '../../firebase';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { useUser } from '../../context/User';
+import { hashPasswordWithSalt } from '../../components/HashPassword';
     
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -11,6 +12,7 @@ const Login = () => {
     const [error, setError] = useState();
     const navigate = useNavigate();
     const {setUser} = useUser();
+    
     var isLoggedIn;
 
     const handleLogin = async (e) => {
@@ -22,11 +24,17 @@ const Login = () => {
             const q = query(usersRef, where('email', '==', email));
             const querySnapshot = await getDocs(q);
 
-            if (!querySnapshot.empty){
+            if (!querySnapshot.empty){  
                 querySnapshot.forEach((doc) => {
-                    const user = doc.data();
 
-                    if (user.tijdelijkwachtwoord === password){
+                    const user = doc.data();
+                    
+                    const hashedInputPassword = hashPasswordWithSalt(password);
+
+                    console.log(hashedInputPassword);
+                    console.log(user.wachtwoord);
+
+                    if (hashedInputPassword.hashedPassword === user.wachtwoord){
                         isLoggedIn = true;
                         console.log('login success'); 
                         
@@ -54,6 +62,8 @@ const Login = () => {
                         navigate('/');
                     }else {
                         console.log('Login is mislukt');
+                        setError('Wachtwoord is onjuist');
+                        console.log(error);
                     }
                 })
             }else{
