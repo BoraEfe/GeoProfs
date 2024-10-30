@@ -59,6 +59,21 @@ const HomePage = () => {
                 <div className='vakantiedagen'>
                     <p>Aantal vakantiedagen: {vakantiedagen}</p>
                 </div>
+<<<<<<< HEAD
+                <div className='homepage-container-2'>
+                    <h1 className='welkom-title'>
+                        Welkom, {sessionStorage.getItem('firstname')} {  sessionStorage.getItem('lastname')}
+                    </h1>+
+                </div>
+                <div className='homepage-container-3'>
+                    <Agenda/>
+                </div>
+            </main>
+        );
+    };
+    export default HomePage;
+    
+=======
             </div>
             <div className='homepage-container-2'>
                 <h1 className='welkom-title'>
@@ -73,3 +88,4 @@ const HomePage = () => {
 };
 
 export default HomePage;
+>>>>>>> fcca7f6b1ab8eebe0b1944a66818dd5fa21fc104

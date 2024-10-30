@@ -5,11 +5,18 @@ import { db } from '../../firebase';
 import { useUser } from '../../context/User';
 
 const Vakantiedagen = () => {
+    
     const { user } = useUser();
+<<<<<<< HEAD
+    const [verkantieBeginData, setVerkantieBeginData] = useState ('');
+    const [verkantieEindData, setVerkantieEindData] = useState ('');
+    const [verkantieOpmerking, setVerkantieopmerking] = useState ('');
+=======
   
     const [VakantieBeginData, setVakantieBeginData] = useState ('');
     const [VakantieEindData, setVakantieEindData] = useState ('');
     const [VakantieOpmerking, setVakantieopmerking] = useState ('');
+>>>>>>> fcca7f6b1ab8eebe0b1944a66818dd5fa21fc104
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [vakantieaanvragen, setVakantieaanvragen] = useState([]);
     const today = new Date().toISOString().split('T')[0];
@@ -17,9 +24,15 @@ const Vakantiedagen = () => {
     useEffect(() => {
         if (user) {
             const fetchData = async () => {
+<<<<<<< HEAD
+                try {   
+                    const usersRef = collection(db, 'verkantieaanvragen');
+                    const q = query(usersRef, where('uuid', '==', user.uuid));
+=======
                 try {
                     const usersRef = collection(db, 'vakantieaanvragen');
                     const q = query(usersRef, where('uuid', '==', sessionStorage.getItem('uuid')));
+>>>>>>> fcca7f6b1ab8eebe0b1944a66818dd5fa21fc104
                     const querySnapshot = await getDocs(q);
                     const aanvragen = querySnapshot.docs.map((doc) => ({
                         id: doc.id,
