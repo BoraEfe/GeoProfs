@@ -4,8 +4,8 @@ import { collection, addDoc, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../../firebase';
 import { useUser } from '../../context/User';
 const Vakantiedagen = () => {
+    
     const { user } = useUser();
-  
     const [verkantieBeginData, setVerkantieBeginData] = useState ('');
     const [verkantieEindData, setVerkantieEindData] = useState ('');
     const [verkantieOpmerking, setVerkantieopmerking] = useState ('');
@@ -16,7 +16,7 @@ const Vakantiedagen = () => {
         if (user) {
             // Fetch leave requests for the current user
             const fetchData = async () => {
-                try {
+                try {   
                     const usersRef = collection(db, 'verkantieaanvragen');
                     const q = query(usersRef, where('uuid', '==', user.uuid));
                     const querySnapshot = await getDocs(q);

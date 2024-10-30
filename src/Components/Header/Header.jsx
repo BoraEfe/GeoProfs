@@ -22,20 +22,20 @@ const navigate = useNavigate();
       <div className="header-container">
       {sessionStorage.getItem('uuid') ? (
         <>
-        <nav>
-          <ul>
-            <li>
-              <a onClick={() => {navigate('/')}}>home</a>
-            </li>
-            <li>
-             <a onClick={() => {navigate('/ziekmelden')}}>ziekmelden</a>
-            </li>
-            <Date/>
-           <li className="logout-button" onClick={() => {handleLogout()}}>
-              <a><FontAwesomeIcon icon={faArrowRightFromBracket} /> Uitloggen</a>
-            </li>
-          </ul>
-        </nav>
+          <nav>
+            <ul>
+              <li>
+                <a onClick={() => {navigate('/')}}>home</a>
+              </li>
+              <li>
+              <a onClick={() => {navigate('/ziekmelden')}}>ziekmelden</a>
+              </li>
+              <Date/>
+            <li className="logout-button" onClick={() => {handleLogout()}}>
+                <a><FontAwesomeIcon icon={faArrowRightFromBracket} /> Uitloggen</a>
+              </li>
+            </ul>
+          </nav>
           <div className="account-container">
             <strong>Logged in as</strong>
             <span>{sessionStorage.getItem('firstname')} {sessionStorage.getItem('lastname')}</span>

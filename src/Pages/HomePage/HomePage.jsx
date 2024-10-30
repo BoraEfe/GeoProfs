@@ -39,7 +39,7 @@ import { useUser } from '../../context/User';
                 <div className='homepage-container-2'>
                     <h1 className='welkom-title'>
                         Welkom, {sessionStorage.getItem('firstname')} {  sessionStorage.getItem('lastname')}
-                    </h1>
+                    </h1>+
                 </div>
                 <div className='homepage-container-3'>
                     <Agenda/>
