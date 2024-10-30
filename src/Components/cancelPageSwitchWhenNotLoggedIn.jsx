@@ -5,7 +5,9 @@ const cancelPageSwitchWhenNotLoggedIn = () => {
   if (!isloggedIn){
       window.location.href= '/Login'
       console.log('You are not logged in')
+      return false;
   }
+  return true;
 } 
 
 export default cancelPageSwitchWhenNotLoggedIn;
