@@ -60,7 +60,7 @@ const Vakantiedagen = () => {
                     beginDatum: VakantieBeginData,
                     eindDatum: VakantieEindData,
                     opmerking: VakantieOpmerking,
-                    isApproved: false, 
+                    isApproved: false,
                     timestamp: today
                 });
                 console.log('Leave request successfully submitted!');

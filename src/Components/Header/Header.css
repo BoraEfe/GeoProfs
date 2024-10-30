@@ -33,10 +33,16 @@ header {
                 list-style: none;
                 width: calc(100% - 100px);
                 position: relative;
+
+                li{
+                    font-family: 'Roboto', sans-serif;
+                    font-size: 16px;
+                }
                 
                 li a {
                     color: white;
                     margin: 0 10px;
+                    cursor: pointer;
                 }
                 
                 .logout-button {
@@ -45,6 +51,10 @@ header {
                     right: 35px;
                 }
             }
+        }
+
+        strong{
+            font-weight: 700;
         }
 
         .account-container {
