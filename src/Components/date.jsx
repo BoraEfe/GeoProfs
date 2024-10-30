@@ -26,7 +26,7 @@ updateDate();
 const CurrentDate = () => {
     return(
         <li>
-            <a>{currentDate}</a>
+            {currentDate}
         </li>
     );
 }
