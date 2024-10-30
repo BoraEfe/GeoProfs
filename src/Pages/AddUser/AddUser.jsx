@@ -5,12 +5,13 @@ import { addDoc, doc, updateDoc } from 'firebase/firestore';
 import {db} from '../../firebase'
 import { text } from '@fortawesome/fontawesome-svg-core';
 import { collection } from 'firebase/firestore';
+import { hashPasswordWithSalt } from '../../components/HashPassword';
 
 const AddUser = () => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
-    const [temporaryPassword, setTemporaryPassword] = useState('');
+    const [password, setPassword] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [role, setRole] = useState('');
     const [employeeFunction, setEmployeeFunction] = useState('');
@@ -18,17 +19,20 @@ const AddUser = () => {
 
     const createUser = async (e) => {
 
-        console.log(department)
+        console.log(department);
+
+        const {hashedPassword} = hashPasswordWithSalt(password);
+
+        console.log(hashedPassword);
 
         e.preventDefault();
 
-        if (!firstName || !lastName || !email || !temporaryPassword || !phoneNumber || !employeeFunction || 
+        if (!firstName || !lastName || !email ||!password || !phoneNumber || !employeeFunction || 
             (employeeFunction !== 'CEO' && employeeFunction !== 'Office-manager' && !department)){
             alert("Voer alle velden in!");
             console.log('probleempje');
-
-
         }
+        
         else{
             try{
               const userDepartment = (employeeFunction === 'CEO' || employeeFunction === 'Office-manager') ? '' : department;  
@@ -36,21 +40,20 @@ const AddUser = () => {
                     voornaam: firstName,
                     achternaam: lastName,
                     email: email,
-                    tijdelijkwachtwoord: temporaryPassword,
-                    permanentwachtwoord: '',
+                    wachtwoord: hashedPassword,
                     functie: employeeFunction,
                     role: role,
                     departement: userDepartment,
+                    vakantiedagen:'', 
                 });
                 console.log('gelukt!');
                 
                 const uuid = docRef.id;
-                console.log(uuid)
 
                 await updateDoc(doc(db, 'users', uuid), {
                     uuid: uuid
                 });
-                console.log('User aangemaakt met ID: ', userId)
+                console.log('User aangemaakt met ID: ', uuid);
             }
             catch(error){
                 console.log('foutje');
@@ -97,12 +100,12 @@ const AddUser = () => {
                     </label>
                     <label>
                         <p>
-                            Tijdelijk wachtwoord
+                           wachtwoord
                         </p>
                         <input
                         type='password'
-                        value={temporaryPassword}
-                        onChange={(e) => setTemporaryPassword(e.target.value)}
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                         />
                     </label>
                     <label>
