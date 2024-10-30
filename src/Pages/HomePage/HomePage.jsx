@@ -8,9 +8,9 @@ import { useNavigate } from 'react-router-dom';
 import { useUser } from '../../context/User';
 
 const HomePage = () => {    
-    const { user } = useUser(); // user context
+    const { user } = useUser();
     const navigate = useNavigate();
-    const [vakantiedagen, setVakantiedagen] = useState(null); // state to store vakantiedagen
+    const [vakantiedagen, setVakantiedagen] = useState(null);
 
     useEffect(() => {    
         cancelPageSwitchWhenNotLoggedIn();
@@ -42,6 +42,8 @@ const HomePage = () => {
         fetchVakantiedagen();
     }, [user]);
 
+    console.log("VAKANTIEDAGEN: ", {vakantiedagen});
+    
     return (
         <main>
             <div className="homepage-container-1">

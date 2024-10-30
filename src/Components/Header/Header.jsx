@@ -25,10 +25,10 @@ const navigate = useNavigate();
         <nav>
           <ul>
             <li>
-              <a onClick={() => {navigate('/')}}>home</a>
+              <a onClick={() => {navigate('/')}}>Home</a>
             </li>
             <li>
-             <a onClick={() => {navigate('/ziekmelden')}}>ziekmelden</a>
+             <a onClick={() => {navigate('/ziekmelden')}}>Ziekmelden</a>
             </li>
             <Date/>
            <li className="logout-button" onClick={() => {handleLogout()}}>
