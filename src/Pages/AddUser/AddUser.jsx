@@ -16,6 +16,7 @@ const AddUser = () => {
     const [role, setRole] = useState('');
     const [employeeFunction, setEmployeeFunction] = useState('');
     const [department, setDepartment] = useState('');
+    const [vakantiedagen, setVakantiedagen] = useState('');
 
     const createUser = async (e) => {
 
@@ -44,7 +45,7 @@ const AddUser = () => {
                     functie: employeeFunction,
                     role: role,
                     departement: userDepartment,
-                    vakantiedagen:'', 
+                    vakantiedagen: vakantiedagen, 
                 });
                 console.log('gelukt!');
                 
@@ -116,6 +117,16 @@ const AddUser = () => {
                         type='number'
                         value={phoneNumber}
                         onChange={(e) => setPhoneNumber(e.target.value)}
+                        />
+                    </label>
+                    <label>
+                        <p>
+                            Vakantiedagen
+                        </p>
+                        <input
+                        type='number'
+                        value={vakantiedagen}
+                        onChange={(e) => setVakantiedagen(e.target.value)}
                         />
                     </label>
                     <label>
