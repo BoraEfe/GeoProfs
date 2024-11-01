@@ -17,6 +17,7 @@ const AddUser = () => {
     const [employeeFunction, setEmployeeFunction] = useState('');
     const [department, setDepartment] = useState('');
     const [vakantiedagen, setVakantiedagen] = useState('');
+    const [confirmationMessage, setConfirmationMessage] = useState('');
 
     const createUser = async (e) => {
 
@@ -54,6 +55,21 @@ const AddUser = () => {
                 await updateDoc(doc(db, 'users', uuid), {
                     uuid: uuid
                 });
+
+                setConfirmationMessage("Gebruiker succesvol toegevoegd!");
+                setTimeout(() => {
+                    setConfirmationMessage('');
+                }, 5000);
+                setFirstName('');
+                setLastName('');
+                setEmail('');
+                setPassword('');
+                setPhoneNumber('');
+                setRole('');
+                setEmployeeFunction('');
+                setDepartment('');
+                setVakantiedagen('');
+
                 console.log('User aangemaakt met ID: ', uuid);
             }
             catch(error){
@@ -68,6 +84,7 @@ const AddUser = () => {
     return(
         <div className='adduser-container'>
             <div className='adduser-form-container'>
+            {confirmationMessage && <p className='confirmation-message'>{confirmationMessage}</p>}
                 <form onSubmit={createUser}>
                     <label>
                         <p>
@@ -94,7 +111,7 @@ const AddUser = () => {
                             email
                         </p>
                         <input
-                        type='text'
+                        type='email'
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         />
@@ -111,12 +128,15 @@ const AddUser = () => {
                     </label>
                     <label>
                         <p>
-                            Nummer
+                            Telefoonnummer
                         </p>
                         <input
-                        type='number'
+                        type='tel'
                         value={phoneNumber}
                         onChange={(e) => setPhoneNumber(e.target.value)}
+                        pattern="(\+31|0|06|0031)?[1-9][0-9]{8}"
+                        required
+                        title="Voer een geldig telefoonnummer in. Bijv: +31612345678 of 0612345678"
                         />
                     </label>
                     <label>

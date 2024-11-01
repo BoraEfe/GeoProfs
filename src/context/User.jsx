@@ -11,6 +11,7 @@ export const useUser = () =>useContext(UserContext)
             lastname: '',
             email: '',
             vakantiedagen: '',
+            department: '',
             role:'',
             isLoggedIn:'false', 
             uuid:'',
