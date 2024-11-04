@@ -5,6 +5,7 @@ import { db } from '../../firebase';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { useUser } from '../../context/User';
 import { hashPasswordWithSalt } from '../../components/HashPassword';
+import  CheckForfirstLogin from '../../components/CheckForFirstLogin';
     
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -34,9 +35,10 @@ const Login = () => {
                     console.log(hashedInputPassword);
                     console.log(user.wachtwoord);
 
-                    if (hashedInputPassword.hashedPassword === user.wachtwoord){
+                    if (hashedInputPassword.hashedPassword === user.tijdelijkWachtwoord){
                         isLoggedIn = true;
                         console.log('login success'); 
+                        CheckForfirstLogin(user);
                         
                         sessionStorage.setItem('firstname', user.voornaam)
                         sessionStorage.setItem('lastname', user.achternaam)

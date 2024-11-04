@@ -11,7 +11,7 @@ const AddUser = () => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [temporaryPassword, setPassword] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [role, setRole] = useState('');
     const [employeeFunction, setEmployeeFunction] = useState('');
@@ -23,13 +23,13 @@ const AddUser = () => {
 
         console.log(department);
 
-        const {hashedPassword} = hashPasswordWithSalt(password);
+        const {hashedPassword} = hashPasswordWithSalt(temporaryPassword);
 
         console.log(hashedPassword);
 
         e.preventDefault();
 
-        if (!firstName || !lastName || !email ||!password || !phoneNumber || !employeeFunction || 
+        if (!firstName || !lastName || !email ||!temporaryPassword || !phoneNumber || !employeeFunction || 
             (employeeFunction !== 'CEO' && employeeFunction !== 'Office-manager' && !department)){
             alert("Voer alle velden in!");
             console.log('probleempje');
@@ -42,7 +42,7 @@ const AddUser = () => {
                     voornaam: firstName,
                     achternaam: lastName,
                     email: email,
-                    wachtwoord: hashedPassword,
+                    tijdelijkWachtwoord: hashedPassword,
                     functie: employeeFunction,
                     role: role,
                     departement: userDepartment,
@@ -122,7 +122,7 @@ const AddUser = () => {
                         </p>
                         <input
                         type='password'
-                        value={password}
+                        value={temporaryPassword}
                         onChange={(e) => setPassword(e.target.value)}
                         />
                     </label>
