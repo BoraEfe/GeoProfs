@@ -6,6 +6,7 @@ import { db } from '../../firebase';
 import cancelPageSwitchWhenNotLoggedIn from '../../Components/cancelPageSwitchWhenNotLoggedIn';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../../context/User';
+import CheckForFirstLogin from '../../components/CheckForFirstLogin/CheckForFirstLogin';
 
 const HomePage = () => {    
     const { user } = useUser();
@@ -14,6 +15,7 @@ const HomePage = () => {
 
     useEffect(() => {    
         cancelPageSwitchWhenNotLoggedIn();
+        CheckForFirstLogin(user);
     }, []);
 
     useEffect(() => {

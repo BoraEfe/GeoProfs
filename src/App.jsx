@@ -8,6 +8,7 @@ import Verlofaanvraag from './Pages/Verlofaanvraag/Verlofaanvraag'
 import VakantieDagen from './Pages/Vakantiedagen/Vakantiedagen'
 import { UserProvider } from './context/User'
 import AddUser from './pages/AddUser/AddUser'
+import ChangeTemporaryPassword from './components/ChangeTemporaryPassword/ChangeTemporaryPassword'
 
 const App = () => {
   return (
@@ -20,7 +21,8 @@ const App = () => {
           <Route path="/ziekmelden" element={<Ziekmelden />} />
           <Route path="/verlofaanvraag" element={<Verlofaanvraag />} />
           <Route path="/vakantiedagen" element={<VakantieDagen />} />
-          <Route path="AddUser" element={<AddUser/>}/>
+          <Route path="/AddUser" element={<AddUser/>}/>
+          <Route path="/changeTemporaryPassword" element={<ChangeTemporaryPassword/>}/>
         </Routes>
       </UserProvider>
     </body>
