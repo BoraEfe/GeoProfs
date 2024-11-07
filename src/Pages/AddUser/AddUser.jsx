@@ -18,6 +18,7 @@ const AddUser = () => {
     const [department, setDepartment] = useState('');
     const [vakantiedagen, setVakantiedagen] = useState('');
     const [confirmationMessage, setConfirmationMessage] = useState('');
+    const [password , setPermanentPassword] = useState(null);
 
     const createUser = async (e) => {
 
@@ -46,7 +47,8 @@ const AddUser = () => {
                     functie: employeeFunction,
                     role: role,
                     departement: userDepartment,
-                    vakantiedagen: vakantiedagen, 
+                    vakantiedagen: vakantiedagen,
+                    wachtwoord: password, 
                 });
                 console.log('gelukt!');
                 

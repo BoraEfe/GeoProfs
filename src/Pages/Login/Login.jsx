@@ -5,13 +5,14 @@ import { db } from '../../firebase';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { useUser } from '../../context/User';
 import { hashPasswordWithSalt } from '../../components/HashPassword';
-import  CheckForfirstLogin from '../../components/CheckForFirstLogin';
+import CheckForFirstLogin from '../../components/CheckForFirstLogin/CheckForFirstLogin';
     
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState();
     const navigate = useNavigate();
+    
     const {setUser} = useUser();
     
     var isLoggedIn;
@@ -35,10 +36,11 @@ const Login = () => {
                     console.log(hashedInputPassword);
                     console.log(user.wachtwoord);
 
-                    if (hashedInputPassword.hashedPassword === user.tijdelijkWachtwoord){
+                    if ((hashedInputPassword.hashedPassword === user.tijdelijkWachtwoord && user.wachtwoord === null)||
+                       ( hashedInputPassword.hashedPassword === user.wachtwoord && user.tijdelijkWachtwoord === null)){
                         isLoggedIn = true;
                         console.log('login success'); 
-                        CheckForfirstLogin(user);
+                        CheckForFirstLogin(user);
                         
                         sessionStorage.setItem('firstname', user.voornaam)
                         sessionStorage.setItem('lastname', user.achternaam)
