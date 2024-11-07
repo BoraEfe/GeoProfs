@@ -1,6 +1,6 @@
 import './Ziekmelden.css';
 import React, { useState, useEffect } from 'react';
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, query, where, getDocs } from 'firebase/firestore';
 import { db } from '../../firebase';
 import { useUser } from '../../context/User';
 import cancelPageSwitchWhenNotLoggedIn from '../../Components/cancelPageSwitchWhenNotLoggedIn';
@@ -11,7 +11,7 @@ const Ziekmelden = () => {
     const [ziekmeldenEindData, setZiekmeldenEindData] = useState('');
     const [confirmation, setConfirmation] = useState(null);
 
-    useEffect(() =>{
+    useEffect(() => {
         cancelPageSwitchWhenNotLoggedIn();
     }, []);
 
@@ -41,7 +41,40 @@ const Ziekmelden = () => {
         e.preventDefault();
 
         try {
-            await addDoc(collection(db, 'ziekmeldingen'), {
+            const ziekmeldingenRef = collection(db, 'ziekmeldingen');
+            const ziekmeldingQuery = query(
+                ziekmeldingenRef,
+                where("uuid", "==", sessionStorage.getItem('uuid'))
+            );
+
+            const querySnapshot = await getDocs(ziekmeldingQuery);
+            const nieuweBeginDatum = new Date(ziekmeldenBeginData);
+            const nieuweEindDatum = new Date(ziekmeldenEindData);
+
+            // Controleer of de nieuwe ziekmelding overlapt met bestaande ziekmeldingen
+            let overlap = false;
+            querySnapshot.forEach((doc) => {
+                const { beginDatum, eindDatum } = doc.data();
+                const bestaandeBeginDatum = new Date(beginDatum);
+                const bestaandeEindDatum = new Date(eindDatum);
+
+                if (
+                    (nieuweBeginDatum <= bestaandeEindDatum && nieuweEindDatum >= bestaandeBeginDatum)
+                ) {
+                    overlap = true;
+                }
+            });
+
+            if (overlap) {
+                setConfirmation('Je hebt al een ziekmelding die overlapt met deze periode.');
+                setTimeout(() => {
+                    setConfirmation(null);
+                }, 10000);
+                return;
+            }
+
+            // Als er geen overlap is, voeg de nieuwe ziekmelding toe
+            await addDoc(ziekmeldingenRef, {
                 medewerker: sessionStorage.getItem('firstname') + ' ' + sessionStorage.getItem('lastname'),
                 uuid: sessionStorage.getItem('uuid'),
                 aanvraagDatum: getTodayDate() + ' Tijdstip: ' + getCurrentTime(),
@@ -96,4 +129,5 @@ const Ziekmelden = () => {
         </>
     );
 }
+
 export default Ziekmelden;
