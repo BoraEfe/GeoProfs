@@ -72,6 +72,7 @@ const Login = () => {
                 })
             }else{
                 setError('Gebruiker niet gevonden');
+                console.log(error);
             }
         }catch(error){
             console.log('Error getting documents:', error);
