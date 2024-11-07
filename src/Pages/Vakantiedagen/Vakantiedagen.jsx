@@ -42,14 +42,15 @@ const Vakantiedagen = () => {
 
         if (sessionStorage.getItem('uuid')) {
             try {
-                await addDoc(collection(db, 'vakantieaanvragen'), {
+                await addDoc(collection(db, 'verlofaanvraag'), {
                     uuid: sessionStorage.getItem('uuid'), 
                     medewerker: sessionStorage.getItem('firstname') + ' ' + sessionStorage.getItem('lastname'),
                     beginDatum: VakantieBeginData,
                     eindDatum: VakantieEindData,
                     opmerking: VakantieOpmerking,
                     isApproved: false,
-                    timestamp: today
+                    timestamp: today,
+                    typeVerlof: 'vakantie aanvraag'
                 });
                 console.log('Leave request successfully submitted!');
                 setVakantieBeginData('');

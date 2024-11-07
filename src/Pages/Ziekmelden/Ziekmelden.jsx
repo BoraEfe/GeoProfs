@@ -41,12 +41,13 @@ const Ziekmelden = () => {
         e.preventDefault();
 
         try {
-            await addDoc(collection(db, 'ziekmeldingen'), {
+            await addDoc(collection(db, 'verlofaanvraag'), {
                 medewerker: sessionStorage.getItem('firstname') + ' ' + sessionStorage.getItem('lastname'),
                 uuid: sessionStorage.getItem('uuid'),
                 aanvraagDatum: getTodayDate() + ' Tijdstip: ' + getCurrentTime(),
                 beginDatum: ziekmeldenBeginData,
                 eindDatum: ziekmeldenEindData,
+                typeVerlof: 'ziekmelding'
             });
             setConfirmation('Ziekmelding verstuurd!');
             setZiekmeldenBeginData('');
