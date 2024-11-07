@@ -42,14 +42,15 @@ const Verlofaanvraag = () => {
         if (sessionStorage.getItem('uuid')) {
             try {
                 // Add a new document to the Firestore collection "verlofaanvragen"
-                await addDoc(collection(db, 'verlofaanvragen'), {
+                await addDoc(collection(db, 'verlofaanvraag'), {
                     uuid: sessionStorage.getItem('uuid'), // The current user's UUID
-                    medewerker: localStorage.getItem('firstname') + ' ' + localStorage.getItem('lastname'),
+                    medewerker: sessionStorage.getItem('firstname') + ' ' + sessionStorage.getItem('lastname'),
                     beginDatum: verlofBeginData,
                     eindDatum: verlofEindData,
                     reden: reden,
                     isApproved: false, // New requests are not approved by default
-                    timestamp: new Date()
+                    timestamp: new Date(),
+                    typeVerlof: 'verlofaanvraag'
                 });
                 console.log('Leave request successfully submitted!');
                 setVerlofBeginData('');

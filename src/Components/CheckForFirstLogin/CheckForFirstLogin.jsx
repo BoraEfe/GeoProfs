@@ -16,11 +16,6 @@ const CheckForFirstLogin = (user) => {
             }
         }});
     };
-    useEffect(() => {
-    getUsers();
-    }, []);
-    return null; 
-
 }
 export default CheckForFirstLogin;
 
