@@ -72,6 +72,11 @@ const Verlofaanvraag = () => {
     return (
         <>
             <div className='verlofaanvraag-container'>
+            {isSubmitted && (
+                        <p style={{ color: 'white', marginTop: '20px' }}>
+                            Verlofaanvraag succesvol ingediend!
+                        </p>
+                    )}
                 <div className='verlofaanvraag-form'>
                     <form onSubmit={handleSubmit}>
                         <p>Van datum</p>
@@ -105,11 +110,6 @@ const Verlofaanvraag = () => {
                             Verstuur
                         </button>
                     </form>
-                    {isSubmitted && (
-                        <p style={{ color: 'green', marginTop: '20px' }}>
-                            Verlofaanvraag succesvol ingediend!
-                        </p>
-                    )}
                 </div>
 
                 <div className='pending-container'>

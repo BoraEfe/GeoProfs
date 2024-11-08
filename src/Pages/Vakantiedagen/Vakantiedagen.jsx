@@ -72,6 +72,11 @@ const Vakantiedagen = () => {
     return(
         <> 
         <div className='vakantieaanvraag-container'>
+        {isSubmitted && (
+                        <p style={{ color: 'White', marginTop: '20px' }}>
+                            Vakantieaanvraag succesvol ingediend!
+                        </p>
+                    )}
           <div className='vakantieaanvraag-form'>
               <form onSubmit={handleSubmit}>
                   <p>Van datum</p>
@@ -106,12 +111,6 @@ const Vakantiedagen = () => {
                       Verstuur
                   </button>
               </form>
-              {isSubmitted && (
-                        <p style={{ color: 'green', marginTop: '20px' }}>
-                            Vakantieaanvraag succesvol ingediend!
-                        </p>
-                    )}
-                    
           </div>
           <div className='pending-container'>
                     <div className="pending-header">

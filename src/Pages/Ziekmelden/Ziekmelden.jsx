@@ -5,6 +5,14 @@ import { db } from '../../firebase';
 import { useUser } from '../../context/User';
 import cancelPageSwitchWhenNotLoggedIn from '../../Components/cancelPageSwitchWhenNotLoggedIn';
 
+export const getTodayDate = () => {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');   
+    return `${year}-${month}-${day}`;
+};
+
 const Ziekmelden = () => {
     const { user } = useUser();
     const [ziekmeldenBeginData, setZiekmeldenBeginData] = useState('');
@@ -14,14 +22,6 @@ const Ziekmelden = () => {
     useEffect(() =>{
         cancelPageSwitchWhenNotLoggedIn();
     }, []);
-
-    const getTodayDate = () => {
-        const today = new Date();
-        const year = today.getFullYear();
-        const month = String(today.getMonth() + 1).padStart(2, '0');
-        const day = String(today.getDate()).padStart(2, '0');   
-        return `${year}-${month}-${day}`;
-    };
 
     const getMaxEindDatum = (beginDatum) => {
         const beginDateObj = new Date(beginDatum);
