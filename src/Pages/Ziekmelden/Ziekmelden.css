@@ -27,9 +27,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
+
 
 form {
+    display: flex;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -78,4 +79,5 @@ input[type="date"] {
     color: white;
     text-align: center;
     text-decoration: underline;
+}
 }

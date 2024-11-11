@@ -1,6 +1,10 @@
 import { initializeApp } from "firebase/app";
-import { getAnalytics, isSupported } from "firebase/analytics";
-import { getFirestore } from "firebase/firestore";
+
+import {getAnalytics, isSupported } from "firebase/analytics";
+import { getFirestore } from 'firebase/firestore';
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -16,13 +20,17 @@ const firebaseConfig = {
 // Initialize Firebase App
 const app = initializeApp(firebaseConfig);
 
-// Conditionally initialize analytics if supported
-let analytics;
 isSupported().then((supported) => {
   if (supported) {
-    analytics = getAnalytics(app);
+    getAnalytics(app); // Initialiseer analytics alleen als het wordt ondersteund
+  } else {
+    console.log("Analytics wordt niet ondersteund in deze omgeving.");
   }
+}).catch((error) => {
+  console.error("Fout bij het controleren van Analytics-ondersteuning:", error);
 });
+
+
 
 // Initialize Firestore and export it
 const db = getFirestore(app);

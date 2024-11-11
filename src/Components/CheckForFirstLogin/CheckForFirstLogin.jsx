@@ -16,6 +16,7 @@ const CheckForFirstLogin = (user) => {
             }
         }});
     };
+
 }
 export default CheckForFirstLogin;
 
