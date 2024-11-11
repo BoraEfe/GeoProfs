@@ -5,6 +5,14 @@ import { db } from '../../firebase';
 import { useUser } from '../../context/User';
 import cancelPageSwitchWhenNotLoggedIn from '../../Components/cancelPageSwitchWhenNotLoggedIn';
 
+export const getTodayDate = () => {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');   
+    return `${year}-${month}-${day}`;
+};
+
 const Ziekmelden = () => {
     const { user } = useUser();
     const [ziekmeldenBeginData, setZiekmeldenBeginData] = useState('');
@@ -14,14 +22,6 @@ const Ziekmelden = () => {
     useEffect(() => {
         cancelPageSwitchWhenNotLoggedIn();
     }, []);
-
-    const getTodayDate = () => {
-        const today = new Date();
-        const year = today.getFullYear();
-        const month = String(today.getMonth() + 1).padStart(2, '0');
-        const day = String(today.getDate()).padStart(2, '0');   
-        return `${year}-${month}-${day}`;
-    };
 
     const getMaxEindDatum = (beginDatum) => {
         const beginDateObj = new Date(beginDatum);
@@ -41,6 +41,7 @@ const Ziekmelden = () => {
         e.preventDefault();
 
         try {
+
             const ziekmeldingenRef = collection(db, 'ziekmeldingen');
             const ziekmeldingQuery = query(
                 ziekmeldingenRef,
@@ -75,11 +76,14 @@ const Ziekmelden = () => {
 
             // Als er geen overlap is, voeg de nieuwe ziekmelding toe
             await addDoc(ziekmeldingenRef, {
+            await addDoc(collection(db, 'verlofaanvraag'), {
+
                 medewerker: sessionStorage.getItem('firstname') + ' ' + sessionStorage.getItem('lastname'),
                 uuid: sessionStorage.getItem('uuid'),
                 aanvraagDatum: getTodayDate() + ' Tijdstip: ' + getCurrentTime(),
                 beginDatum: ziekmeldenBeginData,
                 eindDatum: ziekmeldenEindData,
+                typeVerlof: 'ziekmelding'
             });
             setConfirmation('Ziekmelding verstuurd!');
             setZiekmeldenBeginData('');

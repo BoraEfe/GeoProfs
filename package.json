@@ -41,11 +41,12 @@
     "eslint-plugin-react-refresh": "^0.4.9",
     "globals": "^15.9.0",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^29.7.0",
+
     "jest-environment-jsdom": "^29.7.0",
     "vite": "^5.4.1"
   },
   "jest": {
+
     "moduleNameMapper": {
       "\\.(css|less)$": "identity-obj-proxy"
     },
@@ -54,4 +55,13 @@
       "^.+\\.jsx?$": "babel-jest"
     }
   }
+  "moduleNameMapper": {
+    "\\.(css|less)$": "identity-obj-proxy"
+  },
+  "testEnvironment": "jest-environment-jsdom",
+  "transform": {
+    "^.+\\.jsx?$": "babel-jest"
+  }
+}
+
 }
