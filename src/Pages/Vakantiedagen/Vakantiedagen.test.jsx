@@ -1,18 +1,15 @@
 import React from 'react';
+import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import Vakantiedagen from './Vakantiedagen';
 
+// Mock de useUser hook en retourneer een mock user
 jest.mock('../../context/User', () => ({
-    useUser: () => ({
-      user: { uuid: '12345', firstname: 'John', lastname: 'Doe' } // Voorbeeld van een mock-gebruiker
-    })
-  }));
-  jest.mock('firebase/firestore', () => ({
-    addDoc: jest.fn(() => Promise.resolve()),
-    collection: jest.fn(),
-  }));
-  
+  useUser: () => ({
+    user: { uuid: '12345', firstname: 'John', lastname: 'Doe' } // Voorbeeld van een mock-gebruiker
+  })
+}));
+
 describe('Vakantiedagen Component', () => {
   test('renders form elements correctly', () => {
     render(<Vakantiedagen />);
