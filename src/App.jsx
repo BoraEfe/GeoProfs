@@ -12,7 +12,7 @@ import ChangeTemporaryPassword from './components/ChangeTemporaryPassword/Change
 
 const App = () => {
   return (
-    <body>
+    <>
       <UserProvider>
        <Header />
         <Routes>
@@ -25,7 +25,7 @@ const App = () => {
           <Route path="/changeTemporaryPassword" element={<ChangeTemporaryPassword/>}/>
         </Routes>
       </UserProvider>
-    </body>
+    </>
   )
 }
 
