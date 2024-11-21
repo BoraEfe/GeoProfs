@@ -29,8 +29,9 @@ const ChangeTemporaryPassword = () => {
 
             setSuccess('Wachtwoord succesvol gewijzigd!');
             setError('');  
-
+            window.location.href = '/Login';
         }
+        
         catch(error){
             setError('Er is iets misgegaan. Probeer het opnieuw.');
             setSuccess('');

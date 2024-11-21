@@ -29,6 +29,8 @@
     "@babel/preset-env": "^7.26.0",
     "@babel/preset-react": "^7.25.9",
     "@eslint/js": "^9.9.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.0.1",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
@@ -43,12 +45,9 @@
     "vite": "^5.4.1"
   },
   "jest": {
-  "moduleNameMapper": {
-    "\\.(css|less)$": "identity-obj-proxy"
-  },
-  "testEnvironment": "jest-environment-jsdom",
-  "transform": {
-    "^.+\\.jsx?$": "babel-jest"
+    "testEnvironment": "jest-environment-jsdom",
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
   }
-}
 }

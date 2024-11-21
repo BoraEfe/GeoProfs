@@ -13,7 +13,6 @@ const navigate = useNavigate();
     sessionStorage.removeItem('uuid');
     window.location.href = '/login';
   }
-
   console.log(user.uuid);
 
   return (

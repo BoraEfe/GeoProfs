@@ -6,7 +6,7 @@ import { collection, getDocs, query, where } from 'firebase/firestore';
 import { useUser } from '../../context/User';
 import { hashPasswordWithSalt } from '../../components/HashPassword';
 import CheckForFirstLogin from '../../components/CheckForFirstLogin/CheckForFirstLogin';
-    
+        
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -72,6 +72,7 @@ const Login = () => {
                 })
             }else{
                 setError('Gebruiker niet gevonden');
+                console.log(error);
             }
         }catch(error){
             console.log('Error getting documents:', error);
