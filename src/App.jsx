@@ -11,7 +11,7 @@ import AddUser from './pages/AddUser/AddUser'
 import ChangeTemporaryPassword from './components/ChangeTemporaryPassword/ChangeTemporaryPassword'
 
 const App = () => {
-
+  
   if(window.location.pathname === '/' || window.location.pathname === '/Login' || window.location.pathname === '/ziekmelden' || window.location.pathname === '/verlofaanvraag' || window.location.pathname === '/vakantiedagen'){
     return (
       <>

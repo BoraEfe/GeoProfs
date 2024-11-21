@@ -42,14 +42,15 @@ const Vakantiedagen = () => {
 
         if (sessionStorage.getItem('uuid')) {
             try {
-                await addDoc(collection(db, 'vakantieaanvragen'), {
+                await addDoc(collection(db, 'verlofaanvraag'), {
                     uuid: sessionStorage.getItem('uuid'), 
                     medewerker: sessionStorage.getItem('firstname') + ' ' + sessionStorage.getItem('lastname'),
                     beginDatum: VakantieBeginData,
                     eindDatum: VakantieEindData,
                     opmerking: VakantieOpmerking,
                     isApproved: false,
-                    timestamp: today
+                    timestamp: today,
+                    typeVerlof: 'vakantie aanvraag'
                 });
                 console.log('Leave request successfully submitted!');
                 setVakantieBeginData('');
@@ -71,6 +72,11 @@ const Vakantiedagen = () => {
     return(
         <> 
         <div className='vakantieaanvraag-container'>
+        {isSubmitted && (
+                        <p style={{ color: 'White', marginTop: '20px' }}>
+                            Vakantieaanvraag succesvol ingediend!
+                        </p>
+                    )}
           <div className='vakantieaanvraag-form'>
               <form onSubmit={handleSubmit}>
                   <p>Van datum</p>
@@ -105,12 +111,6 @@ const Vakantiedagen = () => {
                       Verstuur
                   </button>
               </form>
-              {isSubmitted && (
-                        <p style={{ color: 'green', marginTop: '20px' }}>
-                            Vakantieaanvraag succesvol ingediend!
-                        </p>
-                    )}
-                    
           </div>
           <div className='pending-container'>
                     <div className="pending-header">

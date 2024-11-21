@@ -9,7 +9,6 @@ const CheckForFirstLogin = (user) => {
             return;
         }
     };
+}
 
 export default CheckForFirstLogin;
-
-// 
