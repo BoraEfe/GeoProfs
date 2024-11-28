@@ -3,10 +3,10 @@ import Agenda from '../../Components/Agenda/Agenda';
 import { useEffect, useState } from 'react';
 import { collection, getDocs, where, query } from 'firebase/firestore';
 import { db } from '../../firebase';
-import cancelPageSwitchWhenNotLoggedIn from '../../Components/cancelPageSwitchWhenNotLoggedIn';
+import cancelPageSwitchWhenNotLoggedIn from '../../functions/CancelPageSwitchWhenNotLoggedIn/cancelPageSwitchWhenNotLoggedIn';
 import { useNavigate } from 'react-router-dom';
-import { useUser } from '../../context/User';
-import CheckForFirstLogin from '../../components/CheckForFirstLogin/CheckForFirstLogin';
+import { useUser } from '../../functions/context/User';
+import CheckForFirstLogin from '../../functions/CheckForFirstLogin/CheckForFirstLogin';
 
 const HomePage = () => {    
     const { user } = useUser();

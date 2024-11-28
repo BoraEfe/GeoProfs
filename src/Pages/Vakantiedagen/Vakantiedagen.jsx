@@ -2,7 +2,7 @@ import './Vakantiedagen.css';
 import React, { useState, useEffect } from 'react';
 import { collection, addDoc, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../../firebase';
-import { useUser } from '../../context/User';
+import { useUser } from '../../functions/context/User';
 
 const Vakantiedagen = () => {
     

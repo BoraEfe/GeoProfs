@@ -1,4 +1,4 @@
-import cancelPageSwitchWhenNotLoggedIn from "./cancelPageSwitchWhenNotLoggedIn";
+import cancelPageSwitchWhenNotLoggedIn from "../CancelPageSwitchWhenNotLoggedIn/cancelPageSwitchWhenNotLoggedIn";
 
 // Test of de waarde 'true' is
 test('check if page should switch is true', () => {
