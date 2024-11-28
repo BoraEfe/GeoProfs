@@ -2,8 +2,8 @@ import './Ziekmelden.css';
 import React, { useState, useEffect } from 'react';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
-import { useUser } from '../../context/User';
-import cancelPageSwitchWhenNotLoggedIn from '../../Components/cancelPageSwitchWhenNotLoggedIn';
+import { useUser } from '../../functions/context/User';
+import cancelPageSwitchWhenNotLoggedIn from '../../functions/CancelPageSwitchWhenNotLoggedIn/cancelPageSwitchWhenNotLoggedIn';
 
 export const getTodayDate = () => {
     const today = new Date();

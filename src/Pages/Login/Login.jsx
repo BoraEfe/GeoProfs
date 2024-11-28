@@ -3,9 +3,9 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { db } from '../../firebase';
 import { collection, getDocs, query, where } from 'firebase/firestore';
-import { useUser } from '../../context/User';
-import { hashPasswordWithSalt } from '../../components/HashPassword';
-import CheckForFirstLogin from '../../components/CheckForFirstLogin/CheckForFirstLogin';
+import { useUser } from '../../functions/context/User';
+import { hashPasswordWithSalt } from '../../functions/HashPassword/HashPassword';
+import CheckForFirstLogin from '../../functions/CheckForFirstLogin/CheckForFirstLogin';
         
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -83,7 +83,7 @@ const Login = () => {
         <div className='login-container'>
             <div className='login-form'>
                 <h1>
-                    Login
+                    Login GeoProfs  
                 </h1>
                 <form onSubmit={handleLogin}>
                     <p>Email</p>

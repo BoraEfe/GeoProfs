@@ -2,7 +2,7 @@ import './ChangeTemporaryPassword.css';
 import { useState } from 'react';
 import { addDoc, doc, updateDoc } from 'firebase/firestore';
 import {db} from '../../firebase'
-import { hashPasswordWithSalt } from '../../components/HashPassword';
+import { hashPasswordWithSalt } from '../../functions/HashPassword/HashPassword';
 
 const ChangeTemporaryPassword = () => {
     const [newPassword, setNewPassword] = useState('');
@@ -13,6 +13,11 @@ const ChangeTemporaryPassword = () => {
     const userUUID = sessionStorage.getItem('uuid');
 
     const handleSubmit = async (e) => {
+
+        if (newPassword.length < 8){
+            setError('Wachtwoord moet minimaal 8 tekens bevatten.');
+            return;
+        }
 
         const {hashedPassword} = hashPasswordWithSalt(newPassword);
 

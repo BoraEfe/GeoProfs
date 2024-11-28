@@ -5,7 +5,7 @@ import { addDoc, doc, updateDoc } from 'firebase/firestore';
 import {db} from '../../firebase'
 import { text } from '@fortawesome/fontawesome-svg-core';
 import { collection } from 'firebase/firestore';
-import { hashPasswordWithSalt } from '../../components/HashPassword';
+import { hashPasswordWithSalt } from '../../functions/HashPassword/HashPassword';
 
 const AddUser = () => {
     const [firstName, setFirstName] = useState('');

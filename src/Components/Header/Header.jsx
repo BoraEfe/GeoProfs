@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import Date from '../date';  
-import { useUser } from '../../context/User';
+import { useUser } from '../../functions/context/User';
 
 const Header = () => {
 const {user} = useUser();

@@ -6,13 +6,13 @@ import { Routes, Route} from 'react-router-dom'
 import Ziekmelden from './Pages/Ziekmelden/Ziekmelden'
 import Verlofaanvraag from './Pages/Verlofaanvraag/Verlofaanvraag'
 import VakantieDagen from './Pages/Vakantiedagen/Vakantiedagen'
-import { UserProvider } from './context/User'
+import { UserProvider } from './functions/context/User'
 import AddUser from './pages/AddUser/AddUser'
 import ChangeTemporaryPassword from './components/ChangeTemporaryPassword/ChangeTemporaryPassword'
 
 const App = () => {
   
-  if(window.location.pathname === '/' || window.location.pathname === '/Login' || window.location.pathname === '/ziekmelden' || window.location.pathname === '/verlofaanvraag' || window.location.pathname === '/vakantiedagen'){
+  if(window.location.pathname === '/' || window.location.pathname === '/ziekmelden' || window.location.pathname === '/verlofaanvraag' || window.location.pathname === '/vakantiedagen'){
     return (
       <>
         <UserProvider>
