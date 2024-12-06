@@ -3,12 +3,14 @@ import { useState } from 'react';
 import { addDoc, doc, updateDoc } from 'firebase/firestore';
 import {db} from '../../firebase'
 import { hashPasswordWithSalt } from '../../functions/HashPassword/HashPassword';
+import { useNavigate } from 'react-router-dom';
 
 const ChangeTemporaryPassword = () => {
     const [newPassword, setNewPassword] = useState('');
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
     const [passwordsMatch, setPasswordsMatch] = useState(false);
+    const navigate = useNavigate();
 
     const userUUID = sessionStorage.getItem('uuid');
 
@@ -31,10 +33,9 @@ const ChangeTemporaryPassword = () => {
                 wachtwoord: hashedPassword,
                 tijdelijkWachtwoord: null,
             });
-
             setSuccess('Wachtwoord succesvol gewijzigd!');
             setError('');  
-            window.location.href = '/Login';
+            navigate ('/Login');
         }
         
         catch(error){
