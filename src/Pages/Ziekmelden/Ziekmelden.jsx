@@ -41,7 +41,7 @@ const Ziekmelden = () => {
         e.preventDefault();
 
         try {
-            await addDoc(collection(db, 'verlofaanvraag'), {
+            await addDoc(collection(db, 'Aanvragen'), {
                 medewerker: sessionStorage.getItem('firstname') + ' ' + sessionStorage.getItem('lastname'),
                 uuid: sessionStorage.getItem('uuid'),
                 aanvraagDatum: getTodayDate() + ' Tijdstip: ' + getCurrentTime(),

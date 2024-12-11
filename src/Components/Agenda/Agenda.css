@@ -48,3 +48,9 @@
         color: black;
     }
 }
+@media only screen and (max-width: 768px) {
+    .agenda-container{
+        width: 90vw;
+        height:auto;
+    }
+}

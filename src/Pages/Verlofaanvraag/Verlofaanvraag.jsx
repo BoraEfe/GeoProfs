@@ -42,7 +42,7 @@ const Verlofaanvraag = () => {
         if (sessionStorage.getItem('uuid')) {
             try {
                 // Add a new document to the Firestore collection "verlofaanvragen"
-                await addDoc(collection(db, 'verlofaanvraag'), {
+                await addDoc(collection(db, 'Aanvragen'), {
                     uuid: sessionStorage.getItem('uuid'), // The current user's UUID
                     medewerker: sessionStorage.getItem('firstname') + ' ' + sessionStorage.getItem('lastname'),
                     beginDatum: verlofBeginData,
