@@ -42,7 +42,7 @@ const Vakantiedagen = () => {
 
         if (sessionStorage.getItem('uuid')) {
             try {
-                await addDoc(collection(db, 'verlofaanvraag'), {
+                await addDoc(collection(db, 'Aanvragen'), {
                     uuid: sessionStorage.getItem('uuid'), 
                     medewerker: sessionStorage.getItem('firstname') + ' ' + sessionStorage.getItem('lastname'),
                     beginDatum: VakantieBeginData,
