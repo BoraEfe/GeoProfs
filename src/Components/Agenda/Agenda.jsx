@@ -2,13 +2,21 @@ import './Agenda.css';
 
 const Agenda = () => {
 
+
+
     let days = [];
 
     function getIncomingDays(){
-        for(let i = 0; i < 30; i++){
+        for(let i = 0; i < 49; i++){
             let date = new Date();
+            function isWeekend(date){
+               return date.getDay() === 0 || date.getDay() === 6;
+            }
             date.setDate(date.getDate() + i);
-            days.push(date);
+
+            if(!isWeekend(date)){
+                days.push(date);
+            }
         }
         return days;
     }
