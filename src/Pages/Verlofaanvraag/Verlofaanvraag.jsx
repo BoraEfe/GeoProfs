@@ -1,30 +1,47 @@
 import './Verlofaanvraag.css';
 import React, { useState, useEffect } from 'react';
-import { collection, addDoc, getDocs, query, where } from 'firebase/firestore';
+import { collection, addDoc, getDocs, query, where, doc } from 'firebase/firestore';
 import { db } from '../../firebase';
 import { useUser } from '../../functions/context/User';
+
 
 const Verlofaanvraag = () => {
     const { user } = useUser();
     const [verlofBeginData, setVerlofBeginData] = useState('');
     const [verlofEindData, setVerlofEindData] = useState('');
     const [reden, setReden] = useState('');
+    const [soortVerlof, setSoortVerlof] = useState('');
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [verlofaanvragen, setVerlofaanvragen] = useState([]);
+    const [leaveTypes, setLeaveTypes] = useState([]);
 
     const today = new Date().toISOString().split('T')[0];
+
+    const uuid = sessionStorage.getItem('uuid')
+
     console.log( verlofaanvragen.length);
+
+    useEffect(() => {
+        const fetchLeaveTypes = async () => {
+            const leaveTypesRef = collection(db, "typeVerlof");
+            const leaveTypesSnapshot = await getDocs(leaveTypesRef);
+            const leaveNames = leaveTypesSnapshot.docs.map(doc => doc.data().name);
+            setLeaveTypes(leaveNames);
+        };
+        fetchLeaveTypes();
+    }, []); 
+    
     useEffect(() => {
         if (user) {
-            // Fetch leave requests for the current user
             const fetchData = async () => {
                 try {
-                    const usersRef = collection(db, 'verlofaanvragen');
-                    const q = query(usersRef, where('uuid', '==', sessionStorage.getItem('uuid')));
+                    const usersRef = collection(db, 'aanvragen');
+                    const q = query(usersRef, where('uuid', '==', uuid));
                     const querySnapshot = await getDocs(q);
                     const aanvragen = querySnapshot.docs.map((doc) => ({
                         id: doc.id,
-                        ...doc.data()  // This includes all fields such as beginDatum, eindDatum, reden, and isApproved
+                        name: doc.data().name || 'Geen naam',
+                        ...doc.data() 
                     }));
                     setVerlofaanvragen(aanvragen);
                 } catch (error) {
@@ -39,18 +56,17 @@ const Verlofaanvraag = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (sessionStorage.getItem('uuid')) {
+        if (uuid && soortVerlof.length > 0) {
             try {
-                // Add a new document to the Firestore collection "verlofaanvragen"
-                await addDoc(collection(db, 'verlofaanvraag'), {
-                    uuid: sessionStorage.getItem('uuid'), // The current user's UUID
+                await addDoc(collection(db, 'Aanvragen'), {
+                    uuid: uuid, 
                     medewerker: sessionStorage.getItem('firstname') + ' ' + sessionStorage.getItem('lastname'),
                     beginDatum: verlofBeginData,
                     eindDatum: verlofEindData,
                     reden: reden,
-                    isApproved: false, // New requests are not approved by default
-                    timestamp: new Date(),
-                    typeVerlof: 'verlofaanvraag'
+                    isApproved: false, 
+                    typeVerlof: soortVerlof,
+                    timestamp: new Date()
                 });
                 console.log('Leave request successfully submitted!');
                 setVerlofBeginData('');
@@ -64,11 +80,13 @@ const Verlofaanvraag = () => {
             } catch (error) {
                 console.error('Error submitting leave request: ', error);
             }
-        } else {
-            console.log("No user is logged in");
+        } else if(soortVerlof.length === 0) {
+            console.log("No type of leave selected");
+        } else if(!uuid){
+            console.log("No uuid found");
         }
     };
-
+    console.log('Fetched leave types:', leaveTypes);
     return (
         <>
             <div className='verlofaanvraag-container'>
@@ -95,7 +113,27 @@ const Verlofaanvraag = () => {
                             min={verlofBeginData || today}
                             required>
                         </input>
-                        <p>Reden</p>
+                        <p>Reden van verlof</p>
+                            <select 
+                            name ="verlof"
+                            onChange={(e) => setSoortVerlof(e.target.value)}
+                            required
+                            >
+                                <option value="" disabled selected>Selecteer uw keuze</option>
+                                {leaveTypes.length > 0 ? (
+                                    leaveTypes.map((name, index) => (
+                                        <option key={index} value={name}>
+                                        {name}
+                                        </option>
+                                        )
+                                    )
+                                ) : (
+                                    <option value="" disabled>
+                                        Loading...
+                                    </option>
+                                )}
+                            </select>
+                        <p>aanvulling</p>
                         <textarea
                             placeholder='Reden van verlof'
                             style={{ height: '15vh' }}
@@ -117,7 +155,7 @@ const Verlofaanvraag = () => {
                         <div className="van-name">Van</div>
                         <div className="tot-name">Tot</div>
                         <div className="opmerking-name">Opmerking</div>
-                        <div className="status-name">Status</div> {/* Add a status column */}
+                        <div className="status-name">Status</div> 
                     </div>
                     <div className="line-header"></div>
 
