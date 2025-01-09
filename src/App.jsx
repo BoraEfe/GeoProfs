@@ -4,6 +4,7 @@ import Login from './pages/Login/Login'
 import './App.css'
 import { Routes, Route} from 'react-router-dom'
 import Verlofaanvraag from './Pages/Verlofaanvraag/Verlofaanvraag'
+import Admin from './Pages/admin/adminpage'
 import VakantieDagen from './Pages/Vakantiedagen/Vakantiedagen'
 import { UserProvider } from './functions/context/User'
 import AddUser from './pages/AddUser/AddUser'
@@ -12,7 +13,6 @@ import { useLocation } from 'react-router-dom';
 
 const App = () => {
   const location = useLocation();
-
   const showHeader = 
     location.pathname !== '/addUser' &&
     location.pathname !== '/Login' &&
@@ -30,6 +30,7 @@ const App = () => {
         <Route path="/vakantiedagen" element={<VakantieDagen />} />
         <Route path="/AddUser" element={<AddUser />} />
         <Route path="/changeTemporaryPassword" element={<ChangeTemporaryPassword />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
     </UserProvider>
   );
