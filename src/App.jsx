@@ -9,6 +9,7 @@ import VakantieDagen from './Pages/Vakantiedagen/Vakantiedagen'
 import { UserProvider } from './functions/context/User'
 import AddUser from './pages/AddUser/AddUser'
 import ChangeTemporaryPassword from './components/ChangeTemporaryPassword/ChangeTemporaryPassword'
+import AdminPage from './Pages/admin/adminpage'
 
 const App = () => {
   
@@ -25,6 +26,7 @@ const App = () => {
             <Route path="/vakantiedagen" element={<VakantieDagen />} />
             <Route path="/AddUser" element={<AddUser/>}/>
             <Route path="/changeTemporaryPassword" element={<ChangeTemporaryPassword/>}/>
+            <Route path="/admin" element={<AdminPage/>}/>
           </Routes>
         </UserProvider>
       </>
@@ -42,7 +44,8 @@ const App = () => {
             <Route path="/vakantiedagen" element={<VakantieDagen />} />
             <Route path="/AddUser" element={<AddUser/>}/>
             <Route path="/changeTemporaryPassword" element={<ChangeTemporaryPassword/>}/>
-          </Routes>
+            <Route path="/admin" element={<AdminPage/>}/>
+            </Routes>
         </UserProvider>
       </>
     )

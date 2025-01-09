@@ -13,8 +13,7 @@ const navigate = useNavigate();
     sessionStorage.removeItem('uuid');
     window.location.href = '/login';
   }
-  console.log(user.uuid);
-
+  
   return (
     <header>
       <h1 onClick={() => {navigate('/')}}><strong>Geo</strong>Profs</h1>
@@ -24,7 +23,7 @@ const navigate = useNavigate();
         <nav>
           <ul>
             <li>
-              <a onClick={() => {navigate('/')}}>Home</a>
+              <a onClick={() => {navigate('/')}}>Home</a> 
             </li>
             <li>
              <a onClick={() => {navigate('/ziekmelden')}}>Ziekmelden</a>
