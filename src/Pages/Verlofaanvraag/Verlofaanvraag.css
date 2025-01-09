@@ -32,6 +32,10 @@
             gap:10px;
             justify-content: space-around;
 
+            .option{
+                color:black;
+            }
+
             .data {
                 display: flex;
                 flex-direction: column;

@@ -49,12 +49,6 @@ const HomePage = () => {
     return (
         <main>
             <div className="homepage-container-1">
-                <button onClick={() => {navigate('/ziekmelden')}}>
-                    Ziekmelden
-                </button>
-                <button onClick={() => {navigate('/vakantiedagen')}}>
-                    Vakantiedagen opnemen
-                </button>
                 <button onClick={() => {navigate('/verlofaanvraag')}}>
                     Verlof aanvragen
                 </button>

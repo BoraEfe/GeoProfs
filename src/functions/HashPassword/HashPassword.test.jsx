@@ -1,26 +1,14 @@
 import {hashPasswordWithSalt} from './HashPassword';
-import CryptoJS from 'crypto-js';
+
 describe('hashPasswordWithSalt', () => {
-    const originalEnv = process.env;
-
-    // beforeAll(() => {
-    //    process.env = { ...originalEnv, VITE_saltedWord: 'saltedWord' };
-    // });
-
-    //afterAll(() => {
-    //    process.env = originalEnv;
-    //});
-
     test('hashes password with salt correctly', () => {
         const password = 'password';
         const result = hashPasswordWithSalt(password);
-
-        const saltedPassword = 'passLindeRebersword';
-        const expectedHash = CryptoJS.SHA256(saltedPassword).toString();
+        const expectedResult = "a08a466f39b5acbdda364ed365783a6131924a745ca96efd0e6d59e87983b9b1";
 
         console.log("resultaat: ", result.hashedPassword);
-        console.log("verwachting: ",expectedHash);
+        console.log("verwachting: ",expectedResult);
 
-        expect(result.hashedPassword).toBe(expectedHash);
+        expect(result.hashedPassword).toBe(expectedResult);
     });
 });
