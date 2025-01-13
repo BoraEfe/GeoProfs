@@ -1,9 +1,8 @@
 import './Verlofaanvraag.css';
 import React, { useState, useEffect } from 'react';
-import { collection, addDoc, getDocs, query, where, doc } from 'firebase/firestore';
+import { collection, addDoc, getDocs, query, where, doc, updateDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
 import { useUser } from '../../functions/context/User';
-
 
 const Verlofaanvraag = () => {
     const { user } = useUser();
@@ -14,6 +13,7 @@ const Verlofaanvraag = () => {
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [verlofaanvragen, setVerlofaanvragen] = useState([]);
     const [leaveTypes, setLeaveTypes] = useState([]);
+    const [vakantieDagen, setVakantiedagen] = useState(null);
 
     const today = new Date().toISOString().split('T')[0];
 
@@ -30,6 +30,38 @@ const Verlofaanvraag = () => {
         };
         fetchLeaveTypes();
     }, []); 
+    
+    useEffect(() => {
+        const fetchVacationDays = async () => {
+            try {
+                const usersRef = collection(db, 'users');
+                const q = query(usersRef, where('uuid', '==', uuid));
+                const querySnapshot = await getDocs(q);
+    
+                if (!querySnapshot.empty) {
+                    const userData = querySnapshot.docs[0].data();
+                    setVakantiedagen(userData.vakantiedagen || 0);
+                } else {
+                    console.error("Geen gebruikersgegevens gevonden.");
+                    setVakantiedagen(0);
+                }
+            } catch (error) {
+                console.error("Fout bij het ophalen van vakantiedagen:", error);
+            }
+        };
+    
+        if (uuid) {
+            fetchVacationDays();
+        }
+    }, [uuid]);
+
+    const calculateDays = (startDate, endDate) => {
+        const start = new Date(startDate);
+        const end = new Date(endDate);
+        const timeDifference = end.getTime() - start.getTime();
+    
+        return Math.ceil(timeDifference / (1000 * 3600 * 24)) + 1;
+    };
     
     useEffect(() => {
         if (user) {
@@ -56,7 +88,14 @@ const Verlofaanvraag = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (uuid && soortVerlof.length > 0) {
+        if (uuid && soortVerlof.length > 0 && verlofBeginData && verlofEindData) {
+            const requestedDays = calculateDays(verlofBeginData, verlofEindData);
+
+            if (requestedDays > vakantieDagen) {
+                alert('U heeft niet genoeg vakantiedagen.');
+                return;
+            }
+
             try {
                 await addDoc(collection(db, 'Aanvragen'), {
                     uuid: uuid, 
@@ -68,12 +107,27 @@ const Verlofaanvraag = () => {
                     typeVerlof: soortVerlof,
                     timestamp: new Date()
                 });
+
+                const usersRef = collection(db, 'users');
+                const q = query(usersRef, where('uuid', '==', uuid));
+                const querySnapshot = await getDocs(q);
+
+                if (!querySnapshot.empty) {
+                    const userDoc = querySnapshot.docs[0];
+                    const userRef = doc(db, 'users', userDoc.id);
+
+                    // Trek de gebruikte dagen af
+                    const updatedVacationDays = vakantieDagen - requestedDays;
+                    await updateDoc(userRef, { vakantiedagen: updatedVacationDays });
+
+                    setVakantiedagen(updatedVacationDays); // Update state met nieuwe vakantiedagen
+                }
+
                 console.log('Leave request successfully submitted!');
                 setVerlofBeginData('');
                 setVerlofEindData('');
                 setReden('');
                 setIsSubmitted(true);
-
                 setTimeout(() => {
                     setIsSubmitted(false);
                 }, 3000);
@@ -96,6 +150,7 @@ const Verlofaanvraag = () => {
                         </p>
                     )}
                 <div className='verlofaanvraag-form'>
+                <p>U heeft {vakantieDagen} beschikbare vakantiedagen.</p>
                     <form onSubmit={handleSubmit}>
                         <p>Van datum</p>
                         <input 
@@ -133,11 +188,9 @@ const Verlofaanvraag = () => {
                                     </option>
                                 )}
                             </select>
-                        <p>aanvulling</p>
+                        <p>Aanvulling</p>
                         <textarea
                             placeholder='Reden van verlof'
-                            style={{ height: '15vh' }}
-                            maxLength={500}
                             value={reden}
                             onChange={(e) => setReden(e.target.value)}
                         >
@@ -149,7 +202,6 @@ const Verlofaanvraag = () => {
                         </button>
                     </form>
                 </div>
-
                 <div className='pending-container'>
                     <div className="pending-header">
                         <div className="van-name">Van</div>
