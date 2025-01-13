@@ -16,8 +16,8 @@ const Verlofaanvraag = () => {
     const [leaveTypes, setLeaveTypes] = useState([]);
 
     const today = new Date().toISOString().split('T')[0];
-
     const uuid = sessionStorage.getItem('uuid')
+    const department = sessionStorage.getItem('department')
 
     console.log( verlofaanvragen.length);
 
@@ -66,7 +66,8 @@ const Verlofaanvraag = () => {
                     reden: reden,
                     isApproved: false, 
                     typeVerlof: soortVerlof,
-                    timestamp: new Date()
+                    timestamp: new Date(),
+                    departement: department
                 });
                 console.log('Leave request successfully submitted!');
                 setVerlofBeginData('');
