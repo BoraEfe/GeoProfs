@@ -62,28 +62,6 @@ const Verlofaanvraag = () => {
     
         return Math.ceil(timeDifference / (1000 * 3600 * 24)) + 1;
     };
-    
-    useEffect(() => {
-        if (user) {
-            const fetchData = async () => {
-                try {
-                    const usersRef = collection(db, 'Aanvragen');
-                    const q = query(usersRef, where('uuid', '==', uuid));
-                    const querySnapshot = await getDocs(q);
-                    const aanvragen = querySnapshot.docs.map((doc) => ({
-                        id: doc.id,
-                        name: doc.data().name || 'Geen naam',
-                        ...doc.data() 
-                    }));
-                    setVerlofaanvragen(aanvragen);
-                } catch (error) {
-                    console.error('Error fetching leave requests: ', error);
-                }
-            };
-
-            fetchData();
-        }
-    }, [user, isSubmitted]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -143,9 +121,7 @@ const Verlofaanvraag = () => {
     console.log('Fetched leave types:', leaveTypes);
     return (
         <div className='main-container'>
-            <div className='verloftitle-container'>
-              <h1>Verlofaanvraag</h1>
-            </div>
+          <h1>Verlofaanvraag</h1>
             <div className='verlofaanvraag-container'>
             {isSubmitted && (
                         <p style={{ color: 'white', marginTop: '20px' }}>
@@ -204,32 +180,6 @@ const Verlofaanvraag = () => {
                             Verstuur
                         </button>
                     </form>
-                </div>
-                <div className='pending-container'>
-                    <div className="pending-header">
-                        <div className="van-name">Van</div>
-                        <div className="tot-name">Tot</div>
-                        <div className="opmerking-name">Opmerking</div>
-                        <div className="status-name">Status</div> 
-                    </div>
-                    <div className="line-header"></div>
-
-                    <div className="pending-main">
-                        {verlofaanvragen.length > 0 ? (
-                            verlofaanvragen.map((aanvraag) => (
-                                <div key={aanvraag.id} className="aanvraag-item">
-                                    <div className="van">{aanvraag.beginDatum}</div>
-                                    <div className="tot">{aanvraag.eindDatum}</div>
-                                    <div className="opmerking">{aanvraag.reden}</div>
-                                    <div className="status">
-                                        {aanvraag.isApproved ? 'Approved' : 'Pending'}
-                                    </div>
-                                </div>
-                            ))
-                        ) : (
-                            <p>Geen verlofaanvragen gevonden.</p>
-                        )}
-                    </div>
                 </div>
             </div>
         </div>
