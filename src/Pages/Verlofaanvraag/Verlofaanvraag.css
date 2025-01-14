@@ -2,186 +2,207 @@
     margin: 0;
     padding: 0;
 }
-
-.verlofaanvraag-container{
+.main-container{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 80px);
     background-color: #A63446;
+    width:100%;
+    height:auto;
+    font-family: 'Poppins', sans-serif;
 
-    .verlofaanvraag-form {
-        width: 50%;
-        height: auto;
-        padding: 20px;
-        margin: 20px;
-        background-color: #F6D5D5;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    .verloftitle-container{
+        width:100%;
+        height:20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 100;
+    }
+    
+    .verlofaanvraag-container{
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-
-        form {
-            width:100%;
-            height:85%;
+        width:800px;
+        height: auto;
+        background-color: #A63446;
+    
+        .verlofaanvraag-form {
+            width: 100%;
+            height: auto;
+            padding: 20px;
+            margin: 20px;
+            background-color: #F6D5D5;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             display: flex;
             flex-direction: column;
-            gap:10px;
-            justify-content: space-around;
-
-            .option{
-                color:black;
-            }
-
-            .data {
+            justify-content: center;
+            align-items: center;
+    
+            form {
+                width:100%;
+                height:85%;
                 display: flex;
                 flex-direction: column;
                 gap:10px;
-                width: 40%;
-
-                
-            }
-            input{
-                width:100%;
-                padding: 10px;
-                border-radius: 5px;
-                font-family: 'Poppins', sans-serif;
-                border: black 1px solid;
-
-                &:focus{
-                    outline: none;
+                justify-content: space-around;
+    
+                .option{
+                    color:black;
                 }
-            }
-            textarea {
-                padding: 10px;
-                max-height: 150px;
-                max-width: 100%;
-                min-height: 50px;
-                min-width: 100%;
-                border-radius: 5px;
-                font-family: 'Poppins', sans-serif;
-
-                &:focus{
-                    outline: none;
+    
+                .data {
+                    display: flex;
+                    flex-direction: column;
+                    gap:10px;
+                    width: 40%;
+    
+                    
                 }
-            }
-
-            .submit-button {
-                width: 100%;
-                height: 30px;
-                margin-top: 5px;
-                margin-bottom: 10px;
-                background-color: #790924;
-                color:white;
-                border:none;
-                transition: .3s;
-
-                &:hover {
-                    background-color: #A63446;
-                    cursor: pointer;
-                    scale: 1.01;
+                input{
+                    width:100%;
+                    padding: 10px;
+                    border-radius: 5px;
+                    font-family: 'Poppins', sans-serif;
+                    border: black 1px solid;
+    
+                    &:focus{
+                        outline: none;
+                    }
+                }
+                textarea {
+                    padding: 10px;
+                    height: 150px;
+                    width: 100%;
+                    border-radius: 5px;
+                    font-family: 'Poppins', sans-serif;
+                    resize: none;
+    
+                    &:focus{
+                        outline: none;
+                    }
+                }
+    
+                .submit-button {
+                    width: 100%;
+                    height: 50px;
+                    margin-top: 5px;
+                    margin-bottom: 10px;
+                    background-color: #790924;
+                    color:white;
+                    border:none;
                     transition: .3s;
+    
+                    &:hover {
+                        background-color: #A63446;
+                        cursor: pointer;
+                        scale: 1.01;
+                        transition: .3s;
+                    }
                 }
             }
-        }
-
-        form:focus {
-            outline: none;
-        }
-    }
-
-    .pending-container {
-        background-color: #F6D5D5;
-        width: 50%;
-        height: auto;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        box-sizing: border-box;
-
-        .pending-header {
-            display: flex;
-            width: 100%;
-            height: 25px;
-
-            .status-name {
-                width: 20%;
-                height: 100%;
-                font-size: 20px;
-                font-weight: bolder;
-            }
-
-            .van-name {
-                width: 20%;
-                height: 100%;
-                font-size: 20px;
-                font-weight: bolder;
-            }
-
-            .tot-name {
-                width: 20%;
-                height: 100%;
-                font-size: 20px;
-                font-weight: bolder;
-            }
-
-            .opmerking-name {
-                width: 40%;
-                height: 100%;
-                font-size: 20px;
-                font-weight: bolder;
+    
+            form:focus {
+                outline: none;
             }
         }
-
-        .line-header {
-            background-color: black;
-            width: 100%;
-            height: 2px;
-        }
-
-        .pending-main {
-            display: flex;
-            width: 100%;
+    
+        .pending-container {
+            background-color: #F6D5D5;
+            width: 800px;
             height: auto;
-            flex-wrap: wrap;
-            margin-bottom: 5px;
-
-           .aanvraag-item {
             display: flex;
-            width: 100%;
-            height: auto;
-           }
-
-            .status {
+            flex-direction: column;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+    
+            .pending-header {
                 display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 20%;
-                height: auto;
-                font-weight: bold;
+                width: 100%;
+                height: 25px;
+    
+                .status-name {
+                    width: 20%;
+                    height: 100%;
+                    font-size: 20px;
+                    font-weight: bolder;
+                }
+    
+                .van-name {
+                    width: 20%;
+                    height: 100%;
+                    font-size: 20px;
+                    font-weight: bolder;
+                }
+    
+                .tot-name {
+                    width: 20%;
+                    height: 100%;
+                    font-size: 20px;
+                    font-weight: bolder;
+                }
+    
+                .opmerking-name {
+                    width: 40%;
+                    height: 100%;
+                    font-size: 20px;
+                    font-weight: bolder;
+                }
             }
-
-            .van {
-                width: 20%;
-                height: auto;
-                font-weight: bold;
+    
+            .line-header {
+                background-color: black;
+                width: 100%;
+                height: 2px;
             }
-
-            .tot {
-                width: 20%;
+    
+            .pending-main {
+                display: flex;
+                width: 100%;
                 height: auto;
-                font-weight: bold;
-            }
-
-            .opmerking {
-                width: 40%;
+                flex-wrap: wrap;
+                margin-bottom: 5px;
+    
+               .aanvraag-item {
+                display: flex;
+                width: 100%;
                 height: auto;
-                font-weight: bold;
+               }
+    
+                .status {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 20%;
+                    height: auto;
+                    font-weight: bold;
+                }
+    
+                .van {
+                    width: 20%;
+                    height: auto;
+                    font-weight: bold;
+                }
+    
+                .tot {
+                    width: 20%;
+                    height: auto;
+                    font-weight: bold;
+                }
+    
+                .opmerking {
+                    width: 40%;
+                    height: auto;
+                    font-weight: bold;
+                }
             }
+            
         }
-        
     }
 }

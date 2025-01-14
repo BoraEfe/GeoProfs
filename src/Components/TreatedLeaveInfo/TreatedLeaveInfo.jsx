@@ -8,7 +8,7 @@ import { db } from '../../firebase';
 
 
 const VerlofInfo = ({aanvraag, aanvraagId, onClose}) => {
-    const [leaveNote, setLeaveNote] = useState('');
+    const [reden, setReden] = useState('');
 
     async function moveLeaveRequest (aanvraag, collectionName){
         console.log('aanvraag id:', aanvraagId);
@@ -23,7 +23,6 @@ const VerlofInfo = ({aanvraag, aanvraagId, onClose}) => {
 
             if(docSnap.exists()){
                 const data = docSnap.data();
-                data.leaveNote = leaveNote;
                 const newLeaveRequestRef = doc(collection(db, collectionName)); 
                 await setDoc(newLeaveRequestRef, data);
                 await deleteDoc(oldLeaveRequestRef);	
@@ -49,30 +48,10 @@ const VerlofInfo = ({aanvraag, aanvraagId, onClose}) => {
                 <p>aangevraagd op:<strong> {new Date(aanvraag.timestamp.seconds * 1000).toLocaleDateString()}</strong></p>
                 <p>Van: <strong>{aanvraag.beginDatum}</strong></p>
                 <p>Tot: <strong>{aanvraag.eindDatum}</strong></p>
-                <p>status: <strong>{!aanvraag.isApproved ? `openstaand` : `error` }</strong></p>
+                <p>status: <strong>{aanvraag.isApproved ? `Voltooid` : `error` }</strong></p>
                 <p>Reden: <strong>{aanvraag.reden}</strong></p>
-
-                <textarea
-                    placeholder='Opmerking'
-                    style={{ height: '15vh' }}
-                    maxLength={500}
-                    value={leaveNote}
-                    onChange={(e) => setLeaveNote(e.target.value)}
-                />
+                <p>opmerking:<strong>{aanvraag.opmerking}</strong></p>
                 <div className={styles.buttons}>
-                    <button 
-                    onClick={async () => { 
-                        try{
-                           await moveLeaveRequest(aanvraag.uuid, 'goedgekeurdeAanvragen') 
-                           window.location.reload();
-                        }
-                        catch(error){
-                            console.error('Error approving leave request: ', error);
-                        }
-                      }}
-                    className={styles.approveButton}
-                    >Goedkeuren
-                    </button>
                     <button 
                     onClick={async () => {
                         try{

@@ -6,20 +6,23 @@ import { collection, getDocs } from 'firebase/firestore';
 import VerlofInfo from '../../components/verlofInfo/VerlofInfo';
 
 const AdminPage = () => {
-    const [searchVerlof, setSearchVerlof] = useState('');
-    const [searchAcceptedVerlof, setSearchAcceptedVerlof] = useState('');
-    const [searchRejectedVerlof, setSearchRejectedVerlof] = useState('');
-    const [selectedAanvraag, setSelectedAanvraag] = useState(null);
+    const [searchLeave, setSearchLeave] = useState('');
+    const [searchAcceptedLeave, setSearchAcceptedLeave] = useState('');
+    const [searchRejectedLeave, setSearchRejectedLeave] = useState('');
+
+    const [selectedAanvraagId , setSelectedAanvraagId] = useState(null);
+    const [selectedPendingLeave, setSelectedPendingLeave] = useState(null);
+
     const [verlofaanvragen, setVerlofaanvragen] = useState([]);
     const [goedgekeurdeAanvragen, setGoedgekeurdeAanvragen] = useState([]);
-    const [afgekeurdeAanvragen, setAfgekeurdeAanvragen] = useState([]);
+    const [afgekeurdeAanvragen, setAfgekeurdeAanvragen] = useState([]);  
 
     useEffect(() =>{
         const searchUserInLeaveRequest = async () => {
             try{
                 const leaveRequestRef = collection(db, 'Aanvragen');
                 const leaveRequestSnapshot = await getDocs(leaveRequestRef);
-                const leaveRequest = leaveRequestSnapshot.docs.map(doc => doc.data({
+                const leaveRequest = leaveRequestSnapshot.docs.map(doc => ({
                     id: doc.id,
                     ...doc.data(),
                 }));
@@ -41,7 +44,6 @@ const AdminPage = () => {
                 const leaveRequestSnapshot = await getDocs(leaveRequestRef);
                 const leaveRequest = leaveRequestSnapshot.docs.map(doc => doc.data());
                 setGoedgekeurdeAanvragen(leaveRequest);
-
                 console.log(verlofaanvragen);
             }
             catch(error){
@@ -68,12 +70,10 @@ const AdminPage = () => {
         searchUserInRejectedLeaveRequest();
     }, []);
 
-    
-
     return (
         <div class='adminpage'>
             <div className='heading'>
-                <h1>Admin Page</h1>
+                <h1>Verlofbeheer</h1>
             </div>
             <div className="container-fluid">
                 <div className="goedgekeurde-verlof-aanvragen">
@@ -82,16 +82,21 @@ const AdminPage = () => {
                     type="text" 
                     id="search-user" 
                     name="search"
-                    value={searchAcceptedVerlof}
-                    onChange={(e) => setSearchAcceptedVerlof(e.target.value)}
+                    value={searchAcceptedLeave}
+                    onChange={(e) => setSearchAcceptedLeave(e.target.value)}
                     placeholder='Zoek medewerker'/>  
                     <p>Alle aanvragen</p>
                     {goedgekeurdeAanvragen.length > 0 ? (
                         <ul>
                             {goedgekeurdeAanvragen.filter((aanvraag) =>
-                            aanvraag.medewerker?.toLowerCase().includes(searchAcceptedVerlof.toLowerCase())
+                            aanvraag.medewerker?.toLowerCase().includes(searchAcceptedLeave.toLowerCase())
                             ).map((aanvraag, index) => (
-                                <li key={index}> 
+                                <li key={index}
+                                    onClick={() => {
+                                        setSelectedPendingLeave(aanvraag);
+                                        setSelectedAanvraagId(aanvraag.id);
+                                    }}
+                                >
                                     <span className='groene-stip'></span>{aanvraag.medewerker || "Naam onbekend"}
                                     <p>{aanvraag.timestamp ? new Date(aanvraag.timestamp.seconds * 1000).toLocaleDateString() : "Datum onbekend"}</p>
                                 </li>
@@ -107,20 +112,20 @@ const AdminPage = () => {
                     type="text"
                     id="search-user" 
                     name="search"
-                    value={searchVerlof}
-                    onChange={(e) => setSearchVerlof(e.target.value)}
+                    value={searchLeave}
+                    onChange={(e) => setSearchLeave(e.target.value)}
                     placeholder='Zoek medewerker'/>
                     <p>Alle aanvragen</p>
                     {verlofaanvragen.length > 0 ? (
                         <ul>
                             {verlofaanvragen.filter((aanvraag) =>
-                            aanvraag.medewerker?.toLowerCase().includes(searchVerlof.toLowerCase())
+                            aanvraag.medewerker?.toLowerCase().includes(searchLeave.toLowerCase())
                             ).map((aanvraag, index) => (
                                 <li 
                                 key={index}
                                 onClick={() => {
-                                    setSelectedAanvraag(aanvraag);
-                                    console.log(aanvraag.id);
+                                    setSelectedPendingLeave(aanvraag);
+                                    setSelectedAanvraagId(aanvraag.id);
                                 }}
                                 >                                     
                                     <span className='oranje-stip'></span>{aanvraag.medewerker || "Naam onbekend"}
@@ -131,11 +136,13 @@ const AdminPage = () => {
                     ) : (
                         <p>Geen aanvragen</p>
                     )}
-                    {selectedAanvraag &&(
+                    {selectedPendingLeave &&(
                         <VerlofInfo
-                        aanvraag={selectedAanvraag}
-                        onClose={() => setSelectedAanvraag(null)}
-                        
+                        aanvraag={selectedPendingLeave}
+                        aanvraagId = {selectedAanvraagId}
+                        onClose={() => {
+                            setSelectedPendingLeave(null)
+                        }}
                         />
                     )}
                 </div>
@@ -145,16 +152,21 @@ const AdminPage = () => {
                     type="text" 
                     id="search-user" 
                     name="search" 
-                    value={searchRejectedVerlof}
-                    onChange={(e) => setSearchRejectedVerlof(e.target.value)}
+                    value={searchRejectedLeave}
+                    onChange={(e) => setSearchRejectedLeave(e.target.value)}
                     placeholder='Zoek medewerker'/>
                     <p>Alle aanvragen</p>
                     {afgekeurdeAanvragen.length > 0 ? (
                         <ul>
                             {afgekeurdeAanvragen.filter((aanvraag) => 
-                            aanvraag.medewerker?.toLowerCase().includes(searchRejectedVerlof.toLowerCase())
+                            aanvraag.medewerker?.toLowerCase().includes(searchRejectedLeave.toLowerCase())
                             ).map((aanvraag, index) => (
-                                <li key={index}> 
+                                <li key={index}
+                                    onClick={() => {
+                                        setSelectedPendingLeave(aanvraag);
+                                        setSelectedAanvraagId(aanvraag.id);
+                                    }}
+                                   > 
                                     <span className='rode-stip'></span>{aanvraag.medewerker || "Naam onbekend"}
                                     <p>{aanvraag.timestamp ? new Date(aanvraag.timestamp.seconds * 1000).toLocaleDateString() : "Datum onbekend"}</p>
                                 </li>

@@ -67,7 +67,7 @@ const Verlofaanvraag = () => {
         if (user) {
             const fetchData = async () => {
                 try {
-                    const usersRef = collection(db, 'aanvragen');
+                    const usersRef = collection(db, 'Aanvragen');
                     const q = query(usersRef, where('uuid', '==', uuid));
                     const querySnapshot = await getDocs(q);
                     const aanvragen = querySnapshot.docs.map((doc) => ({
@@ -117,11 +117,10 @@ const Verlofaanvraag = () => {
                     const userDoc = querySnapshot.docs[0];
                     const userRef = doc(db, 'users', userDoc.id);
 
-                    // Trek de gebruikte dagen af
                     const updatedVacationDays = vakantieDagen - requestedDays;
                     await updateDoc(userRef, { vakantiedagen: updatedVacationDays });
 
-                    setVakantiedagen(updatedVacationDays); // Update state met nieuwe vakantiedagen
+                    setVakantiedagen(updatedVacationDays);
                 }
 
                 console.log('Leave request successfully submitted!');
@@ -143,7 +142,10 @@ const Verlofaanvraag = () => {
     };
     console.log('Fetched leave types:', leaveTypes);
     return (
-        <>
+        <div className='main-container'>
+            <div className='verloftitle-container'>
+              <h1>Verlofaanvraag</h1>
+            </div>
             <div className='verlofaanvraag-container'>
             {isSubmitted && (
                         <p style={{ color: 'white', marginTop: '20px' }}>
@@ -230,7 +232,7 @@ const Verlofaanvraag = () => {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 }
 

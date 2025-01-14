@@ -84,7 +84,9 @@ const AddUser = () => {
 
 
     return(
-        <div className='adduser-container'>
+        <div className='main-container'>
+          <h1>Voeg medewerker toe</h1>
+          <div className='adduser-container'>
             <div className='adduser-form-container'>
             {confirmationMessage && <p className='confirmation-message'>{confirmationMessage}</p>}
                 <form onSubmit={createUser}>
@@ -207,7 +209,8 @@ const AddUser = () => {
                 </form>
             </div>
         </div>
-        
+
+        </div> 
     )
 }
 
