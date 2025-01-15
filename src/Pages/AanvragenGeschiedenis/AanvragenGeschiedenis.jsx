@@ -1,18 +1,38 @@
 import './AanvragenGeschiedenis.css';
 import { useState, useEffect } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../../firebase';
+import VerlofInfo from '../../components/verlofInfo/VerlofInfo';
 
 const AanvragenGeschiedenis = () => {
-    const [userID, setUserID] = useState();
+    const [userUUID, setUserUUID] = useState(null);
     const [openstaandeAanvragen, setOpenstaandeAanvragen] = useState([]);
     const [afgehandeldeAanvragen, setAfgehandeldeAanvragen] = useState([]);
+    const [selectedAanvraag, setSelectedAanvraag] = useState(null);
+    const [selectedAanvraagId, setSelectedAanvraagId] = useState(null);
+
+    useEffect(() => {
+        const fetchUuid = async () => {
+            try {
+                let uuid = sessionStorage.getItem('uuid');
+                console.log("Ingelogde UUID: ", uuid);
+                setUserUUID(uuid);
+            } catch (error) {
+                console.error("Fout bij het ophalen van de UUID:", error);
+            }
+        };
+
+        fetchUuid();
+    }, []);
 
     useEffect(() => {
         const fetchOpenstaandeAanvragen = async () => {
+            if (!userUUID) return;
+
             try {
                 const aanvragenRef = collection(db, 'Aanvragen');
-                const aanvragenSnapshot = await getDocs(aanvragenRef);
+                const q = query(aanvragenRef, where('uuid', '==', userUUID));
+                const aanvragenSnapshot = await getDocs(q);
                 const aanvragen = aanvragenSnapshot.docs.map((doc) => ({
                     id: doc.id,
                     ...doc.data(),
@@ -24,13 +44,15 @@ const AanvragenGeschiedenis = () => {
         };
 
         const fetchAfgehandeldeAanvragen = async () => {
+            if (!userUUID) return;
+
             try {
                 const goedgekeurdeRef = collection(db, 'goedgekeurdeAanvragen');
                 const afgekeurdeRef = collection(db, 'afgekeurdeAanvragen');
 
                 const [goedgekeurdSnapshot, afgekeurdSnapshot] = await Promise.all([
-                    getDocs(goedgekeurdeRef),
-                    getDocs(afgekeurdeRef),
+                    getDocs(query(goedgekeurdeRef, where('uuid', '==', userUUID))),
+                    getDocs(query(afgekeurdeRef, where('uuid', '==', userUUID))) 
                 ]);
 
                 const goedgekeurdeAanvragen = goedgekeurdSnapshot.docs.map((doc) => ({
@@ -53,16 +75,14 @@ const AanvragenGeschiedenis = () => {
 
         fetchOpenstaandeAanvragen();
         fetchAfgehandeldeAanvragen();
-    }, []);
+    }, [userUUID]);
 
     const formatTimestamp = (value) => {
         if (!value) return 'Datum onbekend';
 
         if (value.seconds) {
-            // Firebase Timestamp
             return new Date(value.seconds * 1000).toLocaleDateString();
         } else if (typeof value === 'string') {
-            // Date as string
             return new Date(value).toLocaleDateString();
         } else {
             return 'Ongeldig formaat';
@@ -76,7 +96,12 @@ const AanvragenGeschiedenis = () => {
                 {openstaandeAanvragen.length > 0 ? (
                     <ul>
                         {openstaandeAanvragen.map((aanvraag) => (
-                            <li key={aanvraag.id}>
+                            <li key={aanvraag.id}
+                                onClick={() => {
+                                    setSelectedAanvraag(aanvraag);
+                                    setSelectedAanvraagId(aanvraag.id);
+                                }}
+                            >
                                 <div className="aanvraag-info">
                                     <span className="oranje-stip"></span>
                                     <div className="aanvraag-details">
@@ -97,7 +122,12 @@ const AanvragenGeschiedenis = () => {
                 {afgehandeldeAanvragen.length > 0 ? (
                     <ul>
                         {afgehandeldeAanvragen.map((aanvraag) => (
-                            <li key={aanvraag.id}>
+                            <li key={aanvraag.id}
+                                onClick={() => {
+                                    setSelectedAanvraag(aanvraag);
+                                    setSelectedAanvraagId(aanvraag.id);
+                                }}
+                            >
                                 <div className="aanvraag-info">
                                     <span
                                         className={
@@ -117,6 +147,16 @@ const AanvragenGeschiedenis = () => {
                     <p>Geen afgehandelde aanvragen</p>
                 )}
             </div>
+
+            {selectedAanvraag && (
+                <VerlofInfo
+                    aanvraag={selectedAanvraag}
+                    aanvraagId={selectedAanvraagId}
+                    onClose={() => {
+                        setSelectedAanvraag(null);
+                    }}
+                />
+            )}
         </main>
     );
 };
