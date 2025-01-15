@@ -66,9 +66,9 @@ header {
             padding-right: 15px;
             display: flex;
             flex-direction: column;
-            align-items: start;
+            align-items: end;
             justify-content: center;
-            min-width: 120px;
+            width: 200px;
             margin-right: 15px;
         }
     }
