@@ -10,7 +10,6 @@
     flex-direction: column;
     transform: scale(1);
     overflow: hidden;
-   
     
     .closeButton{
         position: fixed;
@@ -19,7 +18,6 @@
         right:10px;
         top:10px;
     }
-
     .username{
         font-family: 40px; 
     }
