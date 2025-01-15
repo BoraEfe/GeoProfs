@@ -52,9 +52,13 @@ const HomePage = () => {
                 <button onClick={() => {navigate('/verlofaanvraag')}}>
                     Verlof aanvragen
                 </button>
+                
                 <div className='vakantiedagen'>
                     <p>Aantal vakantiedagen: {vakantiedagen}</p>
                 </div>
+                <button onClick={() => {navigate('/aanvragengeschiedenis')}}>
+                    Alle aanvragen
+                </button>
             </div>
             <div className='homepage-container-2'>
                 <h1 className='welkom-title'>
