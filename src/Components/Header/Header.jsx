@@ -15,7 +15,6 @@ const navigate = useNavigate();
     window.location.href = '/login';
   }
 
-
   return (
     <header>
       <h1 onClick={() => {navigate('/')}}><strong>Geo</strong>Profs</h1>
@@ -45,6 +44,7 @@ const navigate = useNavigate();
             <strong>Logged in as</strong>
             <span>{sessionStorage.getItem('firstname')} {sessionStorage.getItem('lastname')},</span>
             <p><CheckUserRole/></p>
+            
           </div>
           </>
         ) : (<div></div>)}

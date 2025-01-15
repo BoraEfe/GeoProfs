@@ -196,7 +196,6 @@ const AddUser = () => {
                          <option value="" disabled>Selecteer een departement</option>
                         <option value="geoict">Geo-ICT</option>
                         <option value="geodesy">Geodesy</option>
-                        <option value="relationmanagement">Relation management</option>
                         <option value="finance">Finance</option>
                         <option value="hrm">HRM</option>
                         <option value="ict">ICT</option>

@@ -10,6 +10,7 @@ import { UserProvider } from './functions/context/User'
 import AddUser from './pages/AddUser/AddUser'
 import ChangeTemporaryPassword from './components/ChangeTemporaryPassword/ChangeTemporaryPassword'
 import { useLocation } from 'react-router-dom';
+import AanvragenGeschiedenis from './Pages/AanvragenGeschiedenis/AanvragenGeschiedenis'
 
 const App = () => {
   const location = useLocation();
@@ -31,6 +32,7 @@ const App = () => {
         <Route path="/AddUser" element={<AddUser />} />
         <Route path="/changeTemporaryPassword" element={<ChangeTemporaryPassword />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/AanvragenGeschiedenis" element={<AanvragenGeschiedenis />} />
       </Routes>
     </UserProvider>
   );
