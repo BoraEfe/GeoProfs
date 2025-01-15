@@ -1,36 +1,61 @@
 import './Agenda.css';
+import { useState, useEffect } from 'react';
 
 const Agenda = () => {
+    const [month, setMonth] = useState( new Date().getMonth()); 
+    const [days, setDays] = useState([]);
+    const [year, setYear] = useState(new Date().getFullYear());
 
+    const months = ['Januari', 'Februari', 'Maart', 'April', 'Mei', 'Juni', 'Juli', 'Augustus', 'September', 'Oktober', 'November', 'December'];
 
+    function calculateWeekDays(){
+        let year = new Date().getFullYear();    
+        let endOfMonth = new Date(year, month + 1,0).getDate();
+        const weekdays = [];
 
-    let days = [];
+        for(let day = 1; day < endOfMonth; day++){
+            const date = new Date(year, month, day);
+            
+            const isWeekend = date.getDay() === 0 || date.getDay() === 6;
 
-    function getIncomingDays(){
-        for(let i = 0; i < 49; i++){
-            let date = new Date();
-            function isWeekend(date){
-               return date.getDay() === 0 || date.getDay() === 6;
-            }
-            date.setDate(date.getDate() + i);
-
-            if(!isWeekend(date)){
-                days.push(date);
+            if(!isWeekend){
+                weekdays.push(date);
             }
         }
-        return days;
+        setDays(weekdays);   
     }
-    function getIncomingLeave(){
-        let Leave = [];
-    }
+
+    useEffect(() => {
+        calculateWeekDays();
+    },[month]);
 
     return(
         <div className='agenda-container'>
-            Agenda
+            <h2>Agenda</h2>
+            <div className='buttons-container'>
+                <button 
+                 className='choose-month'
+                 onClick = {() => setMonth((month + 11 ) % 12)}>
+                    <span>{'<'}</span>
+                </button>
+                <div className='current-month'>{months[month] + ` ` + year}</div>
+                <button
+                 className='choose-month'
+                 onClick= {() => setMonth((month + 1) % 12)}>
+                    <span>{'>'}</span>
+                </button>
+            </div>
+            <ul>
+                <li>Maandag</li>
+                <li>Dinsdag</li>
+                <li>Woensdag</li>
+                <li>Donderdag</li>
+                <li>Vrijdag</li>
+            </ul>
             <div className='calendar-container'>
-            {getIncomingDays().map((day, index) => (
+            {days.map((day, index) => (
             <div className='day-container'>
-                <div key={index} className='day'>
+                <div key={index} className='day-container'>
                     <div className='day-number'>
                          {`${day.getDate()} ${day.toLocaleString('default', {month: 'short'})} `}
                     </div>
