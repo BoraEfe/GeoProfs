@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import styles from './VerlofInfo.module.css';
+import styles from './LeaveInfo.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faX } from '@fortawesome/free-solid-svg-icons';
 import { collection, getDoc, setDoc } from 'firebase/firestore';
@@ -7,7 +7,7 @@ import { doc, deleteDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
 
 
-const VerlofInfo = ({aanvraag, aanvraagId, onClose}) => {
+const LeaveInfo = ({aanvraag, aanvraagId, onClose}) => {
     const [leaveNote, setLeaveNote] = useState('');
 
     async function moveLeaveRequest (aanvraag, collectionName){
@@ -50,6 +50,7 @@ const VerlofInfo = ({aanvraag, aanvraagId, onClose}) => {
                 <p>Van: <strong>{aanvraag.beginDatum}</strong></p>
                 <p>Tot: <strong>{aanvraag.eindDatum}</strong></p>
                 <p>status: <strong>{!aanvraag.isApproved ? `openstaand` : `error` }</strong></p>
+                <p>Soort verlof: <strong>{aanvraag.typeVerlof}</strong></p>
                 <p>Reden: <strong>{aanvraag.reden}</strong></p>
 
                 <textarea
@@ -90,4 +91,4 @@ const VerlofInfo = ({aanvraag, aanvraagId, onClose}) => {
     )
 }
 
-export default VerlofInfo;
+export default LeaveInfo;

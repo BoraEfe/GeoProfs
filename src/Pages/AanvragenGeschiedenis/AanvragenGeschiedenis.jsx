@@ -2,7 +2,7 @@ import './AanvragenGeschiedenis.css';
 import { useState, useEffect } from 'react';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../../firebase';
-import VerlofInfo from '../../components/verlofInfo/VerlofInfo';
+import LeaveInfo from '../../Components/leaveInfo/LeaveInfo';
 
 const AanvragenGeschiedenis = () => {
     const [userUUID, setUserUUID] = useState(null);
@@ -149,7 +149,7 @@ const AanvragenGeschiedenis = () => {
             </div>
 
             {selectedAanvraag && (
-                <VerlofInfo
+                <LeaveInfo
                     aanvraag={selectedAanvraag}
                     aanvraagId={selectedAanvraagId}
                     onClose={() => {

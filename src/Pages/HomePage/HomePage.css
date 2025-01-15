@@ -1,6 +1,7 @@
 *{
     margin: 0;
     padding: 0;
+    overflow: hidden;
 }
 main{
     font-family: "jost", sans-serif;
@@ -11,9 +12,10 @@ main{
     display: flex;
     flex-direction: row;
 
+
     .homepage-container-1, .homepage-container-2, .homepage-container-3{
         width: 33.33%;
-        height: auto;
+        height: calc(100vh - 80px);
         display: flex;
         flex-direction: column;
         align-items: center;
