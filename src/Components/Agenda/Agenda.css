@@ -35,23 +35,6 @@
             color:black;
         }
     }
-
-    ul{
-        width:100%;
-        padding:20px;
-        height:20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        li{
-            list-style: none;
-            font-size: 20px;
-            font-weight: bold;
-            color: black;
-        }
-    }
-
    
     .calendar-container {
         width: 100%;
@@ -77,6 +60,12 @@
     .leave-day {
         background-color: rgb(40, 214, 17);
         color: white; 
+    }
+    .leave-request-day {
+        background-color: orange;
+        color: white; 
+        border-radius: 5px;
+        padding: 5px;
     }
     
     .day-number {

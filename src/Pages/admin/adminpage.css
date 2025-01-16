@@ -40,9 +40,7 @@
                 width:100%;
                 height:auto;
                 max-height: fit-content;
-                overflow-y: auto;
-                display: flex;
-                flex-direction: column;
+                overflow-y:auto;
                 margin-top:10px;
                 gap:3px;
 
@@ -55,7 +53,7 @@
                     align-items: center; 
                     width: 95%;
                     color:black;
-                    padding: 12px;
+                    padding:15px;
                     margin-top: 6px;
                     margin-bottom:6px;
                     margin-left:10px;
