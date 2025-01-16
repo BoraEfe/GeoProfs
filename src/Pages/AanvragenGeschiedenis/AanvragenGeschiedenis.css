@@ -4,12 +4,14 @@
     box-sizing: border-box;
 }
 
-main {
+.AanvragenGeschiedenis {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 20px;
+    background: #A63446;
+    min-height: calc(100vh - 80px);
 }
 
 .container {

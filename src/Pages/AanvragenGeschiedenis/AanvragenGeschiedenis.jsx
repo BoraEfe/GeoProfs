@@ -90,7 +90,7 @@ const AanvragenGeschiedenis = () => {
     };
 
     return (
-        <main>
+        <div className='AanvragenGeschiedenis'>
             <div className="container">
                 <h1>Openstaande verzoeken</h1>
                 {openstaandeAanvragen.length > 0 ? (
@@ -157,7 +157,7 @@ const AanvragenGeschiedenis = () => {
                     }}
                 />
             )}
-        </main>
+        </div>
     );
 };
 
