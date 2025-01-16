@@ -86,25 +86,27 @@ const AdminPage = () => {
                     onChange={(e) => setSearchAcceptedLeave(e.target.value)}
                     placeholder='Zoek medewerker'/>  
                     <p>Alle aanvragen</p>
-                    {goedgekeurdeAanvragen.length > 0 ? (
-                        <ul>
-                            {goedgekeurdeAanvragen.filter((aanvraag) =>
-                            aanvraag.medewerker?.toLowerCase().includes(searchAcceptedLeave.toLowerCase())
-                            ).map((aanvraag, index) => (
-                                <li key={index}
-                                    onClick={() => {
-                                        setSelectedPendingLeave(aanvraag);
-                                        setSelectedAanvraagId(aanvraag.id);
-                                    }}
-                                >
-                                    <span className='groene-stip'></span>{aanvraag.medewerker || "Naam onbekend"}
-                                    <p>{aanvraag.timestamp ? new Date(aanvraag.timestamp.seconds * 1000).toLocaleDateString() : "Datum onbekend"}</p>
-                                </li>
-                            ))}
-                        </ul>
-                    ) : (
-                        <p>Geen aanvragen</p>
-                    )}
+                    <div className='ul-container'>
+                        {goedgekeurdeAanvragen.length > 0 ? (
+                            <ul>
+                                {goedgekeurdeAanvragen.filter((aanvraag) =>
+                                aanvraag.medewerker?.toLowerCase().includes(searchAcceptedLeave.toLowerCase())
+                                ).map((aanvraag, index) => (
+                                    <li key={index}
+                                        onClick={() => {
+                                            setSelectedPendingLeave(aanvraag);
+                                            setSelectedAanvraagId(aanvraag.id);
+                                        }}
+                                    >
+                                        <span className='groene-stip'></span>{aanvraag.medewerker || "Naam onbekend"}
+                                        <p>{aanvraag.timestamp ? new Date(aanvraag.timestamp.seconds * 1000).toLocaleDateString() : "Datum onbekend"}</p>
+                                    </li>
+                                ))}
+                            </ul>
+                        ) : (
+                            <p>Geen aanvragen</p>
+                        )}
+                   </div>
                 </div>
                 <div className="openstaande-verlof-aanvragen">
                     <h2>Openstaande verlof aanvragen</h2>
@@ -116,26 +118,28 @@ const AdminPage = () => {
                     onChange={(e) => setSearchLeave(e.target.value)}
                     placeholder='Zoek medewerker'/>
                     <p>Alle aanvragen</p>
-                    {verlofaanvragen.length > 0 ? (
-                        <ul>
-                            {verlofaanvragen.filter((aanvraag) =>
-                            aanvraag.medewerker?.toLowerCase().includes(searchLeave.toLowerCase())
-                            ).map((aanvraag, index) => (
-                                <li 
-                                key={index}
-                                onClick={() => {
-                                    setSelectedPendingLeave(aanvraag);
-                                    setSelectedAanvraagId(aanvraag.id);
-                                }}
-                                >                                     
-                                    <span className='oranje-stip'></span>{aanvraag.medewerker || "Naam onbekend"}
-                                    <p>{aanvraag.timestamp ? new Date(aanvraag.timestamp.seconds * 1000).toLocaleDateString() : "Datum onbekend"}</p>
-                                </li>
-                            ))}
-                        </ul>
-                    ) : (
-                        <p>Geen aanvragen</p>
-                    )}
+                    <div className='ul-container'>
+                        {verlofaanvragen.length > 0 ? (
+                            <ul>
+                                {verlofaanvragen.filter((aanvraag) =>
+                                aanvraag.medewerker?.toLowerCase().includes(searchLeave.toLowerCase())
+                                ).map((aanvraag, index) => (
+                                    <li 
+                                    key={index}
+                                    onClick={() => {
+                                        setSelectedPendingLeave(aanvraag);
+                                        setSelectedAanvraagId(aanvraag.id);
+                                    }}
+                                    >                                     
+                                        <span className='oranje-stip'></span>{aanvraag.medewerker || "Naam onbekend"}
+                                        <p>{aanvraag.timestamp ? new Date(aanvraag.timestamp.seconds * 1000).toLocaleDateString() : "Datum onbekend"}</p>
+                                    </li>
+                                ))}
+                            </ul>
+                        ) : (
+                            <p>Geen aanvragen</p>
+                        )}
+                    </div>
                     {selectedPendingLeave &&(
                         <LeaveInfo
                         aanvraag={selectedPendingLeave}
@@ -156,25 +160,27 @@ const AdminPage = () => {
                     onChange={(e) => setSearchRejectedLeave(e.target.value)}
                     placeholder='Zoek medewerker'/>
                     <p>Alle aanvragen</p>
-                    {afgekeurdeAanvragen.length > 0 ? (
-                        <ul>
-                            {afgekeurdeAanvragen.filter((aanvraag) => 
-                            aanvraag.medewerker?.toLowerCase().includes(searchRejectedLeave.toLowerCase())
-                            ).map((aanvraag, index) => (
-                                <li key={index}
-                                    onClick={() => {
-                                        setSelectedPendingLeave(aanvraag);
-                                        setSelectedAanvraagId(aanvraag.id);
-                                    }}
-                                   > 
-                                    <span className='rode-stip'></span>{aanvraag.medewerker || "Naam onbekend"}
-                                    <p>{aanvraag.timestamp ? new Date(aanvraag.timestamp.seconds * 1000).toLocaleDateString() : "Datum onbekend"}</p>
-                                </li>
-                            ))}
-                        </ul>
-                    ) : (
-                        <p>Geen aanvragen</p>
-                    )}
+                    <div className='ul-container'>
+                        {afgekeurdeAanvragen.length > 0 ? (
+                            <ul>
+                                {afgekeurdeAanvragen.filter((aanvraag) => 
+                                aanvraag.medewerker?.toLowerCase().includes(searchRejectedLeave.toLowerCase())
+                                ).map((aanvraag, index) => (
+                                    <li key={index}
+                                        onClick={() => {
+                                            setSelectedPendingLeave(aanvraag);
+                                            setSelectedAanvraagId(aanvraag.id);
+                                        }}
+                                    > 
+                                        <span className='rode-stip'></span>{aanvraag.medewerker || "Naam onbekend"}
+                                        <p>{aanvraag.timestamp ? new Date(aanvraag.timestamp.seconds * 1000).toLocaleDateString() : "Datum onbekend"}</p>
+                                    </li>
+                                ))}
+                            </ul>
+                        ) : (
+                            <p>Geen aanvragen</p>
+                        )}
+                    </div>
                 </div>
             </div>
         </div>
