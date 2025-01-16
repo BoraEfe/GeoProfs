@@ -63,11 +63,25 @@ const Verlofaanvraag = () => {
         return Math.ceil(timeDifference / (1000 * 3600 * 24)) + 1;
     };
 
+    const calculateTotalLeaveDays = (startDate, endDate) => {
+        const leaveDays = [];
+        const start = new Date(startDate);
+        const end = new Date(endDate);
+        const currentDate = new Date(start);
+
+        while(currentDate <= end) {
+            leaveDays.push(new Date(currentDate));
+            currentDate.setDate(currentDate.getDate() + 1);
+        }
+        return leaveDays;
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         if (uuid && soortVerlof.length > 0 && verlofBeginData && verlofEindData) {
             const requestedDays = calculateDays(verlofBeginData, verlofEindData);
+            const requestedLeaveDays = calculateTotalLeaveDays(verlofBeginData, verlofEindData);
 
             if (requestedDays > vakantieDagen) {
                 alert('U heeft niet genoeg vakantiedagen.');
@@ -80,6 +94,7 @@ const Verlofaanvraag = () => {
                     medewerker: sessionStorage.getItem('firstname') + ' ' + sessionStorage.getItem('lastname'),
                     beginDatum: verlofBeginData,
                     eindDatum: verlofEindData,
+                    aantalDagen: requestedLeaveDays,
                     reden: reden,
                     isApproved: false, 
                     typeVerlof: soortVerlof,
