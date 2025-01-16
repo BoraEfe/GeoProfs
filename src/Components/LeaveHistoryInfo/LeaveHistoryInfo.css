@@ -1,0 +1,60 @@
+.verlofAanvraagDetails {
+    position: fixed;
+    z-index: 1000;
+    background-color: white;
+    color: #333;
+    width: 90%;
+    max-width: 600px;
+    height: auto;
+    max-height: 80vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 12px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+
+        .closeButton {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: none;
+        border: none;
+        color: #999;
+        font-size: 24px;
+        cursor: pointer;
+        transition: all 0.3s;
+
+        &:hover {
+            color: #ff0000;
+            scale: 1.1;
+            transition: all 0.3s;
+        }
+    }
+    .username {
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        text-align: center;
+        color: #444;
+    }
+    p {
+        margin: 10px 0;
+        font-size: 16px;
+        line-height: 1.6;
+        color: #444;
+        border-bottom: 1px solid black;
+    }
+    @media (max-width: 768px) {
+        .verlofAanvraagDetails {
+            width: 95%;
+            max-width: none;
+            max-height: 90vh;
+            padding: 15px;  
+        }
+    }
+}

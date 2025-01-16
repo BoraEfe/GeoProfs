@@ -83,7 +83,7 @@ const Login = () => {
         <div className='login-container'>
             <div className='login-form'>
                 <h1>
-                    Login GeoProfs  
+                    GeoProfs STAND UP 
                 </h1>
                 <form onSubmit={handleLogin}>
                     <p>Email</p>

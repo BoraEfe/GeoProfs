@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import './adminpage.css';
 import { db } from '../../firebase';
 import { collection, getDocs } from 'firebase/firestore';
-import VerlofInfo from '../../components/verlofInfo/VerlofInfo';
+import LeaveInfo from '../../Components/leaveInfo/LeaveInfo';
 
 const AdminPage = () => {
     const [searchLeave, setSearchLeave] = useState('');
@@ -137,7 +137,7 @@ const AdminPage = () => {
                         <p>Geen aanvragen</p>
                     )}
                     {selectedPendingLeave &&(
-                        <VerlofInfo
+                        <LeaveInfo
                         aanvraag={selectedPendingLeave}
                         aanvraagId = {selectedAanvraagId}
                         onClose={() => {
