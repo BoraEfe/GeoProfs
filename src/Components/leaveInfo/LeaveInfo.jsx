@@ -25,7 +25,7 @@ const LeaveInfo = ({aanvraag, aanvraagId, onClose}) => {
             if (docSnap.exists()) {
                 const data = docSnap.data();
                 data.leaveNote = leaveNote;
-                data.isApproved = isApproved; // Stel isApproved in
+                data.isApproved = isApproved;
 
                 const newLeaveRequestRef = doc(collection(db, collectionName));
                 await setDoc(newLeaveRequestRef, data);
@@ -59,7 +59,7 @@ const LeaveInfo = ({aanvraag, aanvraagId, onClose}) => {
                     Tot: <strong>{aanvraag.eindDatum}</strong>
                 </p>
                 <p>
-                    status: <strong>{!aanvraag.isApproved ? 'openstaand' : 'goedgekeurd'}</strong>
+                    status: <strong>{!aanvraag.isApproved}</strong>
                 </p>
                 <p>
                     Reden: <strong>{aanvraag.reden}</strong>
