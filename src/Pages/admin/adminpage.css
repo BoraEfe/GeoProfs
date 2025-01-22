@@ -35,17 +35,21 @@
             flex-direction: column;
             align-items: center;
             border-radius: 15px;
-
-            ul{
-                width:100%;
-                height:auto;
-                max-height: fit-content;
-                overflow-y: auto;
+            
+            .ul-container{
+                width: 100%;
+                height: 100%;
                 display: flex;
                 flex-direction: column;
                 margin-top:10px;
-                gap:3px;
+            }
 
+            ul{
+                width:100%;
+                min-height: auto;
+                max-height: fit-content;
+                overflow-y:auto;
+                gap:3px;
                 scrollbar-width: thin;
                 scrollbar-color: #f9f9f9 #910C0C;
 
@@ -55,7 +59,7 @@
                     align-items: center; 
                     width: 95%;
                     color:black;
-                    padding: 12px;
+                    padding:15px;
                     margin-top: 6px;
                     margin-bottom:6px;
                     margin-left:10px;

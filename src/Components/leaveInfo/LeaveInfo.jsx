@@ -26,6 +26,7 @@ const LeaveInfo = ({aanvraag, aanvraagId, onClose}) => {
                 const data = docSnap.data();
                 data.leaveNote = leaveNote;
                 data.isApproved = isApproved;
+                data.isApproved = isApproved;
 
                 const newLeaveRequestRef = doc(collection(db, collectionName));
                 await setDoc(newLeaveRequestRef, data);
@@ -41,7 +42,6 @@ const LeaveInfo = ({aanvraag, aanvraagId, onClose}) => {
     if (!aanvraag) return null;
 
     return (
-        <div className={styles.overlay}>
             <div className={styles.verlofDetails}>
                 <button onClick={onClose} className={styles.closeButton}>
                     <FontAwesomeIcon icon={faX} />
@@ -63,6 +63,9 @@ const LeaveInfo = ({aanvraag, aanvraagId, onClose}) => {
                 </p>
                 <p>
                     Reden: <strong>{aanvraag.reden}</strong>
+                </p>
+                <p>
+                    Type: <strong>{aanvraag.typeVerlof}</strong>
                 </p>
 
                 {role !== '4' && (
@@ -105,7 +108,6 @@ const LeaveInfo = ({aanvraag, aanvraagId, onClose}) => {
                     </>
                 )}
             </div>
-        </div>
     );
 };
 

@@ -52,7 +52,9 @@ const HomePage = () => {
                 <button onClick={() => {navigate('/verlofaanvraag')}}>
                     Verlof aanvragen
                 </button>
-                
+                <button onClick={() => {navigate('/Ziekmelden')}}>
+                    Ziekmelden
+                </button>
                 <div className='vakantiedagen'>
                     <p>Aantal vakantiedagen: {vakantiedagen}</p>
                 </div>

@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #A63446;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 80px);
+    overflow: hidden;
+    margin: 0;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: calc(100vh - 80px);
+    text-align: center;
+
+    h1{
+        color: white;
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+
+    .ziekmelden-container {
+        width: 90%;
+        max-width: 600px;
+        background: #F6D5D5;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+        p{
+            color: #555;
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+    }
+
+    .submit-button {
+        display: block;
+        margin: 0 auto;
+        margin-top: 20px;
+        padding: 15px 40px;
+        font-size: 1rem;
+        font-weight: 600;
+        color: #fff;
+        background: #A63446;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: .4s;
+
+        &:hover {
+            background: #751F2C;
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, .3);
+        }
+    }
+}

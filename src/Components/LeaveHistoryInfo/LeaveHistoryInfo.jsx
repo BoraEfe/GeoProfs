@@ -5,19 +5,19 @@ import { faX } from '@fortawesome/free-solid-svg-icons';
 import { collection, getDoc, setDoc, doc, deleteDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
 
-const LeaveHistoryInfo = ({aanvraag, aanvraagId, onClose}) => {
-    const [leaveNote, setLeaveNote] = useState('');
+const LeaveHistoryInfo = ({ aanvraag, aanvraagId, onClose }) => {
     const role = sessionStorage.getItem('role');
     console.log('role:', role);
 
     if (!aanvraag) return null;
 
     return (
-            <div className= 'verlofAanvraagDetails'>
-                <button onClick={onClose} className= 'closeButton'>
+        <div className="overlay">
+            <div className="verlofAanvraagDetails">
+                <button onClick={onClose} className="closeButton">
                     <FontAwesomeIcon icon={faX} />
                 </button>
-                <h2 className='username'>
+                <h2 className="username">
                     details van <strong>{aanvraag.medewerker}</strong>
                 </h2>
                 <p>
@@ -30,12 +30,13 @@ const LeaveHistoryInfo = ({aanvraag, aanvraagId, onClose}) => {
                     Tot: <strong>{aanvraag.eindDatum}</strong>
                 </p>
                 <p>
-                    status: <strong>{!aanvraag.isApproved ? 'openstaand' : 'goedgekeurd'}</strong>
+                    Status: <strong>{aanvraag.isApproved === null ? 'Openstaand' : aanvraag.isApproved ? 'Goedgekeurd' : 'Afgewezen'}</strong>
                 </p>
                 <p>
                     Reden: <strong>{aanvraag.reden}</strong>
                 </p>
             </div>
+        </div>
     );
 };
 
