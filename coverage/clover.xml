@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1737928215257" clover="3.2.0">
-  <project timestamp="1737928215258" name="All files">
+<coverage generated="1737931699064" clover="3.2.0">
+  <project timestamp="1737931699065" name="All files">
     <metrics statements="39" coveredstatements="39" conditionals="13" coveredconditionals="13" methods="7" coveredmethods="7" elements="59" coveredelements="59" complexity="0" loc="39" ncloc="39" packages="6" files="6" classes="6"/>
     <package name="CancelPageSwitchWhenNotLoggedIn">
       <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
