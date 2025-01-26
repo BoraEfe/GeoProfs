@@ -9,7 +9,7 @@ describe('Verlofaanvraag Component', () => {
     render(<Verlofaanvraag />);
 
     expect(screen.getByText(/verlofaanvraag/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/Soort verlof/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/Reden van verlof/i)).toBeInTheDocument();
     expect(screen.getByPlaceholderText(/Reden van verlof/i)).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /Verstuur/i })).toBeInTheDocument();
   });
