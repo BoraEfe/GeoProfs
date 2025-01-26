@@ -9,13 +9,38 @@
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     overflow: hidden;
+    
+    .closeButton{
+        position: fixed;
+        width:30px;
+        height:30px;
+        right:10px;
+        top:10px;
+    }
 
-    .closeButton {
-        position: absolute;
-        top: 15px;
-        right: 15px;
-        background: none;
-        border: none;
+    .username{
+        font-family: 40px; 
+    }
+
+    textarea{
+        width: 90%;
+        min-height: 200px !important;
+        max-height: 300px;;
+        margin-left: 10px;
+        margin-right:auto;
+        margin-top: 10px;
+        resize: none;
+        font-size: 18px;
+    }
+    textarea:focus{
+        border-color: #007bff;
+        box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+        outline:none;
+    }
+
+    p{
+        margin-right:auto;
+        margin-left:10px;
         font-size: 20px;
         color: #888;
         cursor: pointer;

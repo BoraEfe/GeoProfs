@@ -96,7 +96,7 @@ const Verlofaanvraag = () => {
                     eindDatum: verlofEindData,
                     aantalDagen: requestedLeaveDays,
                     reden: reden,
-                    isApproved: false, 
+                    isApproved: null, 
                     typeVerlof: soortVerlof,
                     timestamp: new Date(),
                     departement: department
