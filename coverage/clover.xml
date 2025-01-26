@@ -1,220 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1737924970357" clover="3.2.0">
-  <project timestamp="1737924970357" name="All files">
-    <metrics statements="223" coveredstatements="74" conditionals="71" coveredconditionals="19" methods="46" coveredmethods="13" elements="340" coveredelements="106" complexity="0" loc="223" ncloc="223" packages="10" files="10" classes="10"/>
-    <package name="src">
-      <metrics statements="6" coveredstatements="5" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
-      <file name="firebase.jsx" path="C:\Users\roelj\OneDrive\Documenten\school\geoprofs\GeoProfs\src\firebase.jsx">
-        <metrics statements="6" coveredstatements="5" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="17" count="2" type="stmt"/>
-        <line num="21" count="2" type="stmt"/>
-        <line num="22" count="2" type="cond" truecount="1" falsecount="1"/>
-        <line num="23" count="0" type="stmt"/>
-        <line num="28" count="2" type="stmt"/>
-      </file>
-    </package>
-    <package name="src.Components.Agenda">
-      <metrics statements="67" coveredstatements="1" conditionals="30" coveredconditionals="0" methods="15" coveredmethods="0"/>
-      <file name="Agenda.jsx" path="C:\Users\roelj\OneDrive\Documenten\school\geoprofs\GeoProfs\src\Components\Agenda\Agenda.jsx">
-        <metrics statements="67" coveredstatements="1" conditionals="30" coveredconditionals="0" methods="15" coveredmethods="0"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="19" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="30" count="0" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
-        <line num="33" count="0" type="stmt"/>
-        <line num="34" count="0" type="stmt"/>
-        <line num="35" count="0" type="cond" truecount="0" falsecount="4"/>
-        <line num="36" count="0" type="stmt"/>
-        <line num="39" count="0" type="stmt"/>
-        <line num="42" count="0" type="stmt"/>
-        <line num="43" count="0" type="stmt"/>
-        <line num="45" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="46" count="0" type="stmt"/>
-        <line num="47" count="0" type="stmt"/>
-        <line num="50" count="0" type="stmt"/>
-        <line num="56" count="0" type="stmt"/>
-        <line num="58" count="0" type="stmt"/>
-        <line num="60" count="0" type="stmt"/>
-        <line num="61" count="0" type="stmt"/>
-        <line num="62" count="0" type="cond" truecount="0" falsecount="4"/>
-        <line num="63" count="0" type="stmt"/>
-        <line num="66" count="0" type="stmt"/>
-        <line num="70" count="0" type="stmt"/>
-        <line num="71" count="0" type="stmt"/>
-        <line num="73" count="0" type="stmt"/>
-        <line num="74" count="0" type="stmt"/>
-        <line num="76" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="78" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="79" count="0" type="stmt"/>
-        <line num="82" count="0" type="stmt"/>
-        <line num="85" count="0" type="stmt"/>
-        <line num="86" count="0" type="stmt"/>
-        <line num="89" count="0" type="stmt"/>
-        <line num="90" count="0" type="stmt"/>
-        <line num="91" count="0" type="stmt"/>
-        <line num="94" count="0" type="stmt"/>
-        <line num="95" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="96" count="0" type="stmt"/>
-        <line num="97" count="0" type="stmt"/>
-        <line num="100" count="0" type="stmt"/>
-        <line num="103" count="0" type="stmt"/>
-        <line num="104" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="105" count="0" type="stmt"/>
-        <line num="106" count="0" type="stmt"/>
-        <line num="109" count="0" type="stmt"/>
-        <line num="113" count="0" type="stmt"/>
-        <line num="119" count="0" type="stmt"/>
-        <line num="125" count="0" type="stmt"/>
-        <line num="131" count="0" type="stmt"/>
-        <line num="132" count="0" type="stmt"/>
-        <line num="133" count="0" type="cond" truecount="0" falsecount="3"/>
-        <line num="137" count="0" type="stmt"/>
-        <line num="138" count="0" type="stmt"/>
-        <line num="139" count="0" type="cond" truecount="0" falsecount="3"/>
-        <line num="144" count="0" type="stmt"/>
-      </file>
-    </package>
-    <package name="src.Pages.HomePage">
-      <metrics statements="25" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="1"/>
-      <file name="HomePage.jsx" path="C:\Users\roelj\OneDrive\Documenten\school\geoprofs\GeoProfs\src\Pages\HomePage\HomePage.jsx">
-        <metrics statements="25" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="1"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="12" count="5" type="stmt"/>
-        <line num="13" count="5" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
-        <line num="30" count="0" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
-        <line num="32" count="0" type="stmt"/>
-        <line num="34" count="0" type="stmt"/>
-        <line num="36" count="0" type="stmt"/>
-        <line num="37" count="0" type="stmt"/>
-        <line num="40" count="0" type="stmt"/>
-        <line num="44" count="0" type="stmt"/>
-        <line num="47" count="0" type="stmt"/>
-        <line num="49" count="0" type="stmt"/>
-        <line num="52" count="0" type="stmt"/>
-        <line num="59" count="0" type="stmt"/>
-      </file>
-    </package>
-    <package name="src.Pages.Verlofaanvraag">
-      <metrics statements="86" coveredstatements="26" conditionals="26" coveredconditionals="5" methods="15" coveredmethods="4"/>
-      <file name="Verlofaanvraag.jsx" path="C:\Users\roelj\OneDrive\Documenten\school\geoprofs\GeoProfs\src\Pages\Verlofaanvraag\Verlofaanvraag.jsx">
-        <metrics statements="86" coveredstatements="26" conditionals="26" coveredconditionals="5" methods="15" coveredmethods="4"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="8" count="2" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="15" count="1" type="stmt"/>
-        <line num="17" count="1" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
-        <line num="19" count="1" type="stmt"/>
-        <line num="21" count="1" type="stmt"/>
-        <line num="23" count="1" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
-        <line num="25" count="1" type="stmt"/>
-        <line num="26" count="1" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
-        <line num="30" count="1" type="stmt"/>
-        <line num="33" count="1" type="stmt"/>
-        <line num="34" count="1" type="stmt"/>
-        <line num="35" count="0" type="stmt"/>
-        <line num="36" count="0" type="stmt"/>
-        <line num="37" count="0" type="stmt"/>
-        <line num="38" count="0" type="stmt"/>
-        <line num="40" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="41" count="0" type="stmt"/>
-        <line num="42" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="44" count="0" type="stmt"/>
-        <line num="45" count="0" type="stmt"/>
-        <line num="48" count="0" type="stmt"/>
-        <line num="52" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="53" count="0" type="stmt"/>
-        <line num="57" count="1" type="stmt"/>
-        <line num="58" count="0" type="stmt"/>
-        <line num="59" count="0" type="stmt"/>
-        <line num="60" count="0" type="stmt"/>
-        <line num="62" count="0" type="stmt"/>
-        <line num="65" count="1" type="stmt"/>
-        <line num="66" count="0" type="stmt"/>
-        <line num="67" count="0" type="stmt"/>
-        <line num="68" count="0" type="stmt"/>
-        <line num="69" count="0" type="stmt"/>
-        <line num="71" count="0" type="stmt"/>
-        <line num="72" count="0" type="stmt"/>
-        <line num="73" count="0" type="stmt"/>
-        <line num="75" count="0" type="stmt"/>
-        <line num="78" count="1" type="stmt"/>
-        <line num="79" count="0" type="stmt"/>
-        <line num="81" count="0" type="cond" truecount="0" falsecount="6"/>
-        <line num="82" count="0" type="stmt"/>
-        <line num="83" count="0" type="stmt"/>
-        <line num="85" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="86" count="0" type="stmt"/>
-        <line num="87" count="0" type="stmt"/>
-        <line num="90" count="0" type="stmt"/>
-        <line num="91" count="0" type="stmt"/>
-        <line num="104" count="0" type="stmt"/>
-        <line num="105" count="0" type="stmt"/>
-        <line num="106" count="0" type="stmt"/>
-        <line num="108" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="109" count="0" type="stmt"/>
-        <line num="110" count="0" type="stmt"/>
-        <line num="112" count="0" type="stmt"/>
-        <line num="113" count="0" type="stmt"/>
-        <line num="115" count="0" type="stmt"/>
-        <line num="118" count="0" type="stmt"/>
-        <line num="119" count="0" type="stmt"/>
-        <line num="120" count="0" type="stmt"/>
-        <line num="121" count="0" type="stmt"/>
-        <line num="122" count="0" type="stmt"/>
-        <line num="123" count="0" type="stmt"/>
-        <line num="124" count="0" type="stmt"/>
-        <line num="127" count="0" type="stmt"/>
-        <line num="129" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="130" count="0" type="stmt"/>
-        <line num="131" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="132" count="0" type="stmt"/>
-        <line num="135" count="1" type="stmt"/>
-        <line num="136" count="1" type="stmt"/>
-        <line num="152" count="0" type="stmt"/>
-        <line num="160" count="0" type="stmt"/>
-        <line num="169" count="0" type="stmt"/>
-        <line num="177" count="0" type="stmt"/>
-        <line num="191" count="0" type="stmt"/>
-      </file>
-    </package>
-    <package name="src.functions.CancelPageSwitchWhenNotLoggedIn">
+<coverage generated="1737928215257" clover="3.2.0">
+  <project timestamp="1737928215258" name="All files">
+    <metrics statements="39" coveredstatements="39" conditionals="13" coveredconditionals="13" methods="7" coveredmethods="7" elements="59" coveredelements="59" complexity="0" loc="39" ncloc="39" packages="6" files="6" classes="6"/>
+    <package name="CancelPageSwitchWhenNotLoggedIn">
       <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
       <file name="cancelPageSwitchWhenNotLoggedIn.jsx" path="C:\Users\roelj\OneDrive\Documenten\school\geoprofs\GeoProfs\src\functions\CancelPageSwitchWhenNotLoggedIn\cancelPageSwitchWhenNotLoggedIn.jsx">
         <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
-        <line num="1" count="2" type="stmt"/>
+        <line num="1" count="1" type="stmt"/>
         <line num="2" count="2" type="stmt"/>
         <line num="3" count="2" type="stmt"/>
         <line num="5" count="2" type="cond" truecount="2" falsecount="0"/>
@@ -224,7 +16,7 @@
         <line num="10" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="src.functions.CheckForAccesToAddUser">
+    <package name="CheckForAccesToAddUser">
       <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
       <file name="CheckForAccesToAddUser.jsx" path="C:\Users\roelj\OneDrive\Documenten\school\geoprofs\GeoProfs\src\functions\CheckForAccesToAddUser\CheckForAccesToAddUser.jsx">
         <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
@@ -235,7 +27,7 @@
         <line num="8" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="src.functions.CheckForAccesToLeavePage">
+    <package name="CheckForAccesToLeavePage">
       <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
       <file name="CheckForAccesToLeavePage.jsx" path="C:\Users\roelj\OneDrive\Documenten\school\geoprofs\GeoProfs\src\functions\CheckForAccesToLeavePage\CheckForAccesToLeavePage.jsx">
         <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
@@ -246,11 +38,11 @@
         <line num="8" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="src.functions.CheckForFirstLogin">
+    <package name="CheckForFirstLogin">
       <metrics statements="8" coveredstatements="8" conditionals="5" coveredconditionals="5" methods="1" coveredmethods="1"/>
       <file name="CheckForFirstLogin.jsx" path="C:\Users\roelj\OneDrive\Documenten\school\geoprofs\GeoProfs\src\functions\CheckForFirstLogin\CheckForFirstLogin.jsx">
         <metrics statements="8" coveredstatements="8" conditionals="5" coveredconditionals="5" methods="1" coveredmethods="1"/>
-        <line num="1" count="2" type="stmt"/>
+        <line num="1" count="1" type="stmt"/>
         <line num="2" count="4" type="stmt"/>
         <line num="5" count="4" type="cond" truecount="5" falsecount="0"/>
         <line num="6" count="3" type="stmt"/>
@@ -260,7 +52,7 @@
         <line num="11" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="src.functions.CheckUserRole">
+    <package name="CheckUserRole">
       <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
       <file name="CheckUserRole.jsx" path="C:\Users\roelj\OneDrive\Documenten\school\geoprofs\GeoProfs\src\functions\CheckUserRole\CheckUserRole.jsx">
         <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
@@ -274,13 +66,13 @@
         <line num="13" count="3" type="stmt"/>
       </file>
     </package>
-    <package name="src.functions.context">
+    <package name="context">
       <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
       <file name="User.jsx" path="C:\Users\roelj\OneDrive\Documenten\school\geoprofs\GeoProfs\src\functions\context\User.jsx">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-        <line num="4" count="2" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
         <line num="6" count="2" type="stmt"/>
-        <line num="8" count="2" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
         <line num="9" count="2" type="stmt"/>
         <line num="20" count="2" type="stmt"/>
       </file>
