@@ -1,16 +1,14 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import {configure, render, screen } from '@testing-library/react';
 import HomePage from './HomePage';
-import { useUser } from '../../functions/context/User';
-import { useNavigate } from 'react-router-dom';
 
+configure({
+    react: React,
+  });
 jest.mock('../../functions/context/User', () => ({
   useUser: jest.fn(() => ({ user: { uid: 'test-user' } }))
 }));
 
-jest.mock('react-router-dom', () => ({
-  useNavigate: jest.fn(() => jest.fn()),
-}));
 
 describe('HomePage Component', () => {
   it('renders the component correctly', () => {
