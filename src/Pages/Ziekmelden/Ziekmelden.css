@@ -15,7 +15,7 @@ body {
     margin: 0;
 }
 
-.main-container {
+.container-main {
     display: flex;
     flex-direction: column;
     justify-content: center;

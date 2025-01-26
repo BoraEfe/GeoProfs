@@ -43,7 +43,7 @@ const Ziekmelden = () => {
     };
 
     return (
-        <div className="main-container">
+        <div className="container-main">
             {isSubmitted && (
                 <p style={{ color: 'green', marginTop: '20px', backgroundColor: 'white', padding: '10px', borderRadius: '5px' }}>
                 Ziekmelding succesvol ingediend!
@@ -55,10 +55,7 @@ const Ziekmelden = () => {
                     <p>
                         Let op, u kunt zich alleen ziekmelden voor vandaag en dient dit dus morgen opnieuw te doen wanneer u nog steeds ziek bent.
                     </p>
-                    <button 
-                        className="submit-button" 
-                        onClick={handleSickLeave}
-                    >
+                    <button className="submit-button" onClick={handleSickLeave}>
                         Ziekmelden
                     </button>
                 </div>
