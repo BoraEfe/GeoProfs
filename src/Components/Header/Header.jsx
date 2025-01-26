@@ -35,7 +35,7 @@ const navigate = useNavigate();
             <div className='date'>
               <Date/>
             </div>
-           <li className="logout-button" onClick={() => {handleLogout()}}>
+           <li className="logout-button" onClick={() => {handleLogout()}} data-testid='logout-button'>
               <a><FontAwesomeIcon icon={faArrowRightFromBracket} /> Uitloggen</a>
             </li>
           </ul>
