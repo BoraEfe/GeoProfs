@@ -1,3 +1,5 @@
+import React from "react";
+
 const CheckUserRole = () => {
 
     var department = sessionStorage.getItem('department');

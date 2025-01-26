@@ -1,3 +1,5 @@
+import React from "react";
+
 const CheckForAccesToLeavePage = () => {
     var role = sessionStorage.getItem('role');
     const allowedRoles = ['1', '2', '3'];

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <coverage generated="1737913977739" clover="3.2.0">
   <project timestamp="1737913977739" name="All files">
     <metrics statements="205" coveredstatements="28" conditionals="65" coveredconditionals="2" methods="43" coveredmethods="5" elements="313" coveredelements="35" complexity="0" loc="205" ncloc="205" packages="7" files="7" classes="7"/>
@@ -247,6 +248,84 @@
         <line num="7" count="1" type="stmt"/>
         <line num="8" count="0" type="stmt"/>
         <line num="19" count="0" type="stmt"/>
+=======
+<coverage generated="1737931699064" clover="3.2.0">
+  <project timestamp="1737931699065" name="All files">
+    <metrics statements="39" coveredstatements="39" conditionals="13" coveredconditionals="13" methods="7" coveredmethods="7" elements="59" coveredelements="59" complexity="0" loc="39" ncloc="39" packages="6" files="6" classes="6"/>
+    <package name="CancelPageSwitchWhenNotLoggedIn">
+      <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+      <file name="cancelPageSwitchWhenNotLoggedIn.jsx" path="C:\Users\roelj\OneDrive\Documenten\school\geoprofs\GeoProfs\src\functions\CancelPageSwitchWhenNotLoggedIn\cancelPageSwitchWhenNotLoggedIn.jsx">
+        <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="5" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="CheckForAccesToAddUser">
+      <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+      <file name="CheckForAccesToAddUser.jsx" path="C:\Users\roelj\OneDrive\Documenten\school\geoprofs\GeoProfs\src\functions\CheckForAccesToAddUser\CheckForAccesToAddUser.jsx">
+        <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="7" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="8" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="CheckForAccesToLeavePage">
+      <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+      <file name="CheckForAccesToLeavePage.jsx" path="C:\Users\roelj\OneDrive\Documenten\school\geoprofs\GeoProfs\src\functions\CheckForAccesToLeavePage\CheckForAccesToLeavePage.jsx">
+        <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="7" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="8" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="CheckForFirstLogin">
+      <metrics statements="8" coveredstatements="8" conditionals="5" coveredconditionals="5" methods="1" coveredmethods="1"/>
+      <file name="CheckForFirstLogin.jsx" path="C:\Users\roelj\OneDrive\Documenten\school\geoprofs\GeoProfs\src\functions\CheckForFirstLogin\CheckForFirstLogin.jsx">
+        <metrics statements="8" coveredstatements="8" conditionals="5" coveredconditionals="5" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="4" type="stmt"/>
+        <line num="5" count="4" type="cond" truecount="5" falsecount="0"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="CheckUserRole">
+      <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+      <file name="CheckUserRole.jsx" path="C:\Users\roelj\OneDrive\Documenten\school\geoprofs\GeoProfs\src\functions\CheckUserRole\CheckUserRole.jsx">
+        <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="4" type="stmt"/>
+        <line num="6" count="4" type="stmt"/>
+        <line num="7" count="4" type="stmt"/>
+        <line num="8" count="4" type="stmt"/>
+        <line num="9" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="13" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="context">
+      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="User.jsx" path="C:\Users\roelj\OneDrive\Documenten\school\geoprofs\GeoProfs\src\functions\context\User.jsx">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="20" count="2" type="stmt"/>
+>>>>>>> Gp-TE
       </file>
     </package>
   </project>

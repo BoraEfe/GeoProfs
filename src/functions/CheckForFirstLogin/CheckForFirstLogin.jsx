@@ -1,5 +1,8 @@
 const CheckForFirstLogin = (user) => {
-    if (user.tijdelijkWachtwoord === "" || user.tijdelijkWachtwoord === null || user.tijdelijkWachtwoord === undefined){ 
+    console.log('tijdelijkWachtwoord waarde:', user.tijdelijkWachtwoord);  // Debug log
+
+    // Pas de conditie aan om 0 te behandelen als een geldige waarde voor de redirect
+    if (user.tijdelijkWachtwoord === "" || user.tijdelijkWachtwoord === null || user.tijdelijkWachtwoord === undefined) {
         console.log('niks aan de hand');
         return;
     } else {
