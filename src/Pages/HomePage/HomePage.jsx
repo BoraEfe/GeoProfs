@@ -49,19 +49,19 @@ const HomePage = () => {
     return (
         <main>
             <div className="homepage-container-1">
-                <button onClick={() => {navigate('/verlofaanvraag')}}>
+                <button onClick={() => {navigate('/verlofaanvraag')}} data-testid='verlof-aanvraag-button'>
                     Verlof aanvragen
                 </button>
                 
                 <div className='vakantiedagen'>
                     <p>Aantal vakantiedagen: {vakantiedagen}</p>
                 </div>
-                <button onClick={() => {navigate('/aanvragengeschiedenis')}}>
+                <button onClick={() => {navigate('/aanvragengeschiedenis')}} data-testid='alle-aanvragen-button'>
                     Alle aanvragen
                 </button>
             </div>
             <div className='homepage-container-2'>
-                <h1 className='welkom-title'>
+                <h1 className='welkom-title' data-testid='homepage-title'>
                     Welkom, {sessionStorage.getItem('firstname')}
                 </h1>
             </div>
