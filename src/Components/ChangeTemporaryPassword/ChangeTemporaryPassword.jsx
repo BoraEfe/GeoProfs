@@ -1,9 +1,11 @@
 import './ChangeTemporaryPassword.css';
+import React from 'react';
 import { useState } from 'react';
 import { addDoc, doc, updateDoc } from 'firebase/firestore';
 import {db} from '../../firebase'
 import { hashPasswordWithSalt } from '../../functions/HashPassword/HashPassword';
 import { useNavigate } from 'react-router-dom';
+
 
 const ChangeTemporaryPassword = () => {
     const [newPassword, setNewPassword] = useState('');

@@ -2,7 +2,8 @@ import CryptoJS from 'crypto-js';
 
 export const hashPasswordWithSalt = (password) => {
 
-    const saltedWord = import.meta.env.VITE_saltedWord || "";
+    const saltedWord = "LindeRebers"
+    //const saltedWord = import.meta.env.VITE_saltedWord || "";
     if (saltedWord === "") {
         throw new Error("No salted word found");
     }
