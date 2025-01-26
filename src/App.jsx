@@ -5,7 +5,6 @@ import './App.css'
 import { Routes, Route} from 'react-router-dom'
 import Verlofaanvraag from './Pages/Verlofaanvraag/Verlofaanvraag'
 import Admin from './Pages/admin/adminpage'
-import VakantieDagen from './Pages/Vakantiedagen/Vakantiedagen'
 import { UserProvider } from './functions/context/User'
 import AddUser from './pages/AddUser/AddUser'
 import ChangeTemporaryPassword from './components/ChangeTemporaryPassword/ChangeTemporaryPassword'
@@ -28,7 +27,6 @@ const App = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/verlofaanvraag" element={<Verlofaanvraag />} />
-        <Route path="/vakantiedagen" element={<VakantieDagen />} />
         <Route path="/AddUser" element={<AddUser />} />
         <Route path="/changeTemporaryPassword" element={<ChangeTemporaryPassword />} />
         <Route path="/admin" element={<Admin />} />

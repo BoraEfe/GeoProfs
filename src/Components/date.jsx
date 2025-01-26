@@ -12,7 +12,6 @@ const updateDate = async () => {
     const year = today.getFullYear();
     const minute = today.getMinutes();
     const hour = today.getHours();
-
     const formattedMonth = month < 10 ? `0${month}` : month;
     const formattedMinute = minute < 10 ? `0${minute}` : minute;
 
