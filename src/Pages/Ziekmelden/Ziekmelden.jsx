@@ -49,13 +49,13 @@ const Ziekmelden = () => {
                 Ziekmelding succesvol ingediend!
                 </p>
             )}
-            <h1>Ziekmelden</h1>
+            <h1 data-testid='ziekmelding-title'>Ziekmelden</h1>
             <div className="ziekmelden-container">
                 <div className="ziekmelden-form">
                     <p>
                         Let op, u kunt zich alleen ziekmelden voor vandaag en dient dit dus morgen opnieuw te doen wanneer u nog steeds ziek bent.
                     </p>
-                    <button className="submit-button" onClick={handleSickLeave}>
+                    <button className="submit-button" onClick={handleSickLeave} data-testid='ziekmelding-button'>
                         Ziekmelden
                     </button>
                 </div>

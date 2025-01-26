@@ -52,7 +52,7 @@ const HomePage = () => {
                 <button onClick={() => {navigate('/verlofaanvraag')}} data-testid='verlof-aanvraag-button'>
                     Verlof aanvragen
                 </button>
-                <button onClick={() => {navigate('/Ziekmelden')}}>
+                <button onClick={() => {navigate('/Ziekmelden')}} data-testid='ziekmelding-aanvraag-button'>
                     Ziekmelden
                 </button>
                 <div className='vakantiedagen'>

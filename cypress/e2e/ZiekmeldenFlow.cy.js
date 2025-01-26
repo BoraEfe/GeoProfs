@@ -9,6 +9,14 @@ describe('template spec', () => {
     // --------------------------------
 
     cy.get('[data-testid="homepage-title"]').should('exist');
+    
+    // bot gaat naar ziekmelding aanvraag pagina
+    cy.get('[data-testid="ziekmelding-aanvraag-button"]').click();
+    
+    // bot is op ziekmelding aanvraag pagina
+    cy.get('[data-testid="ziekmelding-title"]').should('exist');
 
+    //bot heeft zich ziekgemeld voor vandaag
+    cy.get('[data-testid="ziekmelding-button"]').click();
   })
 })
