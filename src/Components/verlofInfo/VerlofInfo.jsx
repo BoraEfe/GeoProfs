@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import styles from './LeaveInfo.module.css';
+import styles from './VerlofInfo.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faX } from '@fortawesome/free-solid-svg-icons';
 import { collection, getDoc, setDoc } from 'firebase/firestore';
@@ -7,7 +7,7 @@ import { doc, deleteDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
 
 
-const LeaveInfo = ({aanvraag, aanvraagId, onClose}) => {
+const VerlofInfo = ({aanvraag, aanvraagId, onClose}) => {
     const [leaveNote, setLeaveNote] = useState('');
 
     async function moveLeaveRequest (aanvraag, collectionName){
@@ -24,10 +24,7 @@ const LeaveInfo = ({aanvraag, aanvraagId, onClose}) => {
             if(docSnap.exists()){
                 const data = docSnap.data();
                 data.leaveNote = leaveNote;
-                data.isApproved = isApproved;
-                data.isApproved = isApproved;
-
-                const newLeaveRequestRef = doc(collection(db, collectionName));
+                const newLeaveRequestRef = doc(collection(db, collectionName)); 
                 await setDoc(newLeaveRequestRef, data);
                 await deleteDoc(oldLeaveRequestRef);	
             }
@@ -42,32 +39,18 @@ const LeaveInfo = ({aanvraag, aanvraagId, onClose}) => {
 
     if(!aanvraag) return null;
 
-    return (
+    return(
             <div className={styles.verlofDetails}>
-                <button onClick={onClose} className={styles.closeButton}>
-                    <FontAwesomeIcon icon={faX} />
-                </button>
-                <h2 className={styles.username}>
-                    details van <strong>{aanvraag.medewerker}</strong>
-                </h2>
-                <p>
-                    aangevraagd op: <strong>{new Date(aanvraag.timestamp.seconds * 1000).toLocaleDateString()}</strong>
-                </p>
-                <p>
-                    Van: <strong>{aanvraag.beginDatum}</strong>
-                </p>
-                <p>
-                    Tot: <strong>{aanvraag.eindDatum}</strong>
-                </p>
-                <p>
-                    status: <strong>{!aanvraag.isApproved}</strong>
-                </p>
-                <p>
-                    Reden: <strong>{aanvraag.reden}</strong>
-                </p>
-                <p>
-                    Type: <strong>{aanvraag.typeVerlof}</strong>
-                </p>
+                <button 
+                 onClick={onClose}
+                 className={styles.closeButton}>
+                <FontAwesomeIcon icon={faX}/></button>
+                <h2 className={styles.username}>details van <strong>{aanvraag.medewerker}</strong></h2>
+                <p>aangevraagd op:<strong> {new Date(aanvraag.timestamp.seconds * 1000).toLocaleDateString()}</strong></p>
+                <p>Van: <strong>{aanvraag.beginDatum}</strong></p>
+                <p>Tot: <strong>{aanvraag.eindDatum}</strong></p>
+                <p>status: <strong>{!aanvraag.isApproved ? `openstaand` : `error` }</strong></p>
+                <p>Reden: <strong>{aanvraag.reden}</strong></p>
 
                 <textarea
                     placeholder='Opmerking'
@@ -104,7 +87,7 @@ const LeaveInfo = ({aanvraag, aanvraagId, onClose}) => {
                     >Afkeuren </button>
                 </div>
             </div>
-    );
-};
+    )
+}
 
-export default LeaveInfo;
+export default VerlofInfo;

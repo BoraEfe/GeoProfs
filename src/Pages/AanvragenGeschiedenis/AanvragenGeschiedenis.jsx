@@ -2,7 +2,7 @@ import './AanvragenGeschiedenis.css';
 import { useState, useEffect } from 'react';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../../firebase';
-import LeaveInfo from '../../Components/leaveInfo/LeaveInfo';
+import LeaveHistoryInfo from '../../Components/LeaveHistoryInfo/LeaveHistoryInfo';
 
 const AanvragenGeschiedenis = () => {
     const [userUUID, setUserUUID] = useState(null);
@@ -90,7 +90,7 @@ const AanvragenGeschiedenis = () => {
     };
 
     return (
-        <main>
+        <div className='AanvragenGeschiedenis'>
             <div className="container">
                 <h1>Openstaande verzoeken</h1>
                 {openstaandeAanvragen.length > 0 ? (
@@ -149,7 +149,7 @@ const AanvragenGeschiedenis = () => {
             </div>
 
             {selectedAanvraag && (
-                <LeaveInfo
+                <LeaveHistoryInfo
                     aanvraag={selectedAanvraag}
                     aanvraagId={selectedAanvraagId}
                     onClose={() => {
@@ -157,7 +157,7 @@ const AanvragenGeschiedenis = () => {
                     }}
                 />
             )}
-        </main>
+        </div>
     );
 };
 
