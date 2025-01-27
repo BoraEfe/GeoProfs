@@ -12,8 +12,8 @@ const navigate = useNavigate();
   const handleLogout = () => {
     sessionStorage.removeItem('isLoggedIn');
     sessionStorage.removeItem('uuid');
-    window.location.href = '/login';
-  }
+    window.location.href = '/Login';
+  } 
 
   return (
     <header>
