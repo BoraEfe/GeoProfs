@@ -92,7 +92,7 @@ const AanvragenGeschiedenis = () => {
     return (
         <div className='AanvragenGeschiedenis'>
             <div className="container">
-                <h1>Openstaande verzoeken</h1>
+                <h1 data-testid='openstaande-verzoeken-title'>Openstaande verzoeken</h1>
                 {openstaandeAanvragen.length > 0 ? (
                     <ul>
                         {openstaandeAanvragen.map((aanvraag) => (
