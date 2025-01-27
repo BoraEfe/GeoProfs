@@ -1,11 +1,5 @@
 import cancelPageSwitchWhenNotLoggedIn from "./cancelPageSwitchWhenNotLoggedIn";
 
-<<<<<<< HEAD
-// Test of de waarde 'false' is
-test('check if page should switch is false', () => {
-  expect(cancelPageSwitchWhenNotLoggedIn()).toBe(false);
-});
-=======
 describe('cancelPageSwitchWhenNotLoggedIn', () => {
   beforeEach(() => {
     // Reset sessionStorage before each test
@@ -47,4 +41,3 @@ describe('cancelPageSwitchWhenNotLoggedIn', () => {
     window.location.href = originalLocation;
   });
 });
->>>>>>> Gp-TE
