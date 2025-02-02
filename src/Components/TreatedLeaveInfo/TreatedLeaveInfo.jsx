@@ -49,7 +49,6 @@ const VerlofInfo = ({aanvraag, aanvraagId, onClose}) => {
                 <p>Tot: <strong>{aanvraag.eindDatum}</strong></p>
                 <p>status: <strong>{aanvraag.isApproved ? `Voltooid` : `error` }</strong></p>
                 <p>Reden: <strong>{aanvraag.reden}</strong></p>
-                <p>opmerking:<strong>{aanvraag.opmerking}</strong></p>
                 <div className={styles.buttons}>
                     <button 
                     onClick={async () => {
@@ -61,7 +60,6 @@ const VerlofInfo = ({aanvraag, aanvraagId, onClose}) => {
                             console.error('Error rejecting leave request: ', error);
                         }
                     }}          
-                    className={styles.rejectButton}
                     >Afkeuren </button>
                 </div>
             </div>

@@ -28,7 +28,7 @@ const Login = () => {
 
             if (!querySnapshot.empty){  
                 querySnapshot.forEach((doc) => {
-
+  
                     const user = doc.data();
                     
                     const hashedInputPassword = hashPasswordWithSalt(password);
@@ -82,23 +82,25 @@ const Login = () => {
     return(
         <div className='login-container'>
             <div className='login-form'>
-                <h1>
+                <h1 data-testid='login-title'>
                     Login GeoProfs  
                 </h1>
                 <form onSubmit={handleLogin}>
                     <p>Email</p>
                     <input
+                    data-testid='login-input-email'
                     type='text'
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     />
                     <p>Wachtwoord</p>
                     <input
+                    data-testid='login-input-password'
                     type='password'
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     /> 
-                    <button type="submit">
+                    <button type="submit" data-testid='login-input-submit'>
                       Login
                    </button>
                 </form>

@@ -16,6 +16,10 @@ header {
         strong {
             font-weight: 550;
         }
+
+        @media only screen and (max-width: 1360px) {
+            min-width:26vw;
+        }
     }
 
     .header-container {
@@ -42,6 +46,10 @@ header {
                 .date{
                     margin-top:auto;
                     margin-bottom: auto;
+
+                    @media only screen and (max-width: 880px) {
+                        display: none;
+                    }
                 }
                 
                 li a {
@@ -49,12 +57,18 @@ header {
                     margin: 0 10px;
                     cursor: pointer;
                     text-decoration: none;
+
+                    
                 }
                 
                 .logout-button {
                     cursor: pointer;
                     position: absolute;
                     right: 35px;
+
+                    @media only screen and (max-width: 880px) {
+                        right: 0;
+                    }
                 }
             }
         }
@@ -71,6 +85,10 @@ header {
             justify-content: center;
             width: 200px;
             margin-right: 15px;
+
+            @media only screen and (max-width: 880px) {
+                display: none !important;
+            }
         }
     }
 }

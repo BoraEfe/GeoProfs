@@ -14,6 +14,7 @@ const AdminPage = () => {
 
     const [selectedAanvraagId , setSelectedAanvraagId] = useState(null);
     const [selectedPendingLeave, setSelectedPendingLeave] = useState(null);
+    const [selectedTreatedLeave, setSelectedTreatedLeave] = useState(null);
 
     const [verlofaanvragen, setVerlofaanvragen] = useState([]);
     const [goedgekeurdeAanvragen, setGoedgekeurdeAanvragen] = useState([]);
@@ -109,6 +110,15 @@ const AdminPage = () => {
                             <p>Geen aanvragen</p>
                         )}
                    </div>
+                   {selectedTreatedLeave && (
+                    <TreatedLeaveInfo
+                    aanvraag={selectedPendingLeave}
+                    aanvraagId={selectedAanvraagId}
+                    onClose={() => {
+                        setSelectedPendingLeave(null)
+                    }}
+                    />
+                   )}
                 </div>
                 <div className="openstaande-verlof-aanvragen">
                     <h2>Openstaande verlof aanvragen</h2>

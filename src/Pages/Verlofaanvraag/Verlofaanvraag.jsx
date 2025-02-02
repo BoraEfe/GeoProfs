@@ -96,7 +96,7 @@ const Verlofaanvraag = () => {
                     eindDatum: verlofEindData,
                     aantalDagen: requestedLeaveDays,
                     reden: reden,
-                    isApproved: false, 
+                    isApproved: null, 
                     typeVerlof: soortVerlof,
                     timestamp: new Date(),
                     departement: department
@@ -136,7 +136,7 @@ const Verlofaanvraag = () => {
     console.log('Fetched leave types:', leaveTypes);
     return (
         <div className='main-container'>
-          <h1>Verlofaanvraag</h1>
+          <h1 data-testid='verlof-aanvraag-title'>Verlofaanvraag</h1>
             <div className='verlofaanvraag-container'>
             {isSubmitted && (
                         <p style={{ color: 'white', marginTop: '20px' }}>
@@ -148,6 +148,7 @@ const Verlofaanvraag = () => {
                     <form onSubmit={handleSubmit}>
                         <p>Van datum</p>
                         <input 
+                            data-testid='verlof-aanvraag-date-from'
                             type='date' 
                             value={verlofBeginData}
                             onChange={(e) => setVerlofBeginData(e.target.value)}
@@ -156,6 +157,7 @@ const Verlofaanvraag = () => {
                         </input>
                         <p>Tot datum</p>
                         <input 
+                            data-testid='verlof-aanvraag-date-to'
                             type='date' 
                             value={verlofEindData}
                             onChange={(e) => setVerlofEindData(e.target.value)}
@@ -163,7 +165,8 @@ const Verlofaanvraag = () => {
                             required>
                         </input>
                         <p>Reden van verlof</p>
-                            <select 
+                            <select
+                            data-testid='verlof-aanvraag-reason' 
                             name ="verlof"
                             onChange={(e) => setSoortVerlof(e.target.value)}
                             required
@@ -184,12 +187,14 @@ const Verlofaanvraag = () => {
                             </select>
                         <p>Aanvulling</p>
                         <textarea
+                            data-testid='verlof-aanvraag-textarea'
                             placeholder='Reden van verlof'
                             value={reden}
                             onChange={(e) => setReden(e.target.value)}
                         >
                         </textarea>
                         <button 
+                            data-testid='submit-verlof-aanvraag'
                             className='submit-button' 
                             type='submit'>
                             Verstuur

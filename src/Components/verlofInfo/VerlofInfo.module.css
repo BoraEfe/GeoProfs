@@ -1,0 +1,90 @@
+.verlofDetails{
+    position: fixed !important;
+    z-index: 1000 !important;
+    color:black !important;
+    width:98% !important;
+    height:85% !important;
+    background-color: white !important;
+    top:10% !important;
+    display: flex !important;
+    flex-direction: column;
+    transform: scale(1);
+    overflow: hidden;
+   
+    
+    .closeButton{
+        position: fixed;
+        width:30px;
+        height:30px;
+        right:10px;
+        top:10px;
+    }
+
+    .username{
+        font-family: 40px; 
+    }
+
+    textarea{
+        width: 90%;
+        min-height: 200px !important;
+        max-height: 300px;;
+        margin-left: 10px;
+        margin-right:auto;
+        margin-top: 10px;
+        resize: none;
+        font-size: 18px;
+    }
+    textarea:focus{
+        border-color: #007bff;
+        box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+        outline:none;
+    }
+
+    p{
+        margin-right:auto;
+        margin-left:10px;
+        font-size: 20px;
+    }
+    .buttons{
+        display: flex;
+        font: sans-serif;
+        flex-direction: row !important;
+        background-color: white !important;
+        justify-content: space-evenly !important;
+        margin-top:20px !important;
+        margin-left: 10px !important;
+        margin-right:auto !important;
+        width:10% !important;
+        gap:100px;
+
+        .approveButton{
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .approveButton:hover{
+            background-color: #218838;
+            scale: 1.1;
+        }
+
+        .rejectButton{
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .rejectButton:hover{
+            background-color: #c82333;
+            scale: 1.1;
+        }
+    }
+}

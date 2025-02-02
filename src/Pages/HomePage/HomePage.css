@@ -21,6 +21,11 @@ main{
         align-items: center;
         margin-top:50px;
 
+        @media only screen and (max-width: 880px) {
+            height: unset;
+            width: 88%;
+        }
+
         button{
             width: 250px;
             height: auto;
@@ -73,11 +78,10 @@ main{
     }
     .homepage-container-2{
         order: 1;
+        text-align: center;
     }
     .homepage-container-1{
         order: 2;
-        align-self: flex-start;
-        margin-left:80px;
     }
     .homepage-container-3{
         order: 3;

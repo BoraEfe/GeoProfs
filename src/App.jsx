@@ -1,5 +1,5 @@
 import Header from './Components/Header/Header'
-import HomePage from './pages/HomePage/HomePage'
+import HomePage from './Pages/HomePage/HomePage'
 import Login from './pages/Login/Login'
 import './App.css'
 import { Routes, Route} from 'react-router-dom'
@@ -10,6 +10,7 @@ import AddUser from './pages/AddUser/AddUser'
 import ChangeTemporaryPassword from './components/ChangeTemporaryPassword/ChangeTemporaryPassword'
 import { useLocation } from 'react-router-dom';
 import AanvragenGeschiedenis from './Pages/AanvragenGeschiedenis/AanvragenGeschiedenis'
+import Ziekmelden from './Pages/Ziekmelden/Ziekmelden'
 
 const App = () => {
   const location = useLocation();
@@ -31,6 +32,7 @@ const App = () => {
         <Route path="/changeTemporaryPassword" element={<ChangeTemporaryPassword />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/AanvragenGeschiedenis" element={<AanvragenGeschiedenis />} />
+        <Route path="/Ziekmelden" element={<Ziekmelden />} />
       </Routes>
     </UserProvider>
   );
