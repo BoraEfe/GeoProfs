@@ -1,3 +1,5 @@
+import React from "react";
+
 const CheckForAccesToAddUser = () => {
     const role = sessionStorage.getItem('role');
     const allowedRoles = ['1', '2'];
