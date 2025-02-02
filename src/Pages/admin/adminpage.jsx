@@ -4,6 +4,8 @@ import './adminpage.css';
 import { db } from '../../firebase';
 import { collection, getDocs } from 'firebase/firestore';
 import LeaveInfo from '../../Components/leaveInfo/LeaveInfo';
+import TreatedLeaveInfo from '../../Components/TreatedLeaveInfo/TreatedLeaveInfo';
+
 
 const AdminPage = () => {
     const [searchLeave, setSearchLeave] = useState('');

@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import styles from './VerlofInfo.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faX } from '@fortawesome/free-solid-svg-icons';
 import { collection, getDoc, setDoc } from 'firebase/firestore';
@@ -39,12 +38,12 @@ const VerlofInfo = ({aanvraag, aanvraagId, onClose}) => {
     if(!aanvraag) return null;
 
     return(
-            <div className={styles.verlofDetails}>
+            <div className=''>
                 <button 
                  onClick={onClose}
-                 className={styles.closeButton}>
+                 className=''>
                 <FontAwesomeIcon icon={faX}/></button>
-                <h2 className={styles.username}>details van <strong>{aanvraag.medewerker}</strong></h2>
+                <h2 className='' >details van <strong>{aanvraag.medewerker}</strong></h2>
                 <p>aangevraagd op:<strong> {new Date(aanvraag.timestamp.seconds * 1000).toLocaleDateString()}</strong></p>
                 <p>Van: <strong>{aanvraag.beginDatum}</strong></p>
                 <p>Tot: <strong>{aanvraag.eindDatum}</strong></p>
