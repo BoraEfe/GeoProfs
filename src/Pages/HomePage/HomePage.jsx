@@ -1,6 +1,6 @@
 import './HomePage.css';
 import Agenda from '../../Components/Agenda/Agenda';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { collection, getDocs, where, query } from 'firebase/firestore';
 import { db } from '../../firebase';
 import cancelPageSwitchWhenNotLoggedIn from '../../functions/CancelPageSwitchWhenNotLoggedIn/cancelPageSwitchWhenNotLoggedIn';

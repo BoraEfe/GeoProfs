@@ -23,10 +23,6 @@ const LeaveInfo = ({aanvraag, aanvraagId, onClose}) => {
 
             if(docSnap.exists()){
                 const data = docSnap.data();
-                data.leaveNote = leaveNote;
-                data.isApproved = isApproved;
-                data.isApproved = isApproved;
-
                 const newLeaveRequestRef = doc(collection(db, collectionName));
                 await setDoc(newLeaveRequestRef, data);
                 await deleteDoc(oldLeaveRequestRef);	

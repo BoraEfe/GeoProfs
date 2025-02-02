@@ -69,7 +69,7 @@ const VerlofInfo = ({aanvraag, aanvraagId, onClose}) => {
                         catch(error){
                             console.error('Error approving leave request: ', error);
                         }
-                      }}
+                      }}      
                     className={styles.approveButton}
                     >Goedkeuren
                     </button>

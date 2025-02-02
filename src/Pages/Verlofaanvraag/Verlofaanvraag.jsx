@@ -5,7 +5,6 @@ import { db } from '../../firebase';
 import { useUser } from '../../functions/context/User';
 
 const Verlofaanvraag = () => {
-    const { user } = useUser();
     const [verlofBeginData, setVerlofBeginData] = useState('');
     const [verlofEindData, setVerlofEindData] = useState('');
     const [reden, setReden] = useState('');

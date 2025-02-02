@@ -1,49 +1,53 @@
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../../firebase";
+import CheckForFirstLogin from './CheckForFirstLogin';
 
-// De mock data voor de gebruiker
-const mockUser = {
-    username: '',
-    firstname: '',
-    lastname: '',
-    email: '',
-    vakantiedagen: '',
-    department: '',
-    role: '',
-    isLoggedIn: 'false',
-    tijdelijkWachtwoord: '812a99aeb1010a1c27bc3631591512e7202a7548c3c9833d78e8a13e8e36d50d',
-    uuid: '',
-};
-
-// Mock de Firebase-afroepen
-jest.mock("firebase/firestore", () => ({
-    ...jest.requireActual("firebase/firestore"),
-    collection: jest.fn(),
-    getDocs: jest.fn(),
-}));
-
-test('check if user has a temp password', async () => {
-    // Stel de mock `getDocs` in zodat we het mockUser object terugkrijgen
-    getDocs.mockResolvedValueOnce({
-        forEach: (callback) => {
-            callback({
-                data: () => mockUser,  // Gebruik de mockUser hier
-            });
-        },
+describe('CheckForFirstLogin', () => {
+    beforeEach(() => {
+        // Mock console.log before each test
+        jest.spyOn(console, 'log').mockImplementation(() => {});
     });
 
-    // Gebruik de collection mock
-    collection.mockReturnValueOnce('users'); // Dit kan een willekeurige waarde zijn omdat we `getDocs` mocken
-
-    // Simuleer de Firebase-afroep
-    const usersRef = collection(db, 'users');
-    const data = await getDocs(usersRef);
-
-    // Loop door de mock data (er is maar één document in deze test)
-    data.forEach(doc => {
-        const user = doc.data();
-        if (user.tijdelijkWachtwoord !== "") {
-            expect(user.tijdelijkWachtwoord).not.toBeNull();
-        }
+    afterEach(() => {
+        // Restore the original console.log after each test
+        console.log.mockRestore();
     });
-}, 10000); // Zet de timeout naar 10 seconden
+
+    test('should log correct message when tijdelijkWachtwoord is not empty', () => {
+        const user = { tijdelijkWachtwoord: 'test' };
+
+        // Call the function
+        CheckForFirstLogin(user);
+
+        // Check if the correct message is logged
+        expect(console.log).toHaveBeenCalledWith('Uw wachtwoord is nog niet veranderd. Verander uw wachtwoord nu!');
+    });
+
+    test('should log "niks aan de hand" when tijdelijkWachtwoord is empty', () => {
+        const user = { tijdelijkWachtwoord: '' };
+
+        // Call the function
+        CheckForFirstLogin(user);
+
+        // Check if the message "niks aan de hand" is logged
+        expect(console.log).toHaveBeenCalledWith('niks aan de hand');
+    });
+
+    test('should log "niks aan de hand" when tijdelijkWachtwoord is null', () => {
+        const user = { tijdelijkWachtwoord: null };
+
+        // Call the function
+        CheckForFirstLogin(user);
+
+        // Check if the message "niks aan de hand" is logged
+        expect(console.log).toHaveBeenCalledWith('niks aan de hand');
+    });
+
+    test('should log "niks aan de hand" when tijdelijkWachtwoord is undefined', () => {
+        const user = { tijdelijkWachtwoord: undefined };
+
+        // Call the function
+        CheckForFirstLogin(user);
+
+        // Check if the message "niks aan de hand" is logged
+        expect(console.log).toHaveBeenCalledWith('niks aan de hand');
+    });
+});

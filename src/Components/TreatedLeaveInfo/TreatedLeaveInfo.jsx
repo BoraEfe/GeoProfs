@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import styles from './VerlofInfo.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faX } from '@fortawesome/free-solid-svg-icons';
 import { collection, getDoc, setDoc } from 'firebase/firestore';
@@ -39,18 +38,17 @@ const VerlofInfo = ({aanvraag, aanvraagId, onClose}) => {
     if(!aanvraag) return null;
 
     return(
-            <div className={styles.verlofDetails}>
+            <div className=''>
                 <button 
                  onClick={onClose}
-                 className={styles.closeButton}>
+                 className=''>
                 <FontAwesomeIcon icon={faX}/></button>
-                <h2 className={styles.username}>details van <strong>{aanvraag.medewerker}</strong></h2>
+                <h2 className='' >details van <strong>{aanvraag.medewerker}</strong></h2>
                 <p>aangevraagd op:<strong> {new Date(aanvraag.timestamp.seconds * 1000).toLocaleDateString()}</strong></p>
                 <p>Van: <strong>{aanvraag.beginDatum}</strong></p>
                 <p>Tot: <strong>{aanvraag.eindDatum}</strong></p>
                 <p>status: <strong>{aanvraag.isApproved ? `Voltooid` : `error` }</strong></p>
                 <p>Reden: <strong>{aanvraag.reden}</strong></p>
-                <p>opmerking:<strong>{aanvraag.opmerking}</strong></p>
                 <div className={styles.buttons}>
                     <button 
                     onClick={async () => {
@@ -62,7 +60,6 @@ const VerlofInfo = ({aanvraag, aanvraagId, onClose}) => {
                             console.error('Error rejecting leave request: ', error);
                         }
                     }}          
-                    className={styles.rejectButton}
                     >Afkeuren </button>
                 </div>
             </div>
