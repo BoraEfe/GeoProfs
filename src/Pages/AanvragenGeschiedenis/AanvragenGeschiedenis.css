@@ -13,6 +13,11 @@
     background: #A63446;
     min-height: calc(100vh - 80px);
 
+    @media only screen and (max-width: 975px) {
+        flex-direction: column;
+        margin-top: 50px;
+    }
+
     .container {
         width: 400px;
         height: 500px;
