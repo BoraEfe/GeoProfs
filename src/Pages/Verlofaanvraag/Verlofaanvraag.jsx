@@ -164,28 +164,6 @@ const Verlofaanvraag = () => {
                             required>
                         </input>
                         <p>Reden van verlof</p>
-<<<<<<< HEAD
-                            <select
-                            data-testid='verlof-aanvraag-reason' 
-                            name ="verlof"
-                            onChange={(e) => setSoortVerlof(e.target.value)}
-                            required
-                            >
-                                <option value="" disabled selected>Selecteer uw keuze</option>
-                                {leaveTypes.length > 0 ? (
-                                    leaveTypes.map((name, index) => (
-                                        <option key={index} value={name}>
-                                        {name}
-                                        </option>
-                                        )
-                                    )
-                                ) : (
-                                    <option value="" disabled>
-                                        Loading...
-                                    </option>
-                                )}
-                            </select>
-=======
 <label htmlFor="verlofSelect">Reden van verlof</label>
 <select
   id="verlofSelect"
@@ -208,7 +186,6 @@ const Verlofaanvraag = () => {
     </option>
   )}
 </select>
->>>>>>> Gp-TE
                         <p>Aanvulling</p>
                         <textarea
                             data-testid='verlof-aanvraag-textarea'
