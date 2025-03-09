@@ -4,14 +4,13 @@ describe('template spec', () => {
       cy.login('cypresstest@gmail.com', 'cypresstest');
   
       // --------------------------------
-      // Testing the Alle verlof aanvragen flow
-      // Test is complete when the bot reaches the alle verlof aanvragen page
+      // Testing the Agenda of hij tussen de maanden kan switchen
       // --------------------------------
   
       //bot is op homepage
       cy.get('[data-testid="homepage-title"]').should('exist');
   
-      //bot klikt op alle aanvragen button
+      //bot klikt op agenda buttons
       cy.get('[data-testid="next-month-button"]').click();
       cy.wait(3000);
       cy.get('[data-testid="last-month-button"]').click();
