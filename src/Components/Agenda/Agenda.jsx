@@ -115,15 +115,18 @@ const Agenda = () => {
             <h2>Agenda</h2>
             <div className='buttons-container'>
                 <button 
+                 data-testid='last-month-button'
                  className='choose-month'
                  onClick={() => previousMonth()}>
                     <span>{'<'}</span>
                 </button>
                 <div className='current-month'>{months[month] + ` ` + year}</div>
                 <button
+                data-testid='next-month-button'
                  className='choose-month'
                  onClick={() => nextMonth()}>
                     <span>{'>'}</span>
+                    
                 </button>
             </div>
             <div className='calendar-container'>

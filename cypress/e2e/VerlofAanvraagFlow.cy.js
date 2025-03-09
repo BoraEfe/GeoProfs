@@ -30,7 +30,7 @@ describe('template spec', () => {
 
     // verlof-aanvraag-reason: selecteer de derde optie ('Persoonlijk verlof')
     cy.get('[data-testid="verlof-aanvraag-reason"]')
-      .select(3) // Selecteer de derde optie (index begint bij 0)
+      .select(2) // Selecteer de derde optie (index begint bij 0)
       .should('have.value', 'Persoonlijk verlof'); // Controleer of de waarde correct is (pas dit aan als nodig)
 
     // verlof-aanvraag-textarea: vul 'cypress test verlof aanvraag' in
@@ -38,5 +38,7 @@ describe('template spec', () => {
 
     // Eventueel: voeg een assertion toe om te checken of de aanvraag succesvol is ingediend
     cy.get('[data-testid="submit-verlof-aanvraag"]').click();
+    // cy.get('[data-testid="submit-verlof-aanvraag"]').click();
+
   });
 });

@@ -1,4 +1,4 @@
-import CheckForFirstLogin from './CheckForFirstLogin';
+import CheckForFirstLogin from '../functions/CheckForFirstLogin/CheckForFirstLogin';
 
 describe('CheckForFirstLogin', () => {
     beforeEach(() => {

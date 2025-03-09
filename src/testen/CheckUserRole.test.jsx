@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom'; // Voor extra matchers zoals toBeInTheDocument
-import CheckUserRole from './CheckUserRole';
+import CheckUserRole from '../functions/CheckUserRole/CheckUserRole';
 
 describe('CheckUserRole', () => {
   beforeEach(() => {

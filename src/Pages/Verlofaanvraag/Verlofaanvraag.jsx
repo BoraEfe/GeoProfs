@@ -166,12 +166,14 @@ const Verlofaanvraag = () => {
                         <p>Reden van verlof</p>
 <label htmlFor="verlofSelect">Reden van verlof</label>
 <select
+data-testid='verlof-aanvraag-reason'
   id="verlofSelect"
   name="verlof"
   onChange={(e) => setSoortVerlof(e.target.value)}
   required
 >
   <option value="" disabled selected>
+    
     Selecteer uw keuze
   </option>
   {leaveTypes.length > 0 ? (

@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import CheckForAccesToAddUser from './CheckForAccesToAddUser';
+import CheckForAccesToAddUser from '../functions/CheckForAccesToAddUser/CheckForAccesToAddUser';
 
 describe('CheckForAccesToAddUser', () => {
   beforeEach(() => {

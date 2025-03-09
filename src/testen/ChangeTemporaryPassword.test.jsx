@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import ChangeTemporaryPassword from './ChangeTemporaryPassword.jsx';
+import ChangeTemporaryPassword from '../Components/ChangeTemporaryPassword/ChangeTemporaryPassword.jsx';
 import '@testing-library/jest-dom';
 
 describe('ChangeTemporaryPassword', () => {

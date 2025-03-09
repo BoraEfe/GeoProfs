@@ -1,4 +1,4 @@
-import {hashPasswordWithSalt} from './HashPassword';
+import {hashPasswordWithSalt} from '../functions/HashPassword/HashPassword';
 
 describe('hashPasswordWithSalt', () => {
     

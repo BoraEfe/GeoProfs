@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import '@testing-library/jest-dom'; // Voor extra matchers zoals toBeInTheDocument
-import { UserProvider, useUser } from '../context/User';
+import { UserProvider, useUser } from '../functions/context/User';
 
 // Dummy component om het gebruik van de context te testen
 const TestComponent = () => {
