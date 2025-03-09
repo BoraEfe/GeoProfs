@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1741539508054" clover="3.2.0">
-  <project timestamp="1741539508054" name="All files">
+<coverage generated="1741540526501" clover="3.2.0">
+  <project timestamp="1741540526501" name="All files">
     <metrics statements="77" coveredstatements="65" conditionals="19" coveredconditionals="16" methods="12" coveredmethods="12" elements="108" coveredelements="93" complexity="0" loc="77" ncloc="77" packages="9" files="9" classes="9"/>
     <package name="src">
       <metrics statements="6" coveredstatements="5" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
-      <file name="firebase.jsx" path="C:\Users\roelj\OneDrive\Documenten\school\geoprofs\GeoProfs\src\firebase.jsx">
+      <file name="firebase.jsx" path="C:\Users\roelj\Desktop\kingside test bot\GeoProfs\src\firebase.jsx">
         <metrics statements="6" coveredstatements="5" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="6" count="1" type="stmt"/>
         <line num="17" count="1" type="stmt"/>
@@ -16,7 +16,7 @@
     </package>
     <package name="src.Components.ChangeTemporaryPassword">
       <metrics statements="23" coveredstatements="13" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="3"/>
-      <file name="ChangeTemporaryPassword.jsx" path="C:\Users\roelj\OneDrive\Documenten\school\geoprofs\GeoProfs\src\Components\ChangeTemporaryPassword\ChangeTemporaryPassword.jsx">
+      <file name="ChangeTemporaryPassword.jsx" path="C:\Users\roelj\Desktop\kingside test bot\GeoProfs\src\Components\ChangeTemporaryPassword\ChangeTemporaryPassword.jsx">
         <metrics statements="23" coveredstatements="13" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="3"/>
         <line num="10" count="1" type="stmt"/>
         <line num="11" count="3" type="stmt"/>
@@ -45,7 +45,7 @@
     </package>
     <package name="src.functions.CancelPageSwitchWhenNotLoggedIn">
       <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
-      <file name="cancelPageSwitchWhenNotLoggedIn.jsx" path="C:\Users\roelj\OneDrive\Documenten\school\geoprofs\GeoProfs\src\functions\CancelPageSwitchWhenNotLoggedIn\cancelPageSwitchWhenNotLoggedIn.jsx">
+      <file name="cancelPageSwitchWhenNotLoggedIn.jsx" path="C:\Users\roelj\Desktop\kingside test bot\GeoProfs\src\functions\CancelPageSwitchWhenNotLoggedIn\cancelPageSwitchWhenNotLoggedIn.jsx">
         <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="2" type="stmt"/>
@@ -59,7 +59,7 @@
     </package>
     <package name="src.functions.CheckForAccesToAddUser">
       <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
-      <file name="CheckForAccesToAddUser.jsx" path="C:\Users\roelj\OneDrive\Documenten\school\geoprofs\GeoProfs\src\functions\CheckForAccesToAddUser\CheckForAccesToAddUser.jsx">
+      <file name="CheckForAccesToAddUser.jsx" path="C:\Users\roelj\Desktop\kingside test bot\GeoProfs\src\functions\CheckForAccesToAddUser\CheckForAccesToAddUser.jsx">
         <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="3" type="stmt"/>
@@ -70,7 +70,7 @@
     </package>
     <package name="src.functions.CheckForAccesToLeavePage">
       <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
-      <file name="CheckForAccesToLeavePage.jsx" path="C:\Users\roelj\OneDrive\Documenten\school\geoprofs\GeoProfs\src\functions\CheckForAccesToLeavePage\CheckForAccesToLeavePage.jsx">
+      <file name="CheckForAccesToLeavePage.jsx" path="C:\Users\roelj\Desktop\kingside test bot\GeoProfs\src\functions\CheckForAccesToLeavePage\CheckForAccesToLeavePage.jsx">
         <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="3" type="stmt"/>
@@ -81,7 +81,7 @@
     </package>
     <package name="src.functions.CheckForFirstLogin">
       <metrics statements="8" coveredstatements="8" conditionals="5" coveredconditionals="5" methods="1" coveredmethods="1"/>
-      <file name="CheckForFirstLogin.jsx" path="C:\Users\roelj\OneDrive\Documenten\school\geoprofs\GeoProfs\src\functions\CheckForFirstLogin\CheckForFirstLogin.jsx">
+      <file name="CheckForFirstLogin.jsx" path="C:\Users\roelj\Desktop\kingside test bot\GeoProfs\src\functions\CheckForFirstLogin\CheckForFirstLogin.jsx">
         <metrics statements="8" coveredstatements="8" conditionals="5" coveredconditionals="5" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="4" type="stmt"/>
@@ -95,7 +95,7 @@
     </package>
     <package name="src.functions.CheckUserRole">
       <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
-      <file name="CheckUserRole.jsx" path="C:\Users\roelj\OneDrive\Documenten\school\geoprofs\GeoProfs\src\functions\CheckUserRole\CheckUserRole.jsx">
+      <file name="CheckUserRole.jsx" path="C:\Users\roelj\Desktop\kingside test bot\GeoProfs\src\functions\CheckUserRole\CheckUserRole.jsx">
         <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
         <line num="3" count="1" type="stmt"/>
         <line num="5" count="4" type="stmt"/>
@@ -109,7 +109,7 @@
     </package>
     <package name="src.functions.HashPassword">
       <metrics statements="9" coveredstatements="8" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
-      <file name="HashPassword.jsx" path="C:\Users\roelj\OneDrive\Documenten\school\geoprofs\GeoProfs\src\functions\HashPassword\HashPassword.jsx">
+      <file name="HashPassword.jsx" path="C:\Users\roelj\Desktop\kingside test bot\GeoProfs\src\functions\HashPassword\HashPassword.jsx">
         <metrics statements="9" coveredstatements="8" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="3" count="2" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
@@ -124,7 +124,7 @@
     </package>
     <package name="src.functions.context">
       <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-      <file name="User.jsx" path="C:\Users\roelj\OneDrive\Documenten\school\geoprofs\GeoProfs\src\functions\context\User.jsx">
+      <file name="User.jsx" path="C:\Users\roelj\Desktop\kingside test bot\GeoProfs\src\functions\context\User.jsx">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="4" count="1" type="stmt"/>
         <line num="6" count="2" type="stmt"/>

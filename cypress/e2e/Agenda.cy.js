@@ -13,7 +13,9 @@ describe('template spec', () => {
   
       //bot klikt op alle aanvragen button
       cy.get('[data-testid="next-month-button"]').click();
+      cy.wait(3000);
       cy.get('[data-testid="last-month-button"]').click();
+      cy.wait(2000);
       cy.get('[data-testid="last-month-button"]').click();
   
       
